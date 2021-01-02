@@ -1,0 +1,40 @@
+import { Injectable } from '@angular/core';
+import LocoDTO from '../dto/LocoDTO';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../environments/environment';
+import {Observable} from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class LocomotiveService {
+  myUrl = environment.baseUrlOne;
+  constructor(private http: HttpClient) { }
+
+  public saveLoco(dto: LocoDTO): Observable<any>{
+    return this.http.post( this.myUrl +  'locoRoute/saveLoco', {
+      locoCatId: dto.locoCatId,
+      locoPower: dto.locoPower,
+      locoNumber: dto.locoNumber,
+      locoAvailability: dto.locoAvailability,
+      customerNic: dto.customerNic,
+      locoDate: dto.locoDate,
+      locoOil: dto.locoOil,
+      locoFuel: dto.locoFuel,
+      locoWater: dto.locoWater,
+      locoMainGen: dto.locoMainGen,
+      locoTracMot: dto.locoTracMot,
+      locoVBreak: dto.locoVBreak,
+      locoDBreak: dto.locoDBreak,
+      locoNote: dto.locoNote
+    });
+  }
+
+  public getAllLocomotives(): Observable<any> {
+    return this.http.get( this.myUrl + 'locoRoute/getAllLocomotives');
+  }
+  public deleteLoco(id: string): Observable<any> {
+    return this.http.delete( this.myUrl + 'locoRoute/deleteLoco', {headers: {id}});
+
+  }
+}

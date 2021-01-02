@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Poppins:wght@300&family=Roboto:wght@500&display=swap');
+.container{
+  padding-top: 30px;
+  padding-right: 100px;
+  padding-left: 100px;
+
+}
+.box-head{
+  display: flex;
+  align-items:center;
+}
+.heading-txt{
+  font-family: 'Bebas Neue', cursive;
+  font-size: 40px;
+  color: #013243;
+  padding-left: 10px;
+
+}
+.controls-container{
+  width: 90%;
+  padding: 5%;
+  height: 60%;
+
+
+}
+.controls-container > *{
+  width: 90%;
+}
+.add-bottom-padding{
+  padding-bottom: 10px;
+}
+mat-radio-group mat-radio-button{
+  margin-top: 5px;
+  margin-left: 5px;
+}
+.button-row button{
+  margin: 5px;
+  left: 40%;
+  bottom: 10px;
+}
+.sub-headers{
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif;
+  color: #34495e;
+  font-weight: bold;
+}
+.para-txt{
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  color: #3a539b;
+}

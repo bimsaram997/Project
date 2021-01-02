@@ -4,6 +4,11 @@
     "codelyzer"
   ],
   "rules": {
+    "variable-name": [
+      true,
+      // ...
+      "allow-leading-underscore"
+    ],
     "align": {
       "options": [
         "parameters",

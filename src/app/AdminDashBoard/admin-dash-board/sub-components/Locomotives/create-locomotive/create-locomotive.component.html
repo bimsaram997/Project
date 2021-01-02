@@ -1,0 +1,142 @@
+<div class="container" >
+  <div class="box-head">
+    <img src="./assets/images/locom6.png" alt="" style="height: 70px; width: 70px;">
+    <span class="heading-txt">ADD LOCOMOTIVES</span>
+  </div>
+  <hr>
+  <mat-card>
+  <mat-grid-list  cols="2" rowHeight="300px" gutterSize="-55px" style="bottom: 50px;" >
+
+    <mat-grid-tile>
+      <div class="controls-container">
+        <h3 class="sub-headers">Basic Details</h3>
+        <input type="hidden">
+        <mat-form-field class="example-full-width" >
+          <mat-label class="label-txt">Locomotive Category</mat-label>
+          <input matInput placeholder="Locomotive Category" #searchInput  matInput
+                 [formControl]="myControl"
+                 [matAutocomplete]="auto" [(ngModel)]="locoCatId">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of options" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label class="label-txt">Locomotive Power</mat-label>
+          <input matInput placeholder="Locomotive Power" #searchInput [(ngModel)]="locoPower">
+        </mat-form-field>
+        <input #csvInput hidden="true" type="file" onclick="this.value=null" (change)="csvInputChange($event)" accept=".csv"/>
+        <button style="width: 40%" mat-stroked-button color="primary" (click)="csvInput.click()">Choose Spreadsheet File (CSV)</button>
+      </div>
+
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="controls-container">
+        <input type="hidden">
+        <mat-form-field class="example-full-width">
+          <mat-label class="Locomotive Number">Locomotive Number</mat-label>
+          <input matInput placeholder="Locomotive Number" #searchInput [(ngModel)]="locoNumber">
+        </mat-form-field>
+        <div class="add-bottom-padding">
+          <mat-radio-group aria-label="Availability" [(ngModel)]="locoAvailability">
+            <span class="para-txt">Availability</span>
+            <mat-radio-button *ngFor="let status of statuses" [value] = "status">{{status}}</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <mat-form-field>
+          <mat-select placeholder="Supervisor In Charge" aria-label="Supervisor In Charge" [(ngModel)]="customerNic">
+            <mat-option>None</mat-option>
+            <ng-container *ngFor="let tempIds of customerList">
+              <mat-option value="{{tempIds.CustomerNic}}">{{tempIds.CustomerNic}}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <input aria-label="HireDate" matInput [matDatepicker]="picker" placeholder="Last Update" [(ngModel)]="locoDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile style="">
+      <div class="controls-container">
+        <h3 class="sub-headers">Liquid Levels</h3>
+        <mat-form-field class="example-full-width">
+          <mat-label class="label-txt">Oil Level(L)</mat-label>
+          <input matInput placeholder="Oil Level" #searchInput [(ngModel)]="locoOil">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label class="label-txt">Fuel Level(L)</mat-label>
+          <input matInput placeholder="Fuel Level" #searchInput [(ngModel)]="locoFuel">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label class="label-txt">Water Level(L)</mat-label>
+          <input matInput placeholder="Water Level" #searchInput [(ngModel)]="locoWater">
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile style="">
+      <div class="controls-container">
+        <h3 class="sub-headers">Motar Parts</h3>
+        <div class="add-bottom-padding">
+          <mat-radio-group aria-label="Gender" [(ngModel)]="locoMainGen">
+            <span><p class="para-txt">Main Generators</p> </span>
+            <mat-radio-button *ngFor="let mainMotor of mainMotors" [value] = "mainMotor">{{mainMotor}}</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <br>
+        <div class="add-bottom-padding">
+          <mat-radio-group aria-label="Gender" [(ngModel)]="locoTracMot">
+            <span> <p class="para-txt">Traction Motors</p></span>
+            <mat-radio-button *ngFor="let tMotor of tMotors" [value] = "tMotor">{{tMotor}}</mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="controls-container" style="padding-bottom: 10px;">
+        <h3 class="sub-headers">Breaks</h3>
+        <div class="add-bottom-padding">
+          <mat-radio-group aria-label="Vacuum Breaks" [(ngModel)]="locoVBreak">
+            <span> <p class="para-txt">Vacuum Breaks</p></span>
+            <mat-radio-button *ngFor="let vBreak of vBreaks" [value] = "vBreak">{{vBreak}}</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <br>
+        <div class="add-bottom-padding">
+          <mat-radio-group aria-label="Dynamic Breaks" [(ngModel)]="locoDBreak">
+            <span> <p class="para-txt">Dynamic Breaks</p></span>
+            <mat-radio-button *ngFor="let dBreak of dBreaks" [value] = "dBreak">{{dBreak}}</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+    </mat-grid-tile>
+    <br>
+    <mat-grid-tile>
+      <br>
+
+      <div class="controls-container" style="padding-top: 200px;">
+        <h3 class="sub-headers">Special Notes</h3>
+        <mat-form-field  style="height: 250px;">
+          <mat-label>Special Note</mat-label>
+          <textarea matInput [(ngModel)]="locoNote"></textarea>
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <hr style="bottom: 230px;">
+  <div class="button-row">
+    <button mat-raised-button color="primary" (click)="saveLocoOnAction()">Submit</button>
+    <button mat-raised-button color="warn" (click)="handleClear()">Clear</button>
+
+  </div>
+  </mat-card>
+
+
+
+
+</div>
