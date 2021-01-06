@@ -8,7 +8,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {UpdateCustomerComponent} from '../update-customer/update-customer.component';
 import {ModelComponent} from './model/model.component';
-import {FormGroup} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 
 
 @Component({
@@ -45,6 +45,9 @@ export class CreateCustomerComponent implements OnInit {
     {id: 2, value: 'Running Shed'},
     {id: 3, value: 'Chief Engineering Ratmalana'}
   ];
+  toppings = new FormControl();
+
+  proLang: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
   favGender: string;
   genders: string[] = ['Male', 'Female'];
   constructor(
@@ -152,4 +155,5 @@ export class CreateCustomerComponent implements OnInit {
   onSelect(id, CustomerNic) {
     this.router.navigate(['/adminDashboard/customerDetail', id, CustomerNic]);
   }
+
 }

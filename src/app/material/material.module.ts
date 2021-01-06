@@ -14,7 +14,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
+import {MatNativeDateModule, MatOptionModule} from '@angular/material/core';
 import {MatTableModule} from '@angular/material/table';
 import {HttpClientModule} from '@angular/common/http';
 import {MatPaginatorModule} from '@angular/material/paginator';
@@ -26,6 +26,7 @@ import {MatSliderModule} from '@angular/material/slider';
 import {CKEditorModule} from 'ckeditor4-angular';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatSortModule} from '@angular/material/sort';
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 
 const MaterialComponents = [
@@ -62,6 +63,9 @@ const MaterialComponents = [
   MatAutocompleteModule,
   MatListModule,
   MatSortModule,
+  MatCheckboxModule,
+  MatOptionModule,
+  MatTooltipModule
 
 ];
 @NgModule({

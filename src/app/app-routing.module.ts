@@ -9,6 +9,7 @@ import {CustomerDetailComponent} from './AdminDashBoard/admin-dash-board/sub-com
 import {ViewLocomotivesComponent} from './AdminDashBoard/admin-dash-board/sub-components/Locomotives/view-locomotives/view-locomotives.component';
 import {UserDashboardComponent} from './UserDashBoard/user-dashboard/user-dashboard.component';
 import {CreateScheduleComponent} from './UserDashBoard/user-dashboard/SubComponents/Schedules/create-schedule/create-schedule.component';
+import {ViewSchedulesComponent} from "./UserDashBoard/user-dashboard/SubComponents/Schedules/view-schedules/view-schedules.component";
 
 
 const routes: Routes = [
@@ -21,7 +22,8 @@ const routes: Routes = [
       {path: 'viewLocomotives', component: ViewLocomotivesComponent}
     ]},
   {path: 'userDashboard', component: UserDashboardComponent, children: [
-      {path: 'createSchedule', component: CreateScheduleComponent}
+      {path: 'createSchedule', component: CreateScheduleComponent},
+      {path: 'viewSchedules', component: ViewSchedulesComponent}
     ]}
 ];
 

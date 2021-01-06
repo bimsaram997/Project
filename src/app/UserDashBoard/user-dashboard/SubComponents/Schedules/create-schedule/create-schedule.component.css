@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Poppins:wght@300&family=Roboto:wght@500&display=swap');
+.box-head{
+  display: flex;
+  align-items:center;
+}
+.container{
+  padding-top: 30px;
+  padding-right: 50px;
+  padding-left: 50px;
+
+}
+.heading-txt{
+  font-family: 'Bebas Neue', cursive;
+  font-size: 40px;
+  color: #013243;
+  padding-left: 10px;
+
+}
+.controls-container{
+  width: 90%;
+  padding: 5%;
+  height: 80%;
+
+
+}
+.controls-container-right{
+
+  width: 90%;
+  padding: 5%;
+  height: 60%;
+  margin-top: 28px;
+
+}
+.controls-container-right >*{
+  width: 90%;
+}
+.controls-container > *{
+  width: 90%;
+}
+.controls-container-right-two{
+  width: 90%;
+  padding: 5%;
+  height: 60%;
+  margin-top: -60px;
+}
+.controls-container-right-two >*{
+  width: 90%;
+}
+.controls-container > *{
+  width: 90%;
+}
+.sub-headers{
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif;
+  color: #34495e;
+  font-weight: bold;
+}
+.add-bottom-padding{
+  padding-bottom: 0px;
+}
+mat-radio-group mat-radio-button{
+  margin-top: 15px;
+  margin-left: 5px;
+}
+.example-section {
+  margin: 12px 0;
+}
+.example-margin {
+  margin: 0 12px;
+}
+.para-txt{
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  color: #3a539b;
+}
+.button-row button{
+
+  left: 35%;
+  bottom: 50px;
+  margin: 5px 5px -900px;
+}

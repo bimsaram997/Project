@@ -1,1 +1,144 @@
-<p>create-schedule works!</p>
+<div class="container" >
+  <div class="box-head">
+    <img src="./assets/images/m11.png" alt="" style="width: 70px; height: 70px">
+    <span class="heading-txt">REQUEST SCHEDULE</span>
+  </div>
+  <hr>
+  <div class="right-class" style="padding-left: 100px; padding-right: 100px;">
+    <mat-grid-list cols="2" rowHeight="300px" [gutterSize]="'-55px'"  style="bottom: 30px;">
+      <mat-grid-tile>
+        <div class="controls-container">
+          <h3 class="sub-headers">Basic Details</h3>
+          <input type="hidden">
+          <mat-form-field class="example-full-width">
+            <mat-label class="Locomotive Number">Schedule Req No</mat-label>
+            <input matInput placeholder="Schedule Req No" #searchInput [(ngModel)]="scheduleNo">
+          </mat-form-field>
+          <mat-form-field>
+            <input aria-label="HireDate" matInput [matDatepicker]="picker" placeholder="Last Update" [(ngModel)]="scheduleUpdate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field class="example-full-width" >
+            <mat-label class="label-txt">Locomotive Category</mat-label>
+            <input matInput placeholder="Locomotive Category" #searchInput  matInput
+                   [formControl]="myControl" [(ngModel)]="locoCatId"
+                   [matAutocomplete]="auto" >
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of options" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Locomotive Number" aria-label="Supervisor In Charge" [(ngModel)]="locoNumber">
+              <mat-option>None</mat-option>
+              <ng-container *ngFor="let tempNumbers of locoList">
+                <mat-option value="{{tempNumbers.locoNumber}}">{{tempNumbers.locoNumber}}</mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="controls-container-right">
+        <mat-form-field>
+          <mat-select placeholder="Supervisor Nic" aria-label="Supervisor In Charge" [(ngModel)]="customerNic">
+            <mat-option>None</mat-option>
+            <ng-container *ngFor="let tempWork of locoList">
+              <mat-option value="{{tempWork.customerNic}}">{{tempWork.customerNic}}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Supervisor Name" aria-label="Supervisor In Charge" [(ngModel)]="customerName">
+              <mat-option>None</mat-option>
+              <ng-container *ngFor="let tempCustomer of customerList">
+                <mat-option value="{{tempCustomer.CustomerName}}">{{tempCustomer.CustomerName}}</mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Supervisor Email" aria-label="Supervisor In Charge" [(ngModel)]="customerEmail">
+              <mat-option>None</mat-option>
+              <ng-container *ngFor="let tempCustomer of customerList">
+                <mat-option value="{{tempCustomer.CustomerEmail}}">{{tempCustomer.CustomerEmail}}</mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+          <div class="add-bottom-padding">
+            <mat-radio-group aria-label="Availability" [(ngModel)]="scheduleStatus">
+              <span class="para-txt">Status</span>
+              <mat-radio-button *ngFor="let status of ScheduleStatus" [value] = "status">{{status}}</mat-radio-button>
+            </mat-radio-group>
+          </div>
+
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+    <mat-grid-list cols="2" rowHeight="400px" [gutterSize]="'-55px'"  style="bottom: 20px;">
+      <mat-grid-tile>
+        <div class="controls-container">
+          <h3 class="sub-headers"matTooltip="Select required Schedules" [matTooltipPosition]="'left'">Schedules</h3>
+          <span> <p class="para-txt">Main Motors</p></span>
+          <mat-form-field >
+            <mat-label>Main Motors</mat-label>
+            <mat-select [formControl]="top" multiple [(ngModel)]="scheduleMach">
+              <mat-option *ngFor="let mainMotors of  mainMotorList" [value]=" mainMotors">{{mainMotors}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <span> <p class="para-txt">Traction Motors</p></span>
+          <mat-form-field >
+            <mat-label>Traction Motors</mat-label>
+            <mat-select [formControl]="tMotors" multiple [(ngModel)]="scheduleTrackMotors">
+              <mat-option *ngFor="let tMotor of  tMotorsList" [value]=" tMotor">{{tMotor}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <span> <p class="para-txt">Loco Body</p></span>
+          <mat-form-field >
+            <mat-label>Loco Body</mat-label>
+            <mat-select [formControl]="bodyLoco " multiple [(ngModel)]="scheduleLocoBody">
+              <mat-option *ngFor="let bodyLoco of   bodyLocoList" [value]="bodyLoco">{{bodyLoco}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="controls-container-right-two">
+          <span> <p class="para-txt">Electric And Control Unit</p></span>
+          <mat-form-field >
+            <mat-label>Electric And Control Unit</mat-label>
+            <mat-select [formControl]="electricControl" multiple [(ngModel)]="scheduleElCuUnit">
+              <mat-option *ngFor="let electricController of   electricControlList" [value]="electricController">{{electricController}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <span> <p class="para-txt">Electric Mechanical</p></span>
+          <mat-form-field >
+            <mat-label>Electric Mechanical</mat-label>
+            <mat-select [formControl]="eMechanical" multiple [(ngModel)]="scheduleEMechanical">
+              <mat-option *ngFor="let eMechanical of   eMechanicalMaList" [value]="eMechanical">{{eMechanical}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <h3 class="sub-headers"matTooltip="Place remarks" [matTooltipPosition]="'left'">Special Remarks</h3>
+          <mat-form-field appearance="fill">
+            <mat-label>Textarea</mat-label>
+            <textarea matInput [(ngModel)]="scheduleRemark"></textarea>
+          </mat-form-field>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <div class="button-row">
+      <button mat-raised-button color="primary" (click)="saveSchedule()" style="width: 150px;">Submit</button>
+      <button mat-raised-button color="warn" style="width: 150px;">Clear</button>
+
+    </div>
+
+
+  </div>
+
+
+
+
+
+</div>

@@ -3,8 +3,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Poppins:wght@300&family=Roboto:wght@500&display=swap');
 .container{
   padding-top: 30px;
-  padding-right: 100px;
-  padding-left: 100px;
+  padding-right: 200px;
+  padding-left: 200px;
 
 }
 .box-head{
@@ -50,4 +50,18 @@ mat-radio-group mat-radio-button{
   font-family: 'Poppins', sans-serif;
   font-weight: bold;
   color: #3a539b;
+}
+.controls-container-right{
+
+  width: 90%;
+  padding: 5%;
+  height: 60%;
+  margin-top: 48px;
+
+}
+.controls-container-right >*{
+  width: 90%;
+}
+.controls-container > *{
+  width: 90%;
 }

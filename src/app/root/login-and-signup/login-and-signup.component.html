@@ -9,21 +9,21 @@
     <img src="./assets/images/man.png" class="image-form" style="height: 100px; width: 120px;">
     <div style="padding-left: 20px; padding-right: 20px;">
       <div class="example-container">
-        <mat-form-field appearance="fill" style="width: 18vw;">
+        <mat-form-field  style="width: 18vw;">
           <mat-label>Input</mat-label>
           <input matInput required type="email" [(ngModel)]="email">
         </mat-form-field>
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 
         <br>
-        <mat-form-field appearance="fill" style="width: 18vw;">
+        <mat-form-field style="width: 18vw;">
           <mat-label>Enter your password</mat-label>
           <input matInput [type]="hide ? 'password' : 'text'" required [(ngModel)]="password">
           <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
         </mat-form-field>
-        <button mat-raised-button color="primary" style="width:5vw" (click)="handleLoginClick()">Login</button>
+        <button mat-raised-button color="primary" style="width:5vw" (click)="login()">Login</button>
       </div>
     </div>
   </div>

@@ -73,8 +73,7 @@ export default class CustomerDTO {
   }
 
 
-
-  constructor(CustomerName: string, CustomerEmail: string, CustomerMobile: number, CustomerWork: string, CustomerNic: string, CustomerGender: string, CustomerRole: string, CustomerHiredDate: string) {
+    constructor(CustomerName: string, CustomerEmail: string, CustomerMobile: number, CustomerWork: string, CustomerNic: string, CustomerGender: string, CustomerRole: string, CustomerHiredDate: string) {
     this._CustomerName = CustomerName;
     this._CustomerEmail = CustomerEmail;
     this._CustomerMobile = CustomerMobile;

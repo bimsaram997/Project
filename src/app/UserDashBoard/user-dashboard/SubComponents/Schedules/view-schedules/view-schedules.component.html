@@ -1,0 +1,71 @@
+<div class="container" >
+  <div class="box-head">
+    <img src="./assets/images/s14.png" alt="" style="height: 70px; width: 70px;">
+    <span class="heading-txt">VIEW SCHEDULES</span>
+  </div>
+  <hr>
+  <div class="search-div">
+    <mat-form-field class="search-form-field">
+      <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
+      <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" (click)="onSearchClear()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <div class="table-style">
+    <div class="mat-elevation-z8" style="height: 50px">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+        <ng-container matColumnDef="Schedule No" style=" width: 40px;">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Schedule No</th>
+          <td mat-cell *matCellDef="let tempSchedule">{{tempSchedule.scheduleNo}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Date" style=" width: 40px;">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+          <td mat-cell *matCellDef="let tempSchedule"> {{tempSchedule.scheduleUpdate.split(' ').slice(0, 4).join(' ')}}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="Loco Category">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Loco Category' </th>
+          <td mat-cell *matCellDef="let tempSchedule"> {{tempSchedule.locoCatId}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="Loco Number">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Loco Number </th>
+          <td mat-cell *matCellDef="let tempSchedule"> {{tempSchedule.locoNumber}}</td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="Supervisor NIC">
+          <th mat-header-cell *matHeaderCellDef> Supervisor NIC </th>
+          <td mat-cell *matCellDef="let tempSchedule"> {{tempSchedule.customerNic}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Supervisor Email">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Supervisor Email </th>
+          <td mat-cell *matCellDef="let tempSchedule"> {{tempSchedule.customerEmail}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Schedule Status">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Schedule Status </th>
+          <td mat-cell *matCellDef="let tempSchedule"> {{tempSchedule.scheduleStatus}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="#">
+          <th mat-header-cell *matHeaderCellDef>  </th>
+          <td mat-cell *matCellDef="let tempSchedule">
+            <button mat-stroked-button color="accent" >View More</button>
+            <button mat-icon-button color="warn" (click)="deleteSchedule(tempSchedule.scheduleNo)"><mat-icon>delete_outline</mat-icon></button>
+            <button mat-icon-button><mat-icon>launch</mat-icon></button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+
+      </table>
+      <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+  </div>
+</div>

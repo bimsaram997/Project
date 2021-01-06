@@ -20,6 +20,7 @@ import { UserDashboardComponent } from './UserDashBoard/user-dashboard/user-dash
 import { UserHeaderComponent } from './UserDashBoard/user-dashboard/navigation/user-header/user-header.component';
 import { UserSideNavComponent } from './UserDashBoard/user-dashboard/navigation/user-side-nav/user-side-nav.component';
 import { CreateScheduleComponent } from './UserDashBoard/user-dashboard/SubComponents/Schedules/create-schedule/create-schedule.component';
+import { ViewSchedulesComponent } from './UserDashBoard/user-dashboard/SubComponents/Schedules/view-schedules/view-schedules.component';
 
 
 
@@ -42,6 +43,7 @@ import { CreateScheduleComponent } from './UserDashBoard/user-dashboard/SubCompo
     UserHeaderComponent,
     UserSideNavComponent,
     CreateScheduleComponent,
+    ViewSchedulesComponent,
 
 
 

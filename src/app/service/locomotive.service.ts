@@ -37,4 +37,7 @@ export class LocomotiveService {
     return this.http.delete( this.myUrl + 'locoRoute/deleteLoco', {headers: {id}});
 
   }
+  public  getAllLocosSelect(): Observable<any> {
+    return this.http.get(this.myUrl + 'locoRoute/getAllLocosSelect');
+  }
 }
