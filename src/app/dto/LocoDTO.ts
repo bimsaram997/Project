@@ -1,7 +1,7 @@
 export default class LocoDTO {
+  private _locoNumber: string;
   private _locoCatId: string;
   private _locoPower: number;
-  private _locoNumber: string;
   private _locoAvailability: string;
   private _customerNic: string;
   private _locoDate: string;
@@ -14,10 +14,10 @@ export default class LocoDTO {
   private _locoDBreak: string;
   private _locoNote: string;
 
-  constructor(locoCatId: string, locoPower: number, locoNumber: string, locoAvailability: string, customerNic: string, locoDate: string, locoOil: number, locoFuel: number, locoWater: number, locoMainGen: string, locoTracMot: string, locoVBreak: string, locoDBreak: string, locoNote: string) {
+  constructor(locoNumber?: string, locoCatId?: string, locoPower?: number,  locoAvailability?: string, customerNic?: string, locoDate?: string, locoOil?: number, locoFuel?: number, locoWater?: number, locoMainGen?: string, locoTracMot?: string, locoVBreak?: string, locoDBreak?: string, locoNote?: string) {
+    this._locoNumber = locoNumber;
     this._locoCatId = locoCatId;
     this._locoPower = locoPower;
-    this._locoNumber = locoNumber;
     this._locoAvailability = locoAvailability;
     this._customerNic = customerNic;
     this._locoDate = locoDate;

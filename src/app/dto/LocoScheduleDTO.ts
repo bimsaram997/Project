@@ -1,6 +1,6 @@
 export default class LocoScheduleDTO {
 
-  constructor(scheduleNo: string, scheduleUpdate: string, locoCatId: string, locoNumber: number, customerNic: string, customerName: string, customerEmail: string, scheduleStatus: string, scheduleTrackMotors: string[], scheduleLocoBody: string[], scheduleElCuUnit: string[], scheduleEMechanical: string[], scheduleMach: string[], scheduleRemark: string) {
+  constructor(scheduleNo?: string, scheduleUpdate?: string, locoCatId?: string, locoNumber?: number, customerNic?: string, customerName?: string, customerEmail?: string, scheduleStatus?: string, scheduleTrackMotors?: string[], scheduleLocoBody?: string[], scheduleElCuUnit?: string[], scheduleEMechanical?: string[], scheduleMach?: string[], scheduleRemark?: string) {
     this._scheduleNo = scheduleNo;
     this._scheduleUpdate = scheduleUpdate;
     this._locoCatId = locoCatId;

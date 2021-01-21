@@ -40,4 +40,22 @@ export class LocomotiveService {
   public  getAllLocosSelect(): Observable<any> {
     return this.http.get(this.myUrl + 'locoRoute/getAllLocosSelect');
   }
+  public updateLocomotive(dto: LocoDTO): Observable<any>{
+    return this.http.put(this.myUrl + 'locoRoute/updateLocomotive', {
+      locoCatId: dto.locoCatId,
+      locoPower: dto.locoPower,
+      locoNumber: dto.locoNumber,
+      locoAvailability: dto.locoAvailability,
+      customerNic: dto.customerNic,
+      locoDate: dto.locoDate,
+      locoOil: dto.locoOil,
+      locoFuel: dto.locoFuel,
+      locoWater: dto.locoWater,
+      locoMainGen: dto.locoMainGen,
+      locoTracMot: dto.locoTracMot,
+      locoVBreak: dto.locoVBreak,
+      locoDBreak: dto.locoDBreak,
+      locoNote: dto.locoNote
+    })
+  }
 }

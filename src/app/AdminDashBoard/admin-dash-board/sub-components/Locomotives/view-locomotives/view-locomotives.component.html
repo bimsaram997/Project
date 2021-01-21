@@ -46,94 +46,194 @@
 
         <ng-container matColumnDef="Update Date">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Update Date </th>
-          <td mat-cell *matCellDef="let tempLoco"> {{tempLoco.locoDate.split(' ').slice(0, 4).join(' ')}}</td>
+          <td mat-cell *matCellDef="let tempLoco"> {{tempLoco.locoDate | date}}</td>
         </ng-container>
 
         <ng-container matColumnDef="#">
           <th mat-header-cell *matHeaderCellDef>  </th>
           <td mat-cell *matCellDef="let tempLoco">
             <button mat-stroked-button color="accent" (click)="view(tempLoco)">View More</button>
-            <button mat-icon-button color="warn" (click)="deleteLoco(tempLoco.locoCatId)"><mat-icon>delete_outline</mat-icon></button>
-            <button mat-icon-button><mat-icon>launch</mat-icon></button>
+            <button mat-icon-button color="warn" (click)="deleteLoco(tempLoco.locoNumber)"><mat-icon>delete_outline</mat-icon></button>
+            <button mat-icon-button (click)="updateLocomotive(tempLoco)"><mat-icon>launch</mat-icon></button>
           </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
 
       </table>
-      <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons></mat-paginator>
+      <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
     </div>
   </div>
 
 
   <div class="container-wrp" *ngIf="isVisible">
     <div class="header">
+      <div class="box-head">
+        <img src="https://img.icons8.com/bubbles/50/000000/train.png" style="width: 35px; height: 35px;"/> &nbsp;
+        <span class="heading-update">VIEW</span>
+        <button style="left: 74%; color: white" mat-icon-button (click)="setState()"><span style="font-weight: bolder;" class="material-icons">clear</span></button>
+      </div>
 
-      <h2>   <img src="./assets/images/train-emoji.png" alt="" style="height: 30px; width: 30px;"> {{selectedLoco.locoCatId}} &nbsp; {{selectedLoco.locoNumber}} </h2>
     </div>
-    <div style="padding-left: 20px; padding-right: 20px;">
-      <div class="modal-body">
-        <br>
-        <table class="comp-tbl">
-          <caption class="caption-txt">Fluid level</caption>
-          <tr class="comp-tr" height="10px" >
-            <th class="comp-td" >Component</th>
-            <th class="comp-td">Level</th>
-          </tr>
-          <tr class="comp-tr" height="10px">
-            <td class="comp-td">Oil Level</td>
-            <td class="comp-td">{{selectedLoco.locoOil}}</td>
-          </tr>
-          <tr class="comp-tr" height="10px">
-            <td class="comp-td">Fuel Level</td>
-            <td class="comp-td">{{selectedLoco.locoFuel}}</td>
-          </tr>
-          <tr class="comp-tr" height="10px">
-            <td class="comp-td">Oil Water</td>
-            <td class="comp-td">{{selectedLoco.locoWater}}</td>
-          </tr>
-        </table>
 
-        <table class="comp-tbl">
-          <caption class="caption-txt">Breaks</caption>
-          <tr class="comp-tr" height="10px">
-            <th class="comp-td" height="10px">Component</th>
-            <th class="comp-td">Status</th>
-          </tr>
-          <tr class="comp-tr" height="10px">
-            <td class="comp-td">Oil Level</td>
-            <td class="comp-td">{{selectedLoco.locoVBreak}}</td>
-          </tr>
-          <tr class="comp-tr"height="10px">
-            <td class="comp-td">Fuel Level</td>
-            <td class="comp-td">{{selectedLoco.locoDBreak}}</td>
-          </tr>
-        </table>
-        <table class="comp-tbl">
-          <caption class="caption-txt">Motors</caption>
-          <tr class="comp-tr" height="10px">
-            <th class="comp-td" height="10px">Component</th>
-            <th class="comp-td">Status</th>
-          </tr>
-          <tr class="comp-tr" height="10px">
-            <td class="comp-td">Oil Level</td>
-            <td class="comp-td">{{selectedLoco.locoMainGen}}</td>
-          </tr>
-          <tr class="comp-tr"height="10px">
-            <td class="comp-td">Fuel Level</td>
-            <td class="comp-td">{{selectedLoco.locoTracMot}}</td>
-          </tr>
-        </table>
-        <mat-form-field style="width: 450px; padding: 8px;">
-          <mat-label>Special Notes</mat-label>
-          <textarea matInput >{{selectedLoco.locoNote}}</textarea>
-        </mat-form-field>
-        <button style="left: 40%;" mat-raised-button color="primary" (click)="setState()">Close</button>
+      <div class="modal-body">
+        <mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
+          <mat-tab label="First">
+            <br>
+            <div style="padding-left: 10px; padding-right: 10px;">
+            <table class="comp-tbl">
+              <caption class="caption-txt">Fluid level</caption>
+              <tr class="comp-tr" height="10px" >
+                <th class="comp-td" >Component</th>
+                <th class="comp-td">Level</th>
+              </tr>
+              <tr class="comp-tr" height="10px">
+                <td class="comp-td">Oil Level</td>
+                <td class="comp-td">{{selectedLoco.locoOil}}</td>
+              </tr>
+              <tr class="comp-tr" height="10px">
+                <td class="comp-td">Fuel Level</td>
+                <td class="comp-td">{{selectedLoco.locoFuel}}</td>
+              </tr>
+              <tr class="comp-tr" height="10px">
+                <td class="comp-td">Oil Water</td>
+                <td class="comp-td">{{selectedLoco.locoWater}}</td>
+              </tr>
+            </table>
+            <br>
+            <table class="comp-tbl">
+              <caption class="caption-txt">Breaks</caption>
+              <tr class="comp-tr" height="10px">
+                <th class="comp-td" height="10px">Component</th>
+                <th class="comp-td">Status</th>
+              </tr>
+              <tr class="comp-tr" height="10px">
+                <td class="comp-td">Vacuum Break</td>
+                <td class="comp-td">{{selectedLoco.locoVBreak}}</td>
+              </tr>
+              <tr class="comp-tr"height="10px">
+                <td class="comp-td">Dynami Breaks</td>
+                <td class="comp-td">{{selectedLoco.locoDBreak}}</td>
+              </tr>
+            </table>
+            </div>
+          </mat-tab>
+          <mat-tab label="Second">
+            <br>
+            <br>
+            <div style="padding-left: 10px; padding-right: 10px;">
+            <table class="comp-tbl">
+              <caption class="caption-txt">Motors</caption>
+              <tr class="comp-tr" height="10px">
+                <th class="comp-td" height="10px">Component</th>
+                <th class="comp-td">Status</th>
+              </tr>
+              <tr class="comp-tr" height="10px">
+                <td class="comp-td">Main Generators</td>
+                <td class="comp-td">{{selectedLoco.locoMainGen}}</td>
+              </tr>
+              <tr class="comp-tr"height="10px">
+                <td class="comp-td">Traction Motors</td>
+                <td class="comp-td">{{selectedLoco.locoTracMot}}</td>
+              </tr>
+            </table>
+              <br>
+              <br>
+            <mat-form-field style="width: 450px; padding: 8px;">
+              <mat-label>Special Notes</mat-label>
+              <textarea matInput >{{selectedLoco.locoNote}}</textarea>
+            </mat-form-field>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
       </div>
     </div>
+
+
+  <div class="container-wrp-two" *ngIf="isVisibleSecond" >
+    <div class="header-two">
+      <div class="box-head">
+        <img src="https://img.icons8.com/bubbles/50/000000/train.png" style="width: 35px; height: 35px;"/> &nbsp;
+        <span class="heading-update">UPDATE</span>
+        <button style="left: 70%; color: white" mat-icon-button (click)="setStateTwo()"><span style="font-weight: bolder;" class="material-icons">clear</span></button>
+      </div>
+    </div>
+
+      <div class="modal-body">
+        <mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
+          <mat-tab label="First">
+            <br>
+            <mat-grid-list cols="1" rowHeight="300px" [gutterSize]="'-55px'">
+              <mat-grid-tile>
+                <div class="controls-container" style="height: 320px;padding-top: 60px; padding-left: 20px; padding-right: 20px;">
+                  <input type="hidden">
+                  <mat-form-field class="example" >
+                    <mat-label class="label-txt">Locomotive Category</mat-label>
+                    <input matInput placeholder="Locomotive Category" #searchInput  matInput
+                           [formControl]="myControl"
+                           [matAutocomplete]="auto" [(ngModel)]="changeLocoCatID">
+                    <mat-autocomplete #auto="matAutocomplete">
+                      <mat-option *ngFor="let option of options" [value]="option">
+                        {{option}}
+                      </mat-option>
+                    </mat-autocomplete>
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width">
+                    <mat-label class="label-txt">Locomotive Power</mat-label>
+                    <input matInput placeholder="Locomotive Power" #searchInput [(ngModel)]="changeLocoPower">
+                  </mat-form-field>
+                  <br>
+                  <div class="add-bottom-padding">
+                    <mat-radio-group aria-label="Availability" [(ngModel)]="changeLocoAvailability">
+                      <span class="para-txt">Availability &nbsp;</span>
+                      <mat-radio-button *ngFor="let status of statuses" [value] = "status">{{status}}</mat-radio-button>
+                    </mat-radio-group>
+                  </div>
+
+
+                </div>
+              </mat-grid-tile>
+            </mat-grid-list>
+          </mat-tab>
+          <mat-tab label="Second">
+            <br>
+            <mat-grid-list cols="1" rowHeight="300px" [gutterSize]="'-55px'">
+              <mat-grid-tile>
+                <div class="controls-container" style="height: 320px;padding-top: 60px; padding-left: 40px; padding-right: 40px;">
+                  <input type="hidden">
+                  <mat-form-field>
+                    <mat-select placeholder="Supervisor In Charge" aria-label="Supervisor In Charge" [(ngModel)]="changeCustomerNic" >
+                      <mat-option>None</mat-option>
+                      <ng-container *ngFor="let tempIds of customerList" >
+                        <mat-option  value="{{tempIds.CustomerNic}}">{{tempIds.CustomerNic}}</mat-option>
+                      </ng-container>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <input  aria-label="HireDate" matInput [matDatepicker]="picker" placeholder="Last Update" [(ngModel)]="changeLocoDate">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Special Notes</mat-label>
+                    <textarea matInput [value]="changeLocoNote"></textarea>
+                  </mat-form-field>
+                </div>
+              </mat-grid-tile>
+            </mat-grid-list>
+              <button mat-raised-button color="primary" style="width: 140px; bottom: 25%; left: 20%;" (click)="updateMyLocomotive()">Update</button>&nbsp;&nbsp;
+
+
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+
   </div>
 
+
   <button style="display: none"  type="button" id="btn-pop-up"  mat-stroked-button color="accent" (click)="setState()">
+  </button>
+  <button style="display: none"  type="button" id="btn-pop-up-two"  mat-stroked-button color="accent" (click)=" setStateTwo()">
   </button>
 
 </div>

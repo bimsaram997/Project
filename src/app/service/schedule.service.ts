@@ -36,4 +36,27 @@ export class ScheduleService {
     return this.http.delete( this.myUrl + 'scheduleRoute/deleteSchedule', {headers: {id}});
 
   }
+  public updateSchedule(dto: LocoScheduleDTO): Observable<any> {
+    return this.http.put( this.myUrl + 'scheduleRoute/updateSchedule', {
+      scheduleNo: dto.scheduleNo,
+      scheduleUpdate: dto.scheduleUpdate,
+      locoCatId: dto.locoCatId,
+      locoNumber: dto.locoNumber,
+      customerNic: dto.customerNic,
+      customerName: dto.customerName,
+      customerEmail: dto.customerEmail,
+      scheduleStatus: dto. scheduleStatus,
+      scheduleTrackMotors: dto.scheduleTrackMotors,
+      scheduleLocoBody: dto.scheduleLocoBody,
+      scheduleElCuUnit: dto.scheduleElCuUnit,
+      scheduleEMechanical: dto.scheduleEMechanical,
+      scheduleMach: dto.scheduleMach,
+      scheduleRemark: dto.scheduleRemark
+    });
+
+  }
+  public getSchedule(customerNic: string): Observable<LocoScheduleDTO>
+  {
+    return this.http.get<LocoScheduleDTO>(this.myUrl + 'scheduleRoute/getSchedule/: id',{headers: {customerNic}})
+  }
 }

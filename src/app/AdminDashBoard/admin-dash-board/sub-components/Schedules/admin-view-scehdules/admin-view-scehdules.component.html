@@ -1,0 +1,222 @@
+<div class="container" >
+  <div class="box-head">
+    <img src="./assets/images/steam1.png" alt="" style="height: 70px; width: 70px;">
+    <span class="heading-txt">VIEW SCHEDULES</span>
+  </div>
+  <hr>
+  <div class="search-div">
+    <mat-form-field class="search-form-field">
+      <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
+      <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" (click)="onSearchClear()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <span style="padding-left: 80px; color: #013243; font-size: 15px;">Print Details</span>&nbsp; &nbsp;<button mat-raised-button style="top: 0px;" (click)="exporter.exportTable('xlsx',{fileName:'New'})">Excel</button>
+  &nbsp;<button mat-raised-button style="top: 0px;" (click)="exporter.exportTable('csv',{fileName:'New'})">CSV</button>
+  &nbsp;<button mat-raised-button style="top: 0px;" (click)="exporter.exportTable('txt',{fileName:'New'})">Text</button>
+  <div class="table-style">
+    <div class="mat-elevation-z8" style="height: 50px">
+      <table mat-table  matTableExporter #exporter="matTableExporter" [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+        <ng-container matColumnDef="Schedule No" style=" width: 40px;" >
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Schedule No</th>
+          <td mat-cell *matCellDef="let tempSchedule">{{tempSchedule.scheduleNo}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Date" style=" width: 40px;">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+          <td mat-cell *matCellDef="let tempSchedule"> {{tempSchedule.scheduleUpdate.split(' ').slice(0, 4).join(' ')}}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="Loco Category">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Loco Category' </th>
+          <td mat-cell *matCellDef="let tempSchedule"> {{tempSchedule.locoCatId}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="Loco Number">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Loco Number </th>
+          <td mat-cell *matCellDef="let tempSchedule"> {{tempSchedule.locoNumber}}</td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="Supervisor NIC">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header---> Supervisor NIC </th>
+          <td mat-cell *matCellDef="let tempSchedule"> {{tempSchedule.customerNic}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Supervisor Email">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Supervisor Email </th>
+          <td mat-cell *matCellDef="let tempSchedule"> {{tempSchedule.customerEmail}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Schedule Status">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Schedule Status </th>
+          <td mat-cell *matCellDef="let tempSchedule"> {{tempSchedule.scheduleStatus}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Body loco">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Body </th>
+          <td mat-cell *matCellDef="let tempSchedule"> {{tempSchedule.scheduleLocoBody}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Motors">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Motors </th>
+          <td mat-cell *matCellDef="let tempSchedule"> {{tempSchedule.scheduleMach}}</td>
+        </ng-container>
+        <ng-container matColumnDef="ELUCU">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> ELUCU </th>
+          <td mat-cell *matCellDef="let tempSchedule"> {{tempSchedule.scheduleElCuUnit}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Traction">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Traction </th>
+          <td mat-cell *matCellDef="let tempSchedule"> {{tempSchedule.scheduleTrackMotors}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Mechanical">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Mechanical </th>
+          <td mat-cell *matCellDef="let tempSchedule"> {{tempSchedule.scheduleEMechanical}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="#">
+          <th mat-header-cell *matHeaderCellDef>  </th>
+          <td mat-cell *matCellDef="let tempSchedule">
+            <button mat-stroked-button color="accent" (click)="view(tempSchedule)">View More</button>
+            <button mat-icon-button color="warn" (click)="deleteSchedule(tempSchedule.scheduleNo)"><mat-icon>delete_outline</mat-icon></button>
+            <button mat-icon-button (click)=" updateStatus(tempSchedule)"><mat-icon>launch</mat-icon></button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+
+      </table>
+      <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+  </div>
+
+  <div class="container-wrp" *ngIf="isVisible">
+    <div class="header">
+
+      <div class="box-head">
+        <img src="https://img.icons8.com/bubbles/50/000000/train.png" style="width: 35px; height: 35px;"/> &nbsp;
+        <span class="heading-update">VIEW</span>
+        <button style="left: 74%; color: white" mat-icon-button (click)="setStateTwo()"><span style="font-weight: bolder;" class="material-icons">clear</span></button>
+      </div>
+    </div>
+    <div class="modal-body">
+    <mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
+      <mat-tab label="First">
+        <mat-card style="height: 380px;">
+        <h3 class="sub-headers" style="padding-left: 20px; padding-top: 1px;" matTooltip="Select required Schedules" [matTooltipPosition]="'left'">Schedules  {{selectedSchedule.scheduleNo}}</h3>
+        <div class="outline-table">
+          <table class="comp-tbl" style="padding-top: -90px;">
+            <caption class="caption-txt">Loco Body</caption>
+            <tr class="comp-tr" height="10px" >
+              <th class="comp-td" >Components</th>
+            </tr>
+            <tr class="comp-tr" height="10px">
+              <td class="comp-td">{{selectedSchedule.scheduleLocoBody}}</td>
+            </tr>
+          </table>
+          <br>
+          <table class="comp-tbl">
+            <caption class="caption-txt">Traction Motors</caption>
+            <tr class="comp-tr" height="10px">
+              <th class="comp-td" height="10px">Component</th>
+            </tr>
+            <tr class="comp-tr" height="10px">
+              <td class="comp-td">{{selectedSchedule.scheduleTrackMotors}}</td>
+            </tr>
+          </table>
+          <br>
+          <table class="comp-tbl">
+            <caption class="caption-txt">Electric And Control Unit</caption>
+            <tr class="comp-tr" height="10px">
+              <th class="comp-td" height="10px">Component</th>
+            </tr>
+            <tr class="comp-tr" height="10px">
+              <td class="comp-td">{{selectedSchedule.scheduleElCuUnit}}</td>
+            </tr>
+          </table>
+        </div>
+        </mat-card>
+      </mat-tab>
+      <mat-tab label="Second">
+        <mat-card>
+        <br>
+        <div class="outline-table">
+          <table class="comp-tbl">
+            <caption class="caption-txt">Electric Mechanical</caption>
+            <tr class="comp-tr" height="10px">
+              <th class="comp-td" height="10px">Component</th>
+            </tr>
+            <tr class="comp-tr" height="10px">
+              <td class="comp-td">{{selectedSchedule.scheduleEMechanical}}</td>
+            </tr>
+          </table>
+          <br>
+          <table class="comp-tbl">
+            <caption class="caption-txt">Main Motors</caption>
+            <tr class="comp-tr" height="10px">
+              <th class="comp-td" height="10px">Component</th>
+            </tr>
+            <tr class="comp-tr" height="10px">
+              <td class="comp-td">{{selectedSchedule.scheduleMach}}</td>
+            </tr>
+          </table>
+          <br>
+          <br>
+          <mat-form-field appearance="fill" style="width: 420px; padding-left: 5px; ">
+            <mat-label>Special Notes</mat-label>
+            <textarea matInput [value]="selectedSchedule.scheduleRemark"></textarea>
+          </mat-form-field>
+
+        </div>
+        </mat-card>
+      </mat-tab>
+
+    </mat-tab-group>
+  </div>
+
+  </div>
+
+  <div class="container-wrp-two" *ngIf="isVisibleSecond">
+    <div class="header-two">
+      <div class="box-container">
+        <img src="https://img.icons8.com/bubbles/50/000000/train.png" style="width: 35px; height: 35px;"/> &nbsp;
+        <span class="heading-update">UPDATE</span>
+        <button style="left: 65%; color: white" mat-icon-button (click)="setStateTwo()"><span style="font-weight: bolder;" class="material-icons">clear</span></button>
+      </div>
+    </div>
+    <div style="padding-left: 20px; padding-right: 20px;">
+
+        <br>
+        <h3 style="color: #1e8bc3;  font-family: 'Roboto', sans-serif; font-weight: bold; font-size: 23px; text-align: center;">Please Select the Status of the Schedule!</h3>
+        <br>
+        <mat-card>
+          <div class="add-bottom-padding">
+            <mat-radio-group aria-label="Availability" [(ngModel)]="changeStatus">
+              <span class="para-txt">Status</span>
+              <mat-radio-button  [value] = "'draft'">draft</mat-radio-button>
+              <mat-radio-button  [value] = "'Accept'">Accept</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </mat-card>
+        <br>
+        <br>
+        <div class="button-row">
+          <button mat-raised-button color="primary"  (click)="updateSchedule()"style="width: 150px;">Update</button>
+          <button mat-raised-button color="accent" class="cancel-btn" (click) = "setStateTwo()"  style="width: 150px;">Cancel</button>
+
+        </div>
+
+
+      </div>
+
+  </div>
+
+  <button style="display: none"  type="button" id="btn-pop-up"  mat-stroked-button color="accent" (click)="setState()">
+  </button>
+
+  <button style="display: none"  type="button" id="btn-pop-up-two"  mat-stroked-button color="accent" (click)=" setStateTwo()">
+  </button>
+
+</div>

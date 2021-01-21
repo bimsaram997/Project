@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@600&display=swap');
+.container{
+  padding-top: 30px;
+  padding-right: 100px;
+  padding-left: 100px;
+
+}
+.box-head{
+  display: flex;
+  align-items:center;
+}
+.heading-txt{
+  font-family: 'Bebas Neue', cursive;
+  font-size: 40px;
+  color: #013243;
+  padding-left: 10px;
+
+}
+.header{
+  padding-left: 32%;
+
+  display: flex;
+  align-items: center;
+
+}
+.header h2 {
+  font-family: 'Roboto Slab', serif;
+  font-size: 19px;
+  color: #013243;
+}
+.header h2:after{
+  content: '';
+  background: #013243;
+  display: block;
+  width: 450px;
+  height: 3px;
+  margin: 10px auto;
+
+}
+.content-txt{
+  bottom: -80%;
+}
+.content-txt ul{
+  align-items: center;
+  padding-left: 36%;
+  list-style-type: square;
+  font-size: 15px;
+  color: #2e3131;
+}
+.form{
+  width: 200px;
+}
+.controls-container{
+  width: 70%;
+  padding-bottom: 30px;
+  margin-top: -100px;
+  padding-left: 15%;
+  padding-top: 30px;
+
+}
+
+h2{
+
+  text-align: center;
+  font-family: 'Roboto Slab', serif;
+  font-size: 25px;
+  color: #1f3a93;
+  cursor: auto;
+}
+h2:hover{
+  color: #19b5fe;
+}
+.container-wrap{
+  width: 600px;
+  height: 300px;
+  position: absolute;
+  background-color: #f6f6f6;
+  border-radius: 5px;
+  padding-left: -10%;
+  padding-right: -90%;  top: 340px;
+  right: 0;
+  left: 0%;
+  top: 55%;
+  margin: auto;
+  border-width: 10px;
+  border-color: #2e3131;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(24,142,245,1);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(24,142,245,1);
+  box-shadow: 0px 0px 5px 0px rgba(24,142,245,1);
+
+}

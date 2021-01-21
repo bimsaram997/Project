@@ -27,6 +27,15 @@ import {CKEditorModule} from 'ckeditor4-angular';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatSortModule} from '@angular/material/sort';
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatTableExporterModule} from 'mat-table-exporter';
+import {OwlModule} from 'ngx-owl-carousel';
+import {NgImageSliderModule} from "ng-image-slider";
+import {MatCarouselModule} from "@ngmodule/material-carousel";
+import {MatStepperModule} from "@angular/material/stepper";
+import {MatTabsModule} from "@angular/material/tabs";
+import {BrowserModule} from "@angular/platform-browser";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {TableVirtualScrollDataSource, TableVirtualScrollModule} from "ng-table-virtual-scroll";
 
 
 const MaterialComponents = [
@@ -65,7 +74,15 @@ const MaterialComponents = [
   MatSortModule,
   MatCheckboxModule,
   MatOptionModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatCardModule,
+  MatTableExporterModule,
+  MatCarouselModule.forRoot(),
+  MatStepperModule,
+  MatTabsModule,
+  BrowserModule,
+  MatProgressSpinnerModule,
+
 
 ];
 @NgModule({

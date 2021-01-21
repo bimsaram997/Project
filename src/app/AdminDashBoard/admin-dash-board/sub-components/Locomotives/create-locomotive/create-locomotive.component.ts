@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CustomerService} from '../../../../../service/customer.service';
 import CustomerDTO from '../../../../../dto/CustomerDTO';
-import {FormControl} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {LocomotiveService} from '../../../../../service/locomotive.service';
 import LocoDTO from '../../../../../dto/LocoDTO';
 import {ToastrService} from "ngx-toastr";
@@ -15,15 +15,8 @@ export class CreateLocomotiveComponent implements OnInit {
   myControl = new FormControl();
   options: string[] = ['M2', 'M4', 'M5', 'M6', 'M7', 'M8', 'M9', 'M10', 'M11', 'M12'];
   loading =  false;
-  customerId = '';
+  public selectedIndex: number = 0;
   customerList: CustomerDTO[] = [];
-  formatLabel(value: number) {
-    if (value >= 50000) {
-      return Math.floor(value / 100 ) + 'L';
-    }
-
-    return value;
-  }
 
   locoCatId = '';
   locoPower = '';
@@ -40,6 +33,8 @@ export class CreateLocomotiveComponent implements OnInit {
   locoDBreak = '';
   locoNote = '';
 
+
+
   constructor(private customerService: CustomerService, private locomotiveService: LocomotiveService, private toastr: ToastrService) { }
 
 
@@ -52,9 +47,7 @@ export class CreateLocomotiveComponent implements OnInit {
     this.loadAllIds();
 
   }
-  csvInputChange(fileInputEvent: any) {
-    console.log(fileInputEvent.target.files[0]);
-  }
+
   private loadAllIds() {
     this.loading = true;
     this.customerService.getAllCustomersSelect().subscribe(result => {
@@ -65,9 +58,9 @@ export class CreateLocomotiveComponent implements OnInit {
 
   saveLocoOnAction() {
     const dto = new LocoDTO (
+      this.locoNumber.trim(),
       this.locoCatId.trim(),
       Number(this.locoPower.trim()),
-      this.locoNumber.trim(),
       this.locoAvailability.trim(),
       this.customerNic.trim(),
       this.locoDate.toString().trim(),
@@ -80,13 +73,16 @@ export class CreateLocomotiveComponent implements OnInit {
       this.locoDBreak.trim(),
       this.locoNote.trim()
     );
+    console.log(dto)
     this.locomotiveService.saveLoco(dto).subscribe( resp => {
+      console.log(resp);
       if (resp.isSaved){
+
         this.onSucess('Saved');
-        this.handleClear();
+        this.refresh();
       } else {
         this.onWarning('Already Exists');
-        this.handleClear();
+        this.refresh();
       }
     });
   }
@@ -114,5 +110,16 @@ export class CreateLocomotiveComponent implements OnInit {
     this.locoVBreak = '';
     this.locoDBreak = '';
     this.locoNote = '';
+  }
+
+  public nextStep() {
+    this.selectedIndex += 1;
+  }
+
+  public previousStep() {
+    this.selectedIndex -= 1;
+  }
+  refresh(): void {
+    window.location.reload();
   }
 }

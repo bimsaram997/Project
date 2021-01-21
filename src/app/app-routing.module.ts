@@ -10,6 +10,10 @@ import {ViewLocomotivesComponent} from './AdminDashBoard/admin-dash-board/sub-co
 import {UserDashboardComponent} from './UserDashBoard/user-dashboard/user-dashboard.component';
 import {CreateScheduleComponent} from './UserDashBoard/user-dashboard/SubComponents/Schedules/create-schedule/create-schedule.component';
 import {ViewSchedulesComponent} from "./UserDashBoard/user-dashboard/SubComponents/Schedules/view-schedules/view-schedules.component";
+import {AdminViewScehdulesComponent} from "./AdminDashBoard/admin-dash-board/sub-components/Schedules/admin-view-scehdules/admin-view-scehdules.component";
+import {UserViewLocomotivesComponent} from "./UserDashBoard/user-dashboard/SubComponents/Locomotives/user-view-locomotives/user-view-locomotives.component";
+import {SignUpUserComponent} from "./AdminDashBoard/admin-dash-board/sub-components/Users/sign-up-user/sign-up-user.component";
+
 
 
 const routes: Routes = [
@@ -19,11 +23,14 @@ const routes: Routes = [
       {path: 'createCustomer', component: CreateCustomerComponent},
       {path: 'createLocomotive', component: CreateLocomotiveComponent},
       {path: 'customerDetail/:id/:CustomerNic', component: CustomerDetailComponent},
-      {path: 'viewLocomotives', component: ViewLocomotivesComponent}
+      {path: 'viewLocomotives', component: ViewLocomotivesComponent},
+      {path: 'adminViewSchedules', component: AdminViewScehdulesComponent},
+      {path: 'signUpUser', component:  SignUpUserComponent}
     ]},
   {path: 'userDashboard', component: UserDashboardComponent, children: [
       {path: 'createSchedule', component: CreateScheduleComponent},
-      {path: 'viewSchedules', component: ViewSchedulesComponent}
+      {path: 'viewSchedules', component: ViewSchedulesComponent},
+      {path: 'userViewLocomotives', component: UserViewLocomotivesComponent }
     ]}
 ];
 

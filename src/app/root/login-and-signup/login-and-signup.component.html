@@ -1,7 +1,8 @@
+<body bgcolor="white" style="height: 100%;" >
 <div class="bd">
 
   <div class="body-txt">
-    <p><span style="padding-left: 7%; font-size: 70px">Welcome</span> <br> <br>Locomotive Service System <br><br> <span class="login-info">Click here to Sign In  </span> <button mat-raised-button color="primary" (click)="toogleSlider()" style="width:5vw">Click</button></p>
+    <p><span style="padding-left: 7%; font-size: 70px">Welcome</span> <br> <br>Locomotive Service System <br><br> <span class="login-info">Click here to Sign In  </span> <button mat-raised-button color="primary" (click)="toogleSlider()" style="width: 8vw; border-radius: 20px;">Click</button></p>
   </div>
   <div class="container-wrp" *ngIf="slider" [@flyInOut]>
 
@@ -30,8 +31,44 @@
 
 
 </div>
-<br>
-<div style="padding-left: 40px; display:flex; flex-direction: row;">
 
+<div class="container">
+  <div class="services">
+    <h1>Our Services</h1>
+  </div>
+  <div class="row">
+
+    <div class="box">
+      <div class="icon">
+        <i class="fa fa-train" aria-hidden="true"></i>
+      </div>
+      <h3>Locomotive Status</h3>
+      <p class="detail-txt">We provide facility update regular updates of Locomotives by providing facilities to update status, Motor details, fluid details and breaks</p>
+    </div>
+    <div class="box">
+      <div class="icon">
+        <i class="fa fa-address-card" aria-hidden="true"></i>
+      </div>
+      <h3>Locomotive Schedules</h3>
+      <p class="detail-txt">You able to request different schedules that based on requirements of the Locomotives.    </p>
+    </div>
+    <div class="box">
+      <div class="icon">
+        <i class="fa fa-wrench" aria-hidden="true"></i>
+      </div>
+      <h3>Load Trails</h3>
+      <p class="detail-txt">This enables supervisors to update Load Trails details after completing locomotives schedules.</p>
+    </div>
+    <div class="box">
+      <div class="icon">
+        <i class="fa fa-tasks" aria-hidden="true"></i>
+      </div>
+      <h3>Real-Time Analysis</h3>
+      <p class="detail-txt">We provide visual representations on schedules, locomotive and load trails details with future predictions</p>
+    </div>
+
+  </div>
 </div>
 
+
+</body>

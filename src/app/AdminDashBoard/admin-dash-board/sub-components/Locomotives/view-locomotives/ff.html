@@ -1,65 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<div class="table-style">
+<br>
+<table class="comp-tbl">
+  <caption class="caption-txt">Fluid level</caption>
+  <tr class="comp-tr" height="10px" >
+    <th class="comp-td" >Component</th>
+    <th class="comp-td">Level</th>
+  </tr>
+  <tr class="comp-tr" height="10px">
+    <td class="comp-td">Oil Level</td>
+    <td class="comp-td">{{selectedLoco.locoOil}}</td>
+  </tr>
+  <tr class="comp-tr" height="10px">
+    <td class="comp-td">Fuel Level</td>
+    <td class="comp-td">{{selectedLoco.locoFuel}}</td>
+  </tr>
+  <tr class="comp-tr" height="10px">
+    <td class="comp-td">Oil Water</td>
+    <td class="comp-td">{{selectedLoco.locoWater}}</td>
+  </tr>
+</table>
 
-  <div class="mat-elevation-z8" style="height: 50px">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-      <!--- Note that these columns can be defined in any order.
-            The actual rendered columns are set as a property on the row definition" -->
-
-      <!-- Position Column -->
-      <ng-container matColumnDef="Category" style=" width: 40px;">
-        <th mat-header-cell *matHeaderCellDef> Category </th>
-        <td mat-cell *matCellDef="let tempLoco">{{tempLoco.locoCatId}} </td>
-      </ng-container>
-      <ng-container matColumnDef="Number" style=" width: 40px;">
-        <th mat-header-cell *matHeaderCellDef> Number </th>
-        <td mat-cell *matCellDef="let tempLoco"> {{tempLoco.locoNumber}}</td>
-      </ng-container>
-
-      <!-- Name Column -->
-      <ng-container matColumnDef="Power">
-        <th mat-header-cell *matHeaderCellDef> Power </th>
-        <td mat-cell *matCellDef="let tempLoco"> {{tempLoco.locoPower}} </td>
-      </ng-container>
-
-      <!-- Weight Column -->
-      <ng-container matColumnDef="Availability">
-        <th mat-header-cell *matHeaderCellDef> Availability </th>
-        <td mat-cell *matCellDef="let tempLoco"> {{tempLoco.locoAvailability}}</td>
-      </ng-container>
-
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="Responsible">
-        <th mat-header-cell *matHeaderCellDef> Responsible </th>
-        <td mat-cell *matCellDef="let tempLoco"> {{tempLoco.customerNic}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="Update Date">
-        <th mat-header-cell *matHeaderCellDef> Update Date </th>
-        <td mat-cell *matCellDef="let tempLoco"> {{tempLoco.locoDate.split(' ').slice(0, 4).join(' ')}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="#">
-        <th mat-header-cell *matHeaderCellDef>  </th>
-        <td mat-cell *matCellDef="let tempLoco">
-          <button mat-stroked-button color="accent" (click)="view(tempLoco)">View More</button>
-          &nbsp;
-          <button mat-button><span class="material-icons" >delete</span></button>
-          &nbsp;
-          <button mat-button><span class="material-icons" >update</span></button>
-        </td>
-      </ng-container>
-
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
-    </table>
-</body>
-</html>
+<table class="comp-tbl">
+  <caption class="caption-txt">Breaks</caption>
+  <tr class="comp-tr" height="10px">
+    <th class="comp-td" height="10px">Component</th>
+    <th class="comp-td">Status</th>
+  </tr>
+  <tr class="comp-tr" height="10px">
+    <td class="comp-td">Vacuum Break</td>
+    <td class="comp-td">{{selectedLoco.locoVBreak}}</td>
+  </tr>
+  <tr class="comp-tr"height="10px">
+    <td class="comp-td">Dynami Breaks</td>
+    <td class="comp-td">{{selectedLoco.locoDBreak}}</td>
+  </tr>
+</table>
+<table class="comp-tbl">
+  <caption class="caption-txt">Motors</caption>
+  <tr class="comp-tr" height="10px">
+    <th class="comp-td" height="10px">Component</th>
+    <th class="comp-td">Status</th>
+  </tr>
+  <tr class="comp-tr" height="10px">
+    <td class="comp-td">Main Generators</td>
+    <td class="comp-td">{{selectedLoco.locoMainGen}}</td>
+  </tr>
+  <tr class="comp-tr"height="10px">
+    <td class="comp-td">Traction Motors</td>
+    <td class="comp-td">{{selectedLoco.locoTracMot}}</td>
+  </tr>
+</table>
+<mat-form-field style="width: 450px; padding: 8px;">
+  <mat-label>Special Notes</mat-label>
+  <textarea matInput >{{selectedLoco.locoNote}}</textarea>
+</mat-form-field>
+<button mat-raised-button color="primary" (click)="setState()" style="width: 150px; left: 145px; border-radius:  5px;">Close</button>

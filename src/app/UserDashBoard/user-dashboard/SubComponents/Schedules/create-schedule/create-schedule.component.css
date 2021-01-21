@@ -21,7 +21,7 @@
 }
 .controls-container{
   width: 90%;
-  padding: 5%;
+  padding: 0%;
   height: 80%;
 
 
@@ -81,4 +81,46 @@ mat-radio-group mat-radio-button{
   left: 35%;
   bottom: 50px;
   margin: 5px 5px -900px;
+}
+.button-row-second button{
+
+  left: 20%;
+   top: 90%;
+  margin: 2px 6px -900px;
+}
+.clear-btn{
+  background: #22a7f0;
+}
+.card{
+  background: #ecf0f1;
+
+}
+.material-icons{
+  margin-right: 10px;
+  font-weight: bold;
+}
+.btn-three{
+  padding-top: 29.5%;
+  padding-left: 65%;
+}
+.btn-two{
+  padding-top: 21.7%;
+  padding-left: 65%;
+
+}
+.prev{
+  width: 10px;
+  color: #1e8bc3;
+}
+.nxt{
+  width: 10px;
+  color: #1e8bc3;
+}
+.error{
+  font-size: 10px;
+  color: #f64747;
+  font-family: Roboto;
+}
+.spinner{
+
 }

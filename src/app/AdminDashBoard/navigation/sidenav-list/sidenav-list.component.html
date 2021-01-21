@@ -7,13 +7,13 @@
 
   <hr>
   <a class="p" mat-list-item routerLink="/adminDashboard/createCustomer" (click) = "onSidenavClose()">
-    <mat-icon>Home</mat-icon><span class="nav-caption">Home</span>
+    <mat-icon>Home</mat-icon><span class="nav-caption">Employee</span>
   </a>
-  <a mat-list-item routerLink="" (click) = "onSidenavClose()">
-    <mat-icon class="q">assignment_ind</mat-icon><span class="nav-caption">Users</span>
+  <a mat-list-item routerLink="/adminDashboard/adminViewSchedules" (click) = "onSidenavClose()" >
+    <mat-icon class="q">assignment_ind</mat-icon><span class="nav-caption">View Schedules</span>
   </a>
-  <a mat-list-item routerLink="" (click) = "onSidenavClose()">
-    <mat-icon>account_balance</mat-icon><span class="nav-caption">Account Actions</span>
+  <a mat-list-item routerLink="/adminDashboard/signUpUser" (click) = "onSidenavClose()">
+    <mat-icon>account_balance</mat-icon><span class="nav-caption">User Accounts</span>
   </a>
   <mat-list-item [matMenuTriggerFor] = "menu">
     <mat-icon>unfold_more</mat-icon>

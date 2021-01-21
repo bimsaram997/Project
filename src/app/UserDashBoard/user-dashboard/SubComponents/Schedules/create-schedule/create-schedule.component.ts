@@ -10,6 +10,7 @@ import {MatCheckbox} from "@angular/material/checkbox";
 import LocoScheduleDTO from "../../../../../dto/LocoScheduleDTO";
 import {ScheduleService} from "../../../../../service/schedule.service";
 import {ToastrService} from "ngx-toastr";
+import {MatTabChangeEvent} from "@angular/material/tabs";
 
 @Component({
   selector: 'app-create-schedule',
@@ -22,7 +23,7 @@ export class CreateScheduleComponent implements OnInit {
   locoList: LocoDTO[] = [];
   customerList: CustomerDTO[] = [];
   loading =  false;
-  ScheduleStatus: string[] = [ 'Draft'];
+  ScheduleStatus: string[] = [ 'Draft', 'Accept'];
   bodyLoco = new FormControl();
   bodyLocoList: string[] = [ 'Axle', 'Body Plates', 'Wheels', 'Truck Frames'];
   electricControl = new FormControl();
@@ -50,17 +51,26 @@ export class CreateScheduleComponent implements OnInit {
   scheduleEMechanical: string[] = [];
   scheduleMach: string[] = [];
   scheduleRemark = '';
+  public selectedIndex: number = 0;
+  showSpinner = true;
+
 
 
 
   constructor(private locomotiveService: LocomotiveService, private  customerService: CustomerService,
               private scheduleService: ScheduleService,
               private toastr: ToastrService
-              ) { }
+              ) { this.loadAllIds(); }
 
   ngOnInit(): void {
     this.loadAllLoconumbers();
     this.loadAllIds();
+  }
+  loadSpinner(){
+    this.showSpinner =true;
+    setTimeout(() => {
+      this.showSpinner = false;
+    }, 500);
   }
   private loadAllLoconumbers(){
     this.loading = true;
@@ -68,6 +78,15 @@ export class CreateScheduleComponent implements OnInit {
       this.locoList = result;
       this.loading = true;
     })
+  }
+
+
+  public nextStep() {
+    this.selectedIndex += 1;
+  }
+
+  public previousStep() {
+    this.selectedIndex -= 1;
   }
   private loadAllIds() {
     this.loading = true;
@@ -99,6 +118,7 @@ export class CreateScheduleComponent implements OnInit {
     this.scheduleService.saveSchedule(dto).subscribe(resp => {
       if (resp.isSaved){
         this.onSucess('Saved');
+        this.refresh();
 
       } else {
         this.onWarning('Already Exists');
@@ -111,5 +131,8 @@ export class CreateScheduleComponent implements OnInit {
   }
   onSucess(message: string){
     this.toastr.success(message, 'Success');
+  }
+  refresh(): void {
+    window.location.reload();
   }
 }

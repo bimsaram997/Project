@@ -3,8 +3,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Poppins:wght@300&family=Roboto:wght@500&display=swap');
 .container{
   padding-top: 30px;
-  padding-right: 200px;
-  padding-left: 200px;
+  padding-right: 100px;
+  padding-left: 100px;
 
 }
 .box-head{
@@ -29,7 +29,8 @@
   width: 90%;
 }
 .add-bottom-padding{
-  padding-bottom: 10px;
+  padding-top: 18px;
+  padding-bottom: 18px;
 }
 mat-radio-group mat-radio-button{
   margin-top: 5px;
@@ -37,7 +38,7 @@ mat-radio-group mat-radio-button{
 }
 .button-row button{
   margin: 5px;
-  left: 40%;
+  left: 0%;
   bottom: 10px;
 }
 .sub-headers{
@@ -52,11 +53,10 @@ mat-radio-group mat-radio-button{
   color: #3a539b;
 }
 .controls-container-right{
-
   width: 90%;
   padding: 5%;
   height: 60%;
-  margin-top: 48px;
+  margin-top: 90px;
 
 }
 .controls-container-right >*{
@@ -64,4 +64,65 @@ mat-radio-group mat-radio-button{
 }
 .controls-container > *{
   width: 90%;
+}
+.controls-container-right-second{
+  width: 100%;
+  padding: 5%;
+  height: 60%;
+  margin-top: 30px;
+  padding-left: 20%;
+
+}
+.controls-container-right-second >*{
+  width: 90%;
+}
+.add-bottom-padding-second{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.controls-container-right-third{
+  width: 100%;
+  padding: 5%;
+  height: 60%;
+  margin-top: 30px;
+
+}
+.controls-container-right-third >*{
+  width: 110%;
+}
+.card-second{
+  width: 80%;
+  left: 10%;
+  background: #ecf0f1;
+}
+.clear-btn{
+  background: #22a7f0;
+}
+.card{
+  background: #ecf0f1;
+}
+.btn-three{
+  padding-top: 28.5%;
+  padding-left: 60%;
+}
+.btn-second{
+  padding-top: 27%;
+  padding-left: 60%;
+}
+.btn-one{
+  padding-top: 23.3%;
+  padding-left: 60%;
+}
+.material-icons{
+  font-weight: bold;
+  font-size: 25px;
+}
+.prev{
+  width: 10px;
+  color: #1e8bc3;
+}
+.error{
+  font-size: 10px;
+  color: #f64747;
+  font-family: Roboto;
 }

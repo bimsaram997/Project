@@ -8,7 +8,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {UpdateCustomerComponent} from '../update-customer/update-customer.component';
 import {ModelComponent} from './model/model.component';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {MyErrorStateMatcher} from "../Users/sign-up-user/sign-up-user.component";
 
 
 @Component({
@@ -35,6 +36,7 @@ export class CreateCustomerComponent implements OnInit {
   CustomerRole = '';
   CustomerHiredDate = '';
 
+
   roles = [
     {id: 1, value: 'Supervisor'},
     {id: 2, value: 'Technical Officer'},
@@ -50,6 +52,12 @@ export class CreateCustomerComponent implements OnInit {
   proLang: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
   favGender: string;
   genders: string[] = ['Male', 'Female'];
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
+
+  matcher = new MyErrorStateMatcher();
   constructor(
     private toastr: ToastrService,
     private customerService: CustomerService,
@@ -87,13 +95,15 @@ export class CreateCustomerComponent implements OnInit {
       this.CustomerHiredDate.toString().trim()
     );
     this.customerService.saveCustomer(dto).subscribe(resp => {
+      console.log(resp);
       if (resp.isSaved){
+        this.refresh()
         this.loadAll();
         this.onSucess('Saved!');
-        this.handleClear();
+
       }else{
         this.onWarning('Already Exits');
-        this.handleClear();
+        this.refresh()
       }
     });
   }
@@ -154,6 +164,9 @@ export class CreateCustomerComponent implements OnInit {
 
   onSelect(id, CustomerNic) {
     this.router.navigate(['/adminDashboard/customerDetail', id, CustomerNic]);
+  }
+  refresh(): void {
+    window.location.reload();
   }
 
 }

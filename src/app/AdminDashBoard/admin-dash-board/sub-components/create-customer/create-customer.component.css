@@ -52,3 +52,8 @@ table {
   font-size: 15px;
   font-weight: bold;
 }
+.error{
+  font-size: 10px;
+  color: #f64747;
+  font-family: Roboto;
+}

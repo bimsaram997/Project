@@ -50,9 +50,9 @@ table {
   box-shadow: 0 2px 12px rgba(0,0,0,.4);
 }
 .header{
-  height: 38px;
+  height: 45px;
   width: 481px;
-  background: #6bb9f0;
+  background: #013243;
   padding-left: 20px;
   overflow: hidden;
   border-radius: 3px 3px 0 0;
@@ -69,7 +69,7 @@ table {
 
 .container-wrp{
   width: 500px;
-  height: 619px;
+  height: 450px;
   position: absolute;
   background-color: #f6f6f6;
   border-radius: 5px;
@@ -110,7 +110,7 @@ table {
 }
 .button-row button{
   margin: 5px;
-  left: 40%;
+  left: 15%;
   top: 90%;
 }
 .search-div{
@@ -136,4 +136,75 @@ padding-top: 10px;
 .search-form-field div.mat-form-field-suffix button{
   height: 32px;
   width: 32px;
+}
+.container-wrp-two{
+  width: 510px;
+  height: 370px;
+  position: absolute;
+  background-color: #f6f6f6;
+  border-radius: 5px;
+  padding-left: -10%;
+  padding-right: -90%;
+  top: 340px;
+  right: 0;
+  left: 0%;
+  bottom: 40%;
+  margin: auto;
+  border-width: 10px;
+  border-color: #2e3131;
+  -webkit-box-shadow: 5px 2px 3px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.75);
+  box-shadow: 0 2px 12px rgba(0,0,0,.4);
+
+}
+.header-two{
+  height: 38px;
+  width: 490px;
+  background: #6bb9f0;
+  padding-left: 20px;
+  overflow: hidden;
+  border-radius: 3px 3px 0 0;
+  box-shadow: 0 2px 3px 0 rgba(0,0,0,.2);
+}
+.header-two h2{
+
+  padding-top: 2px;
+  padding-left: -10px;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+  color: #34495e;
+}
+.label-txt{
+  font-size: 18px;
+}
+#aria-label{
+  font-size: 18px;
+}
+.heading-update{
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.controls-container > *{
+  width: 100%;
+}
+.button-row button{
+  margin: 5px;
+  left: 15%;
+  top: 20%;
+}
+.cancel-btn{
+  background: #22a7f0;
+}
+.example{
+  width: 140%;
+}
+.add-bottom-padding{
+  top: 40px;
+
+}
+mat-radio-group mat-radio-button{
+  margin-left: 10px;
 }

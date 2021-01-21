@@ -2,10 +2,13 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import LocoDTO from '../../../../../dto/LocoDTO';
 import {MatTableDataSource} from '@angular/material/table';
 import {LocomotiveService} from '../../../../../service/locomotive.service';
-import {MatPaginator} from "@angular/material/paginator";
-import {Router} from "@angular/router";
-import {ToastrService} from "ngx-toastr";
-import {MatSort} from "@angular/material/sort";
+import {MatPaginator} from '@angular/material/paginator';
+import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
+import {MatSort} from '@angular/material/sort';
+import {FormControl} from '@angular/forms';
+import CustomerDTO from '../../../../../dto/CustomerDTO';
+import {CustomerService} from '../../../../../service/customer.service';
 
 @Component({
   selector: 'app-view-locomotives',
@@ -13,6 +16,12 @@ import {MatSort} from "@angular/material/sort";
   styleUrls: ['./view-locomotives.component.css']
 })
 export class ViewLocomotivesComponent implements OnInit {
+
+
+
+  constructor(private locomotiveService: LocomotiveService,  private router: Router,  private toastr: ToastrService, private customerService: CustomerService) {
+    this.loadAll();
+  }
   isVisible =  false;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   dataSource: MatTableDataSource<LocoDTO>;
@@ -20,14 +29,39 @@ export class ViewLocomotivesComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   locoArray: LocoDTO[] = [];
   selectedLoco: LocoDTO = null;
-  searchKey: string
+  searchKey: string;
+  isVisibleSecond = false;
+  myControl = new FormControl();
+  options: string[] = ['M2', 'M4', 'M5', 'M6', 'M7', 'M8', 'M9', 'M10', 'M11', 'M12'];
+  loading =  false;
+  customerId = '';
+  customerList: CustomerDTO[] = [];
 
-
-  constructor(private locomotiveService: LocomotiveService,  private router: Router,  private toastr: ToastrService) {
-    this.loadAll();
-  }
+  statuses: string[] = ['In', 'Out'];
+  changeLocoCatID = '';
+  changeLocoPower = '';
+  changeLocoAvailability = '';
+  changeCustomerNic = '';
+  changeLocoDate = '';
+  changeLocoOil = '';
+  changeLocoFuel = '';
+  changeLocoWater = '';
+  changeLocoMainGen = '';
+  changeLocotracMot = '';
+  changeLocoVBreak = '';
+  changeLocoDBreak = '';
+  changeLocoNote = '';
 
   ngOnInit(): void {
+    this.loadAllIds();
+  }
+
+  private loadAllIds() {
+    this.loading = true;
+    this.customerService.getAllCustomersSelect().subscribe(result => {
+      this.customerList = result;
+      this.loading = true;
+    });
   }
  loadAll(){
     this.locomotiveService.getAllLocomotives().subscribe(resp => {
@@ -43,7 +77,13 @@ export class ViewLocomotivesComponent implements OnInit {
 
   setState(){
     this.isVisible = !this.isVisible;
+    this.isVisibleSecond = false;
   }
+  setStateTwo(){
+    this.isVisible = false;
+    this.isVisibleSecond =  !this.isVisibleSecond;
+  }
+
 
   view(tempLoco: LocoDTO) {
     this.selectedLoco = tempLoco;
@@ -79,5 +119,62 @@ export class ViewLocomotivesComponent implements OnInit {
 
   applyFilter() {
     this.dataSource.filter = this.searchKey.trim().toLowerCase();
+  }
+
+  updateLocomotive(tempLoco: LocoDTO){
+    this.selectedLoco = tempLoco;
+    this.changeLocoCatID = tempLoco.locoCatId;
+    this.changeLocoPower = tempLoco.locoPower + '';
+    this.changeLocoAvailability = tempLoco.locoAvailability;
+    this.changeCustomerNic = tempLoco.customerNic;
+    this.changeLocoDate = tempLoco.locoDate.split(' ').slice(0, 4).join(' ');
+    this.changeLocoOil = tempLoco.locoOil + '';
+    this.changeLocoFuel = tempLoco.locoFuel + '';
+    this.changeLocoWater = tempLoco.locoWater + '';
+    this.changeLocoMainGen = tempLoco.locoMainGen;
+    this.changeLocotracMot = tempLoco.locoTracMot;
+    this.changeLocoVBreak = tempLoco.locoVBreak;
+    this.changeLocoDBreak = tempLoco.locoDBreak;
+    this.changeLocoNote = tempLoco.locoNote;
+    const btn = document.getElementById('btn-pop-up-two') as HTMLElement;
+    btn.click();
+
+  }
+
+
+  updateMyLocomotive() {
+      const dto = new LocoDTO(
+        this.selectedLoco.locoNumber,
+        this.changeLocoCatID,
+        Number(this.changeLocoPower),
+        this.changeLocoAvailability,
+        this.changeCustomerNic,
+        this.changeLocoDate,
+        Number(this.changeLocoOil),
+        Number(this.changeLocoFuel),
+        Number(this.changeLocoWater),
+        this.changeLocoMainGen,
+        this.changeLocotracMot,
+        this.changeLocoVBreak,
+        this.changeLocoDBreak,
+        this.changeLocoNote
+
+      );
+      this.locomotiveService.updateLocomotive(dto).subscribe(result => {
+      if (result.message === 'updated'){
+        this.onSucess('Updated');
+        this.loadAll();
+
+        const btn = document.getElementById('btn-pop-up-two') as HTMLElement;
+        btn.click();
+
+      }else {
+        this.onWarning('Try Again');
+
+        const btn = document.getElementById('btn-pop-up-two') as HTMLElement;
+        btn.click();
+
+      }
+    });
   }
 }

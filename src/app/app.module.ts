@@ -21,6 +21,12 @@ import { UserHeaderComponent } from './UserDashBoard/user-dashboard/navigation/u
 import { UserSideNavComponent } from './UserDashBoard/user-dashboard/navigation/user-side-nav/user-side-nav.component';
 import { CreateScheduleComponent } from './UserDashBoard/user-dashboard/SubComponents/Schedules/create-schedule/create-schedule.component';
 import { ViewSchedulesComponent } from './UserDashBoard/user-dashboard/SubComponents/Schedules/view-schedules/view-schedules.component';
+import { AdminViewScehdulesComponent } from './AdminDashBoard/admin-dash-board/sub-components/Schedules/admin-view-scehdules/admin-view-scehdules.component';
+import { UserViewLocomotivesComponent } from './UserDashBoard/user-dashboard/SubComponents/Locomotives/user-view-locomotives/user-view-locomotives.component';
+import {MatTableExporterModule} from "mat-table-exporter";
+import { SignUpUserComponent } from './AdminDashBoard/admin-dash-board/sub-components/Users/sign-up-user/sign-up-user.component';
+
+
 
 
 
@@ -44,9 +50,9 @@ import { ViewSchedulesComponent } from './UserDashBoard/user-dashboard/SubCompon
     UserSideNavComponent,
     CreateScheduleComponent,
     ViewSchedulesComponent,
-
-
-
+    AdminViewScehdulesComponent,
+    UserViewLocomotivesComponent,
+    SignUpUserComponent,
 
 
   ],

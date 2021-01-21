@@ -25,9 +25,22 @@ export class LoginAndSignupComponent implements OnInit {
   hide = true;
   email = '';
   password = '';
+  slides: any[] = [
+    {image: './assets/NewOn/Shared from Lightroom mobile(1).jpg'},
+    ];
+
+  slidesNew: any[] = [
+    {image: './assets/NewOn/Shared from Lightroom mobile(7).jpg'},
+  ];
+
+
 
   constructor(private router: Router,
-              private accessService: AccessService, private http: HttpClient) { }
+              private accessService: AccessService, private http: HttpClient) {
+
+
+
+  }
 
   ngOnInit(): void {
   }
@@ -48,6 +61,7 @@ export class LoginAndSignupComponent implements OnInit {
     });
   }
 
+
   handleLoginClick() {
     if(this.email && this.password){
       this.authenticateUser(this.email);
@@ -62,4 +76,5 @@ export class LoginAndSignupComponent implements OnInit {
       this.router.navigate(['/userDashboard']);
     }
   }
+
 }
