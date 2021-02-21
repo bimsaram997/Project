@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="box-head">
+    <img src="./assets/images/m104.png" alt="" style="height: 70px; width: 70px;">
+    <span class="heading-txt">DashBoard</span>
+  </div>
+  <hr>
+  <mat-grid-list cols="1" rowHeight="260px" style="bottom: 60px;">
+    <mat-grid-tile>
+      <mat-card class="example-card" style="background: #011f4b">
+        <mat-card-header>
+          <mat-card-title class="card-heading">LOCOMOTIVES</mat-card-title>
+          <span class="material-icons" style="padding-left: 120px;">directions_transit</span>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="card-content">In  <span class="card-num" style="padding-left: 30px;">{{inLocoCount}}</span> <br> Out <span style="padding-left: 20px;" class="card-num">{{outLocoCount}}</span>
+            <br><span class="link-page"><a class="link-page" href="/userDashboard/userViewLocomotives">More Info</a>  </span>  &nbsp;<span class="material-icons two" style="font-size: 15px; ;">visibility</span> </p>
+
+        </mat-card-content>
+      </mat-card>
+      &nbsp; &nbsp; &nbsp;
+      <mat-card class="example-card" style="background: #03396c;">
+        <mat-card-header>
+          <mat-card-title class="card-heading">SCHEDULES</mat-card-title>
+          <span class="material-icons" style="padding-left: 135px;">event_note</span>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="card-content">Accept  <span class="card-num" style="padding-left: 28px;">{{acceptScheduleCount}}</span> <br> Draft <span style="padding-left: 42px;" class="card-num">{{draftScheduleCount}}</span>
+            <br><span class="link-page"><a class="link-page" href="/userDashboard/viewSchedules">More Info</a>  </span>  &nbsp;<span class="material-icons two" style="font-size: 15px; ;">visibility</span></p>
+        </mat-card-content>
+      </mat-card>
+      &nbsp; &nbsp; &nbsp;
+      <mat-card class="example-card" style="background: #005b96;">
+        <mat-card-header>
+          <mat-card-title class="card-heading">LOAD TRAILS</mat-card-title>
+          <span class="material-icons" style="padding-left: 135px;">build</span>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="card-content">Completed  <span class="card-num" style="padding-left: 30px;">23</span> <br> Incompleted <span style="padding-left: 20px;" class="card-num">20</span>
+            <br><span class="link-page"><a class="link-page" href="/userDashboard/viewSchedules">More Info</a>  </span>  &nbsp;<span class="material-icons two" style="font-size: 15px; ;">visibility</span></p>
+        </mat-card-content>
+      </mat-card>
+      &nbsp; &nbsp; &nbsp;
+      <mat-card class="example-card" style="background: 	#6497b1;">
+        <mat-card-header>
+          <mat-card-title class="card-heading">EMPLOYEE</mat-card-title>
+          <span class="material-icons" style="padding-left: 135px;">supervisor_account</span>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="card-content">Supervisors  <span class="card-num" style="padding-left: 30px;">23</span> <br> Other <span style="padding-left: 72px;" class="card-num">20</span>
+            <br><span class="link-page"><a class="link-page" href="/userDashboard/viewSchedules">More Info</a>  </span>  &nbsp;<span class="material-icons two" style="font-size: 15px; ;">visibility</span></p>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+</div>
+
+

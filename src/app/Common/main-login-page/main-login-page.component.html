@@ -1,0 +1,71 @@
+<app-common-header></app-common-header>
+<main>
+  <article class="main-container">
+    <div class="login-wrapper">
+
+      <!-- Contenido del lado izquierdo -->
+      <section class="form-wrapper">
+
+
+
+        <!-- Contenedor del formulario y sus mensajes -->
+        <div class="form-container">
+
+          <!-- Mensaje de login -->
+          <div class="form-messages">
+            <h2>Login</h2>
+            <br>
+            <p>Welcome! Please, fill username and password to sign in into your account.</p>
+          </div>
+
+          <br>
+          <br>
+
+            <mat-form-field  style="width: 18vw;" >
+              <mat-label>Email</mat-label>
+              <input matInput required type="email" [(ngModel)]="loginEmail">
+            </mat-form-field>
+          <br>
+          <br>
+            <mat-form-field style="width: 18vw;">
+              <mat-label>Enter your password</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'" required [(ngModel)]="loginPassword">
+              <br>
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </mat-form-field>
+            <br>
+            <button mat-raised-button color="primary" style="width:5vw" (click)="login()">Login</button>
+
+
+          <!-- Separador entre botón y opciones -->
+          <hr class="separator">
+
+          <!-- Otras opciones de inicio login -->
+
+
+        </div>
+
+      </section>
+
+      <!-- Contenido del lado derecho -->
+      <section class="image-wrapper">
+
+        <div class="image-message">
+
+          <div class="image-hr-container">
+            <hr class="image-hr">
+          </div>
+
+          <div class="image-text">
+            <h2>Start your journey now</h2>
+            <p>Start create your amazing website with us! Login into your account now and huwala.</p>
+          </div>
+
+        </div>
+
+      </section>
+    </div>
+  </article>
+</main>

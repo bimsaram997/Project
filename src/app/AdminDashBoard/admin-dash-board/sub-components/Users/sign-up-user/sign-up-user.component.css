@@ -53,10 +53,10 @@
 }
 .controls-container{
   width: 70%;
-  padding-bottom: 30px;
-  margin-top: -100px;
+  padding-bottom: 20px;
+  margin-top: -80px;
   padding-left: 15%;
-  padding-top: 30px;
+  padding-top: 10px;
 
 }
 
@@ -78,10 +78,10 @@ h2:hover{
   background-color: #f6f6f6;
   border-radius: 5px;
   padding-left: -10%;
-  padding-right: -90%;  top: 340px;
+  padding-right: -90%;
   right: 0;
   left: 0%;
-  top: 55%;
+  top: 10%;
   margin: auto;
   border-width: 10px;
   border-color: #2e3131;

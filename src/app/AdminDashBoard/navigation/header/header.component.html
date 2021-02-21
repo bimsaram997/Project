@@ -1,11 +1,11 @@
 <mat-toolbar color="primary">
   <div fxHide.gt-xs>
-    <button mat-icon-button (click)="onToogleSlidenav()">
-        <mat-icon>menu</mat-icon>
-    </button>
+
   </div>
   <div>
-    <a href="">Home</a>
+    <button mat-icon-button (click)="onToogleSlidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
   </div>
   <span class="example-spacer"></span>
   <div>
@@ -32,9 +32,9 @@ notification_important
       <mat-icon>voicemail</mat-icon>
       <span>Check voice mail</span>
     </button>
-    <button mat-menu-item>
-      <mat-icon>notifications_off</mat-icon>
-      <span>Disable alerts</span>
+    <button mat-menu-item (click)="logOut()">
+      <mat-icon>logout</mat-icon>
+      <span>Log Out</span>
     </button>
   </mat-menu>
 </mat-toolbar>

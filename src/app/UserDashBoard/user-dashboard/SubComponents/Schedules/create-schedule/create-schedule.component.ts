@@ -11,6 +11,8 @@ import LocoScheduleDTO from "../../../../../dto/LocoScheduleDTO";
 import {ScheduleService} from "../../../../../service/schedule.service";
 import {ToastrService} from "ngx-toastr";
 import {MatTabChangeEvent} from "@angular/material/tabs";
+import {AccessService} from "../../../../../service/access.service";
+import UserDTO from "../../../../../dto/UserDTO";
 
 @Component({
   selector: 'app-create-schedule',
@@ -21,7 +23,6 @@ export class CreateScheduleComponent implements OnInit {
   myControl = new FormControl();
   options: string[] = ['M2', 'M4', 'M5', 'M6', 'M7', 'M8', 'M9', 'M10', 'M11', 'M12'];
   locoList: LocoDTO[] = [];
-  customerList: CustomerDTO[] = [];
   loading =  false;
   ScheduleStatus: string[] = [ 'Draft', 'Accept'];
   bodyLoco = new FormControl();
@@ -36,14 +37,14 @@ export class CreateScheduleComponent implements OnInit {
   eMechanicalMaList: string[] = [ 'Turbo Charger', 'Gear Box', 'Radiator', 'Drive Shaft'];
   top = new FormControl();
   topList: string[] = ['sdsd', 'asas'];
-
+  userList: UserDTO[] = [];
   scheduleNo = '';
   scheduleUpdate = '';
   locoCatId = '';
   locoNumber = '';
-  customerNic = '';
-  customerName = '';
-  customerEmail = '';
+  userNic = '';
+  userName = '';
+  userEmail = '';
   scheduleStatus = '';
   scheduleTrackMotors: string[] = [];
   scheduleLocoBody: string[] = [];
@@ -57,7 +58,7 @@ export class CreateScheduleComponent implements OnInit {
 
 
 
-  constructor(private locomotiveService: LocomotiveService, private  customerService: CustomerService,
+  constructor(private locomotiveService: LocomotiveService, private  accessService: AccessService,
               private scheduleService: ScheduleService,
               private toastr: ToastrService
               ) { this.loadAllIds(); }
@@ -90,8 +91,8 @@ export class CreateScheduleComponent implements OnInit {
   }
   private loadAllIds() {
     this.loading = true;
-    this.customerService.getAllCustomersSelect().subscribe(result => {
-      this.customerList = result;
+    this.accessService.getAllUsers().subscribe(result => {
+      this.userList = result;
       this.loading = true;
     });
   }
@@ -102,9 +103,9 @@ export class CreateScheduleComponent implements OnInit {
       this.scheduleUpdate.toString().trim(),
       this.locoCatId.trim(),
       Number(this.locoNumber.trim()),
-      this.customerNic.trim(),
-      this.customerName.trim(),
-      this.customerEmail.trim(),
+      this.userNic.trim(),
+      this.userName.trim(),
+      this.userEmail.trim(),
       this.scheduleStatus.trim(),
 
       Array(this.scheduleTrackMotors.toString()),

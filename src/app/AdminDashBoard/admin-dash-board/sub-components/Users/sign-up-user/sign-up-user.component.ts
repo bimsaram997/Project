@@ -11,6 +11,7 @@ import {ToastrService} from "ngx-toastr";
 import {STEPPER_GLOBAL_OPTIONS} from "@angular/cdk/stepper";
 import {ErrorStateMatcher} from "@angular/material/core";
 
+
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
@@ -29,9 +30,12 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class SignUpUserComponent implements OnInit {
 
   userEmail: any;
+
+  userName: any;
+  userWorks: any;
+  userNic: any;
+  userMobile: any;
   userPassword: any;
-  displayedColumns: string[] = ['Email', 'Password'];
-  userArray: UserDTO[] = [];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   dataSource: MatTableDataSource<UserDTO>;
   @ViewChild(MatSort) sort: MatSort;
@@ -48,43 +52,34 @@ export class SignUpUserComponent implements OnInit {
     Validators.email
   ]);
 
-
-
   constructor(private accessService: AccessService, private router: Router, private toastr: ToastrService) {
-    this.loadAll();
+
   }
 
   ngOnInit(): void {
 
   }
 
-
   signUp() {
     this.accessService.register(
-      this.userEmail.toString().trim(),
-      this.userPassword.toString().trim()
-    ).subscribe( result =>{
-      if(result.message === true){
-        this.refresh()
+      this.userEmail,
+      this.userName,
+      this.userWorks,
+      this.userNic,
+       this.userMobile,
+      this.userPassword
+    ).subscribe( result => {
+      if (result.message === true){
+        this.refresh();
         this.onSucess('Account Created');
       }else{
         this.onError('Try Again');
-        this.refresh()
+        this.refresh();
       }
     });
   }
 
-  loadAll(){
-    this.accessService.getAllUsers().subscribe(resp => {
-      this.userArray = resp;
-      this.dataSource = new MatTableDataSource<UserDTO>(this.userArray);
 
-      setTimeout(() => {
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-      });
-    });
-  }
 
   onError(message: string){
     this.toastr.error(message, 'Warning');

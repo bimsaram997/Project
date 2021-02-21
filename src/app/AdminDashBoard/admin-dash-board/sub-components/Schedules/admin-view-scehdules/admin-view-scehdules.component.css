@@ -3,8 +3,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Poppins:wght@300&family=Roboto:wght@500&display=swap');
 .container{
   padding-top: 30px;
-  padding-right: 60px;
-  padding-left: 60px;
+  padding-right: 40px;
+  padding-left: 40px;
 
 }
 .box-head{
@@ -22,8 +22,8 @@ table {
   width: 100%;
 }
 .table-style{
-  padding-right: 60px;
-  padding-left: 60px;
+  padding-right: 40px;
+  padding-left: 40px;
   padding-top: 10px;
 }
 .mat-cell {
@@ -47,6 +47,7 @@ table {
   width: 40%;
   margin-left: 60px;
   padding-top: 10px;
+  padding-left: 52%;
   background: none;
   border-radius: 5px;
   padding-bottom: -60px;
@@ -190,3 +191,4 @@ mat-radio-group mat-radio-button{
 .modal-body{
   background: #e4f1fe;
 }
+.material-icons{}

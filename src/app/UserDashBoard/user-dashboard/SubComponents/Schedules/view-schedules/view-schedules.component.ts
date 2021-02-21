@@ -40,11 +40,14 @@ export class ViewSchedulesComponent implements OnInit {
   eMechanicalMaList: string[] = [ 'Turbo Charger', 'Gear Box', 'Radiator', 'Drive Shaft'];
   top = new FormControl();
   topList: string[] = ['sdsd', 'asas'];
+  count: number;
   constructor(private schedulesService: ScheduleService ,private router: Router,  private toastr: ToastrService) {
     this.loadAll();
+    this.loadCount();
   }
 
   ngOnInit(): void {
+
   }
 
   loadAll(){
@@ -57,6 +60,13 @@ export class ViewSchedulesComponent implements OnInit {
         this.dataSource.sort = this.sort;
       });
     });
+  }
+  loadCount(){
+    this.schedulesService.getDraftCount().subscribe(resp => {
+      if(resp >= 0){
+        console.log(resp)
+      }
+    })
   }
 
   deleteSchedule(scheduleNo: string) {
@@ -109,7 +119,7 @@ export class ViewSchedulesComponent implements OnInit {
   changeStatus = '';
   changeCatId= '';
   changeLocoNumber = '';
-  changecustomerNIC = '';
+  changeuserNIC = '';
   changeEmail = '';
   changeName = '';
   changeTrack = '';
@@ -125,9 +135,9 @@ export class ViewSchedulesComponent implements OnInit {
     this.changeUpdate =  tempSchedule.scheduleUpdate;
     this.changeCatId = tempSchedule.locoCatId;
     this.changeLocoNumber = tempSchedule.locoNumber + '';
-    this.changecustomerNIC = tempSchedule.customerNic;
-    this.changeName = tempSchedule.customerName;
-    this.changeEmail = tempSchedule.customerEmail;
+    this.changeuserNIC = tempSchedule.userNic;
+    this.changeName = tempSchedule.userName;
+    this.changeEmail = tempSchedule.userEmail;
     this.changeStatus = tempSchedule.scheduleStatus;
     this.changeTrack = tempSchedule.scheduleTrackMotors + '';
     this.changeBody = tempSchedule.scheduleLocoBody + '';
@@ -146,7 +156,7 @@ export class ViewSchedulesComponent implements OnInit {
       this.changeUpdate,
       this.changeCatId,
       Number(this.changeLocoNumber),
-      this.changecustomerNIC,
+      this.changeuserNIC,
       this.changeName,
       this.changeEmail,
       this.changeStatus,

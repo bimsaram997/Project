@@ -2,7 +2,7 @@
 <div class="bd">
 
   <div class="body-txt">
-    <p><span style="padding-left: 7%; font-size: 70px">Welcome</span> <br> <br>Locomotive Service System <br><br> <span class="login-info">Click here to Sign In  </span> <button mat-raised-button color="primary" (click)="toogleSlider()" style="width: 8vw; border-radius: 20px;">Click</button></p>
+    <p><span style="padding-left: 7%; font-size: 70px">Welcome</span> <br> <br>Locomotive Service System <br><br> <span class="login-info">Click here to Sign In  </span> <button mat-raised-button color="primary" routerLink="MainLogin" style="width: 8vw; border-radius: 20px;">Click</button></p>
   </div>
   <div class="container-wrp" *ngIf="slider" [@flyInOut]>
 
@@ -12,14 +12,14 @@
       <div class="example-container">
         <mat-form-field  style="width: 18vw;">
           <mat-label>Input</mat-label>
-          <input matInput required type="email" [(ngModel)]="email">
+          <input matInput required type="email" [(ngModel)]="loginEmail">
         </mat-form-field>
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 
         <br>
         <mat-form-field style="width: 18vw;">
           <mat-label>Enter your password</mat-label>
-          <input matInput [type]="hide ? 'password' : 'text'" required [(ngModel)]="password">
+          <input matInput [type]="hide ? 'password' : 'text'" required [(ngModel)]="loginPassword">
           <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
@@ -40,7 +40,7 @@
 
     <div class="box">
       <div class="icon">
-        <i class="fa fa-train" aria-hidden="true"></i>
+       <span class="material-icons">train</span>
       </div>
       <h3>Locomotive Status</h3>
       <p class="detail-txt">We provide facility update regular updates of Locomotives by providing facilities to update status, Motor details, fluid details and breaks</p>

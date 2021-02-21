@@ -96,7 +96,7 @@ export class AdminViewScehdulesComponent implements OnInit {
   changeStatus = '';
   changeCatId= '';
   changeLocoNumber = '';
-  changecustomerNIC = '';
+  changeuserNIC = '';
   changeEmail = '';
   changeName = '';
   changeTrack = '';
@@ -125,9 +125,8 @@ export class AdminViewScehdulesComponent implements OnInit {
     this.changeUpdate =  tempSchedule.scheduleUpdate;
     this.changeCatId = tempSchedule.locoCatId;
     this.changeLocoNumber = tempSchedule.locoNumber + '';
-    this.changecustomerNIC = tempSchedule.customerNic;
-    this.changeName = tempSchedule.customerName;
-    this.changeEmail = tempSchedule.customerEmail;
+    this.changeuserNIC = tempSchedule.userNic;
+    this.changeName = tempSchedule.userName;
     this.changeStatus = tempSchedule.scheduleStatus;
     this.changeTrack = tempSchedule.scheduleTrackMotors + '';
     this.changeBody = tempSchedule.scheduleLocoBody + '';
@@ -152,7 +151,7 @@ export class AdminViewScehdulesComponent implements OnInit {
       this.changeUpdate,
       this.changeCatId,
       Number(this.changeLocoNumber),
-      this.changecustomerNIC,
+      this.changeuserNIC,
       this.changeName,
       this.changeEmail,
       this.changeStatus,

@@ -13,12 +13,23 @@ import {ViewSchedulesComponent} from "./UserDashBoard/user-dashboard/SubComponen
 import {AdminViewScehdulesComponent} from "./AdminDashBoard/admin-dash-board/sub-components/Schedules/admin-view-scehdules/admin-view-scehdules.component";
 import {UserViewLocomotivesComponent} from "./UserDashBoard/user-dashboard/SubComponents/Locomotives/user-view-locomotives/user-view-locomotives.component";
 import {SignUpUserComponent} from "./AdminDashBoard/admin-dash-board/sub-components/Users/sign-up-user/sign-up-user.component";
+import {AuthGuard} from "./auth.guard";
+import {AdminAuthGuardGuard} from "./admin-auth-guard.guard";
+import {UserDashContentComponent} from "./UserDashBoard/user-dashboard/SubComponents/user-dash-content/user-dash-content.component";
+import {AdminDashContentComponent} from "./AdminDashBoard/admin-dash-board/sub-components/admin-dash-content/admin-dash-content.component";
+import {ClerkDashBoardComponent} from "./ClerkDashBoard/clerk-dash-board/clerk-dash-board.component";
+import {ClerkDashContentComponent} from "./ClerkDashBoard/clerk-dash-board/SubComponents/clerk-dash-content/clerk-dash-content.component";
+import {CreateUserComponent} from "./ClerkDashBoard/clerk-dash-board/SubComponents/Users/create-user/create-user.component";
+import {MainLoginPageComponent} from "./Common/main-login-page/main-login-page.component";
+
 
 
 
 const routes: Routes = [
   {path: '', component: LoginAndSignupComponent},
+  {path: 'MainLogin', component: MainLoginPageComponent},
   {path: 'adminDashboard', component: AdminDashBoardComponent, children: [
+      {path: 'adminDashContent', canActivate: [AdminAuthGuardGuard], component: AdminDashContentComponent},
       {path: 'createCustomer', component: CreateCustomerComponent},
       {path: 'createCustomer', component: CreateCustomerComponent},
       {path: 'createLocomotive', component: CreateLocomotiveComponent},
@@ -27,10 +38,16 @@ const routes: Routes = [
       {path: 'adminViewSchedules', component: AdminViewScehdulesComponent},
       {path: 'signUpUser', component:  SignUpUserComponent}
     ]},
-  {path: 'userDashboard', component: UserDashboardComponent, children: [
+  {path: 'userDashboard', component: UserDashboardComponent,  children: [
+      {path: 'userDashContent', canActivate: [AuthGuard], component: UserDashContentComponent},
       {path: 'createSchedule', component: CreateScheduleComponent},
       {path: 'viewSchedules', component: ViewSchedulesComponent},
-      {path: 'userViewLocomotives', component: UserViewLocomotivesComponent }
+      {path: 'userViewLocomotives', component: UserViewLocomotivesComponent },
+
+    ]},
+  {path: 'clerkDashBoard', component: ClerkDashBoardComponent, children: [
+      {path: 'clerkDashContent', component: ClerkDashContentComponent},
+      {path: 'createUser', component: CreateUserComponent}
     ]}
 ];
 

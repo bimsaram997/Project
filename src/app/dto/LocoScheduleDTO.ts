@@ -1,13 +1,13 @@
 export default class LocoScheduleDTO {
 
-  constructor(scheduleNo?: string, scheduleUpdate?: string, locoCatId?: string, locoNumber?: number, customerNic?: string, customerName?: string, customerEmail?: string, scheduleStatus?: string, scheduleTrackMotors?: string[], scheduleLocoBody?: string[], scheduleElCuUnit?: string[], scheduleEMechanical?: string[], scheduleMach?: string[], scheduleRemark?: string) {
+  constructor(scheduleNo?: string, scheduleUpdate?: string, locoCatId?: string, locoNumber?: number, userNic?: string, userName?: string, userEmail?: string, scheduleStatus?: string, scheduleTrackMotors?: string[], scheduleLocoBody?: string[], scheduleElCuUnit?: string[], scheduleEMechanical?: string[], scheduleMach?: string[], scheduleRemark?: string) {
     this._scheduleNo = scheduleNo;
     this._scheduleUpdate = scheduleUpdate;
     this._locoCatId = locoCatId;
     this._locoNumber = locoNumber;
-    this._customerNic = customerNic;
-    this._customerName = customerName;
-    this._customerEmail = customerEmail;
+    this._userNic = userNic;
+    this._userName = userName;
+    this._userEmail = userEmail;
     this._scheduleStatus = scheduleStatus;
 
     this._scheduleTrackMotors = scheduleTrackMotors;
@@ -49,28 +49,28 @@ export default class LocoScheduleDTO {
     this._locoNumber = value;
   }
 
-  get customerNic(): string {
-    return this._customerNic;
+  get userNic(): string {
+    return this._userNic;
   }
 
-  set customerNic(value: string) {
-    this._customerNic = value;
+  set userNic(value: string) {
+    this._userNic = value;
   }
 
-  get customerName(): string {
-    return this._customerName;
+  get userName(): string {
+    return this._userName;
   }
 
-  set customerName(value: string) {
-    this._customerName = value;
+  set userName(value: string) {
+    this._userName = value;
   }
 
-  get customerEmail(): string {
-    return this._customerEmail;
+  get userEmail(): string {
+    return this._userEmail;
   }
 
-  set customerEmail(value: string) {
-    this._customerEmail = value;
+  set userEmail(value: string) {
+    this._userEmail = value;
   }
 
   get scheduleStatus(): string {
@@ -134,9 +134,9 @@ export default class LocoScheduleDTO {
   private _scheduleUpdate: string;
   private _locoCatId: string;
   private _locoNumber: number;
-  private _customerNic: string;
-  private _customerName: string;
-  private _customerEmail: string;
+  private _userNic: string;
+  private _userName: string;
+  private _userEmail: string;
   private _scheduleStatus: string;
   private _scheduleTrackMotors: string[] = [];
   private _scheduleLocoBody: string[] = [];

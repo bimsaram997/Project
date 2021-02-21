@@ -5,6 +5,8 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {LocomotiveService} from '../../../../../service/locomotive.service';
 import LocoDTO from '../../../../../dto/LocoDTO';
 import {ToastrService} from "ngx-toastr";
+import {AccessService} from "../../../../../service/access.service";
+import UserDTO from "../../../../../dto/UserDTO";
 
 @Component({
   selector: 'app-create-locomotive',
@@ -16,13 +18,13 @@ export class CreateLocomotiveComponent implements OnInit {
   options: string[] = ['M2', 'M4', 'M5', 'M6', 'M7', 'M8', 'M9', 'M10', 'M11', 'M12'];
   loading =  false;
   public selectedIndex: number = 0;
-  customerList: CustomerDTO[] = [];
+  userList: UserDTO[] = [];
 
   locoCatId = '';
   locoPower = '';
   locoNumber = '';
   locoAvailability = '';
-  customerNic = '';
+  userNic = '';
   locoDate = '';
   locoOil = '';
   locoFuel = '';
@@ -35,7 +37,7 @@ export class CreateLocomotiveComponent implements OnInit {
 
 
 
-  constructor(private customerService: CustomerService, private locomotiveService: LocomotiveService, private toastr: ToastrService) { }
+  constructor(private accessService: AccessService, private locomotiveService: LocomotiveService, private toastr: ToastrService) { }
 
 
   statuses: string[] = ['In', 'Out'];
@@ -50,8 +52,8 @@ export class CreateLocomotiveComponent implements OnInit {
 
   private loadAllIds() {
     this.loading = true;
-    this.customerService.getAllCustomersSelect().subscribe(result => {
-      this.customerList = result;
+    this.accessService.getAllUsers().subscribe(result => {
+      this.userList = result;
       this.loading = true;
     });
   }
@@ -62,7 +64,7 @@ export class CreateLocomotiveComponent implements OnInit {
       this.locoCatId.trim(),
       Number(this.locoPower.trim()),
       this.locoAvailability.trim(),
-      this.customerNic.trim(),
+      this.userNic.trim(),
       this.locoDate.toString().trim(),
       Number(this.locoOil.trim()),
       Number(this.locoFuel.trim()),
@@ -100,7 +102,7 @@ export class CreateLocomotiveComponent implements OnInit {
     this.locoPower = '';
     this.locoNumber = '';
     this.locoAvailability = '';
-    this.customerNic = '';
+    this.userNic = '';
     this.locoDate = '';
     this.locoOil = '';
     this.locoFuel = '';

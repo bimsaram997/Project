@@ -3,7 +3,7 @@ export default class LocoDTO {
   private _locoCatId: string;
   private _locoPower: number;
   private _locoAvailability: string;
-  private _customerNic: string;
+  private _userNic: string;
   private _locoDate: string;
   private _locoOil: number;
   private _locoFuel: number;
@@ -14,12 +14,12 @@ export default class LocoDTO {
   private _locoDBreak: string;
   private _locoNote: string;
 
-  constructor(locoNumber?: string, locoCatId?: string, locoPower?: number,  locoAvailability?: string, customerNic?: string, locoDate?: string, locoOil?: number, locoFuel?: number, locoWater?: number, locoMainGen?: string, locoTracMot?: string, locoVBreak?: string, locoDBreak?: string, locoNote?: string) {
+  constructor(locoNumber?: string, locoCatId?: string, locoPower?: number,  locoAvailability?: string, userNic?: string, locoDate?: string, locoOil?: number, locoFuel?: number, locoWater?: number, locoMainGen?: string, locoTracMot?: string, locoVBreak?: string, locoDBreak?: string, locoNote?: string) {
     this._locoNumber = locoNumber;
     this._locoCatId = locoCatId;
     this._locoPower = locoPower;
     this._locoAvailability = locoAvailability;
-    this._customerNic = customerNic;
+    this._userNic = userNic;
     this._locoDate = locoDate;
     this._locoOil = locoOil;
     this._locoFuel = locoFuel;
@@ -64,12 +64,12 @@ export default class LocoDTO {
     this._locoAvailability = value;
   }
 
-  get customerNic(): string {
-    return this._customerNic;
+  get userNic(): string {
+    return this._userNic;
   }
 
-  set customerNic(value: string) {
-    this._customerNic = value;
+  set userNic(value: string) {
+    this._userNic = value;
   }
 
   get locoDate(): string {

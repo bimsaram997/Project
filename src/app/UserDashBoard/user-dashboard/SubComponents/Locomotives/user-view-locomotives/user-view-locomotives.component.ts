@@ -32,7 +32,7 @@ export class UserViewLocomotivesComponent implements OnInit {
   changeLocoCatID = '';
   changeLocoPower = '';
   changeLocoAvailability = '';
-  changeCustomerNic = '';
+  changeuserNic = '';
   changeLocoDate = '';
   changeLocoOil = '';
   changeLocoFuel = '';
@@ -95,7 +95,7 @@ export class UserViewLocomotivesComponent implements OnInit {
     this.changeLocoCatID = tempLoco.locoCatId;
     this.changeLocoPower = tempLoco.locoPower + '';
     this.changeLocoAvailability = tempLoco.locoAvailability;
-    this.changeCustomerNic = tempLoco.customerNic;
+    this.changeuserNic = tempLoco.userNic;
     this.changeLocoDate = tempLoco.locoDate.split(' ').slice(0, 4).join(' ');
     this.changeLocoOil = tempLoco.locoOil + '';
     this.changeLocoFuel = tempLoco.locoFuel + '';
@@ -117,7 +117,7 @@ export class UserViewLocomotivesComponent implements OnInit {
       this.changeLocoCatID,
       Number(this.changeLocoPower),
       this.changeLocoAvailability,
-      this.changeCustomerNic,
+      this.changeuserNic,
       this.changeLocoDate,
       Number(this.changeLocoOil),
       Number(this.changeLocoFuel),

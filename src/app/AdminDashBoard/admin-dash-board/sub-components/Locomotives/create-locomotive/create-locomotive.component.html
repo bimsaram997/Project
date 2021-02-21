@@ -97,10 +97,10 @@
                 </mat-radio-group>
               </div>
               <mat-form-field>
-                <mat-select #SupId="ngModel" required placeholder="Supervisor In Charge" aria-label="Supervisor In Charge" [(ngModel)]="customerNic">
+                <mat-select #SupId="ngModel" required placeholder="Supervisor In Charge" aria-label="Supervisor In Charge" [(ngModel)]="userNic">
                   <mat-option>None</mat-option>
-                  <ng-container *ngFor="let tempIds of customerList">
-                    <mat-option value="{{tempIds.CustomerNic}}">{{tempIds.CustomerNic}}</mat-option>
+                  <ng-container *ngFor="let tempIds of userList">
+                    <mat-option value="{{tempIds.userNic}}">{{tempIds.userNic}}</mat-option>
                   </ng-container>
                 </mat-select>
                 <div  *ngIf="SupId.invalid && (SupId.dirty || SupId.touched)"

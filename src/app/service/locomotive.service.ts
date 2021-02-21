@@ -17,7 +17,7 @@ export class LocomotiveService {
       locoPower: dto.locoPower,
       locoNumber: dto.locoNumber,
       locoAvailability: dto.locoAvailability,
-      customerNic: dto.customerNic,
+      userNic: dto.userNic,
       locoDate: dto.locoDate,
       locoOil: dto.locoOil,
       locoFuel: dto.locoFuel,
@@ -46,7 +46,7 @@ export class LocomotiveService {
       locoPower: dto.locoPower,
       locoNumber: dto.locoNumber,
       locoAvailability: dto.locoAvailability,
-      customerNic: dto.customerNic,
+      userNic: dto.userNic,
       locoDate: dto.locoDate,
       locoOil: dto.locoOil,
       locoFuel: dto.locoFuel,
@@ -57,5 +57,11 @@ export class LocomotiveService {
       locoDBreak: dto.locoDBreak,
       locoNote: dto.locoNote
     })
+  }
+  public getInCount(): Observable<any>{
+    return this.http.get(this.myUrl + 'locoRoute/getInCount');
+  }
+  public getOutCount(): Observable<any>{
+    return this.http.get(this.myUrl + 'locoRoute/getOutCount');
   }
 }

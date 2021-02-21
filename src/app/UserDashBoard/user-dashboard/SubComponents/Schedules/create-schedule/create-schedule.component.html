@@ -81,10 +81,10 @@
         <mat-grid-tile>
           <div class="controls-container-right">
             <mat-form-field>
-              <mat-select required #NIC="ngModel" placeholder="Supervisor Nic" aria-label="Supervisor In Charge" [(ngModel)]="customerNic">
+              <mat-select required #NIC="ngModel" placeholder="Supervisor Nic" aria-label="Supervisor In Charge" [(ngModel)]="userNic">
                 <mat-option>None</mat-option>
-                <ng-container *ngFor="let tempWork of customerList">
-                  <mat-option value="{{tempWork.CustomerNic}}">{{tempWork.CustomerNic}}</mat-option>
+                <ng-container *ngFor="let tempWork of userList">
+                  <mat-option value="{{tempWork.userNic}}">{{tempWork.userNic}}</mat-option>
                 </ng-container>
               </mat-select>
                 <div  *ngIf="NIC.invalid && (NIC.dirty || NIC.touched)"
@@ -95,10 +95,10 @@
               </div>
             </mat-form-field>
             <mat-form-field>
-              <mat-select required #sName="ngModel" placeholder="Supervisor Name" aria-label="Supervisor In Charge" [(ngModel)]="customerName">
+              <mat-select required #sName="ngModel" placeholder="Supervisor Name" aria-label="Supervisor In Charge" [(ngModel)]="userName">
                 <mat-option>None</mat-option>
-                <ng-container *ngFor="let tempCustomer of customerList">
-                  <mat-option value="{{tempCustomer.CustomerName}}">{{tempCustomer.CustomerName}}</mat-option>
+                <ng-container *ngFor="let tempUser of userList">
+                  <mat-option value="{{tempUser.userName}}">{{tempUser.userName}}</mat-option>
                 </ng-container>
               </mat-select>
               <div *ngIf="sNum.invalid && (sNum.dirty || sNum.touched)"
@@ -109,10 +109,10 @@
               </div>
             </mat-form-field>
             <mat-form-field>
-              <mat-select required #sEmai ="ngModel" placeholder="Supervisor Email" aria-label="Supervisor In Charge" [(ngModel)]="customerEmail">
+              <mat-select required #sEmai ="ngModel" placeholder="Supervisor Email" aria-label="Supervisor In Charge" [(ngModel)]="userEmail">
                 <mat-option>None</mat-option>
-                <ng-container *ngFor="let tempCustomer of customerList">
-                  <mat-option value="{{tempCustomer.CustomerEmail}}">{{tempCustomer.CustomerEmail}}</mat-option>
+                <ng-container *ngFor="let tempUser of userList">
+                  <mat-option value="{{tempUser.userEmail}}">{{tempUser.userEmail}}</mat-option>
                 </ng-container>
               </mat-select>
               <div  *ngIf="sEmai.invalid && (sEmai.dirty || sEmai.touched)"
@@ -125,7 +125,7 @@
             <div class="add-bottom-padding">
               <mat-radio-group aria-label="Availability" [(ngModel)]="scheduleStatus">
                 <span class="para-txt">Status</span>
-                <mat-radio-button  [value] = "'Draft'">draft</mat-radio-button>
+                <mat-radio-button  [value] = "'draft'">draft</mat-radio-button>
               </mat-radio-group>
             </div>
           </div>

@@ -25,6 +25,28 @@ import { AdminViewScehdulesComponent } from './AdminDashBoard/admin-dash-board/s
 import { UserViewLocomotivesComponent } from './UserDashBoard/user-dashboard/SubComponents/Locomotives/user-view-locomotives/user-view-locomotives.component';
 import {MatTableExporterModule} from "mat-table-exporter";
 import { SignUpUserComponent } from './AdminDashBoard/admin-dash-board/sub-components/Users/sign-up-user/sign-up-user.component';
+import { UserDashContentComponent } from './UserDashBoard/user-dashboard/SubComponents/user-dash-content/user-dash-content.component';
+import { AdminDashContentComponent } from './AdminDashBoard/admin-dash-board/sub-components/admin-dash-content/admin-dash-content.component';
+
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { LayoutModule } from '@angular/cdk/layout';
+import { HomeComponent } from './UserDashBoard/user-dashboard/SubComponents/home/home.component';
+import { CardsComponent } from './UserDashBoard/user-dashboard/SubComponents/user-dash-content/cards/cards.component';
+import { ClerkDashBoardComponent } from './ClerkDashBoard/clerk-dash-board/clerk-dash-board.component';
+import { ClerkHeaderComponent } from './ClerkDashBoard/clerk-dash-board/navigation/clerk-header/clerk-header.component';
+import { ClerkSideNavComponent } from './ClerkDashBoard/clerk-dash-board/navigation/clerk-side-nav/clerk-side-nav.component';
+import { ClerkDashContentComponent } from './ClerkDashBoard/clerk-dash-board/SubComponents/clerk-dash-content/clerk-dash-content.component';
+import { CreateUserComponent } from './ClerkDashBoard/clerk-dash-board/SubComponents/Users/create-user/create-user.component';
+import { MainLoginPageComponent } from './Common/main-login-page/main-login-page.component';
+import { CommonHeaderComponent } from './Common/common-header/common-header.component';
+
+
+
+
 
 
 
@@ -53,6 +75,23 @@ import { SignUpUserComponent } from './AdminDashBoard/admin-dash-board/sub-compo
     AdminViewScehdulesComponent,
     UserViewLocomotivesComponent,
     SignUpUserComponent,
+    UserDashContentComponent,
+    AdminDashContentComponent,
+    HomeComponent,
+    CardsComponent,
+    ClerkDashBoardComponent,
+    ClerkHeaderComponent,
+    ClerkSideNavComponent,
+    ClerkDashContentComponent,
+    CreateUserComponent,
+    MainLoginPageComponent,
+    CommonHeaderComponent,
+
+
+
+
+
+
 
 
   ],
@@ -60,7 +99,13 @@ import { SignUpUserComponent } from './AdminDashBoard/admin-dash-board/sub-compo
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent],

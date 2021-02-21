@@ -43,12 +43,12 @@
         <!-- Symbol Column -->
         <ng-container matColumnDef="Supervisor NIC">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Supervisor NIC </th>
-          <td mat-cell *matCellDef="let tempSchedule"> {{tempSchedule.customerNic}} </td>
+          <td mat-cell *matCellDef="let tempSchedule"> {{tempSchedule.userNic}} </td>
         </ng-container>
 
         <ng-container matColumnDef="Supervisor Email">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Supervisor Email </th>
-          <td mat-cell *matCellDef="let tempSchedule"> {{tempSchedule.customerEmail}}</td>
+          <td mat-cell *matCellDef="let tempSchedule"> {{tempSchedule.userEmail}}</td>
         </ng-container>
 
         <ng-container matColumnDef="Schedule Status">
@@ -80,7 +80,7 @@
         <ng-container matColumnDef="#">
           <th mat-header-cell *matHeaderCellDef>  </th>
           <td mat-cell *matCellDef="let tempSchedule">
-            <button mat-stroked-button color="accent" (click)="view(tempSchedule)">View More</button>
+            <button mat-icon-button (click)="view(tempSchedule)"><span class="material-icons">visibility</span></button>
             <button mat-icon-button color="warn" (click)="deleteSchedule(tempSchedule.scheduleNo)"><mat-icon>delete_outline</mat-icon></button>
             <button mat-icon-button (click)="updateSchedule(tempSchedule)"><mat-icon>launch</mat-icon></button>
           </td>
@@ -102,7 +102,7 @@
       <div class="box-container">
         <img src="https://img.icons8.com/bubbles/50/000000/train.png" style="width: 35px; height: 35px;"/> &nbsp;
         <span class="heading-update">VIEW</span>
-        <button style="left: 74%; color: white" mat-icon-button (click)="setStateTwo()"><span style="font-weight: bolder;" class="material-icons">clear</span></button>
+        <button style="left: 74%; color: white" mat-icon-button (click)="setState()"><span style="font-weight: bolder;" class="material-icons">clear</span></button>
       </div>
     </div>
     <div class="modal-body">

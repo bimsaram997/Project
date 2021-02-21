@@ -13,7 +13,7 @@ import {FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatCalendar, MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule, MatOptionModule} from '@angular/material/core';
 import {MatTableModule} from '@angular/material/table';
 import {HttpClientModule} from '@angular/common/http';
@@ -36,6 +36,14 @@ import {MatTabsModule} from "@angular/material/tabs";
 import {BrowserModule} from "@angular/platform-browser";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {TableVirtualScrollDataSource, TableVirtualScrollModule} from "ng-table-virtual-scroll";
+import {CookieModule} from "ngx-cookie";
+import {CalendarView} from "@angular/material/datepicker/testing";
+import {FlexLayoutModule} from "@angular/flex-layout";
+import {NgxEventCalendarModule} from "ngx-event-calendar";
+import {FullCalendarModule} from "@fullcalendar/angular";
+import {CommonModule} from "@angular/common";
+
+
 
 
 const MaterialComponents = [
@@ -82,15 +90,27 @@ const MaterialComponents = [
   MatTabsModule,
   BrowserModule,
   MatProgressSpinnerModule,
+  CookieModule.forRoot(),
+  FlexLayoutModule,
+  NgxEventCalendarModule,
+  CommonModule,
+
+
+
+
+
 
 
 ];
 @NgModule({
   imports: [
     MaterialComponents
+
   ],
   exports: [
     MaterialComponents
   ]
 })
-export class MaterialModule { }
+export class MaterialModule {
+
+}

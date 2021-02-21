@@ -16,9 +16,9 @@ export class ScheduleService {
       scheduleUpdate: dto.scheduleUpdate,
       locoCatId: dto.locoCatId,
       locoNumber: dto.locoNumber,
-      customerNic: dto.customerNic,
-      customerName: dto.customerName,
-      customerEmail: dto.customerEmail,
+      userNic: dto.userNic,
+      userName: dto.userName,
+      userEmail: dto.userEmail,
       scheduleStatus: dto. scheduleStatus,
       scheduleTrackMotors: dto.scheduleTrackMotors,
       scheduleLocoBody: dto.scheduleLocoBody,
@@ -42,9 +42,9 @@ export class ScheduleService {
       scheduleUpdate: dto.scheduleUpdate,
       locoCatId: dto.locoCatId,
       locoNumber: dto.locoNumber,
-      customerNic: dto.customerNic,
-      customerName: dto.customerName,
-      customerEmail: dto.customerEmail,
+      userNic: dto.userNic,
+      userName: dto.userName,
+      userEmail: dto.userEmail,
       scheduleStatus: dto. scheduleStatus,
       scheduleTrackMotors: dto.scheduleTrackMotors,
       scheduleLocoBody: dto.scheduleLocoBody,
@@ -58,5 +58,15 @@ export class ScheduleService {
   public getSchedule(customerNic: string): Observable<LocoScheduleDTO>
   {
     return this.http.get<LocoScheduleDTO>(this.myUrl + 'scheduleRoute/getSchedule/: id',{headers: {customerNic}})
+  }
+  public getDraftCount(): Observable<any>{
+    return this.http.get(this.myUrl + 'scheduleRoute/getDraftCount')
+  }
+
+  public getAcceptCount(): Observable<any>{
+    return this.http.get(this.myUrl + 'scheduleRoute/getAcceptCount')
+  }
+  public getMySampleData(): Observable<any> {
+    return this.http.get(this.myUrl + 'scheduleRoute/getSample');
   }
 }

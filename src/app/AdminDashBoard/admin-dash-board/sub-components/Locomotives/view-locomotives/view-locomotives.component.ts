@@ -9,6 +9,8 @@ import {MatSort} from '@angular/material/sort';
 import {FormControl} from '@angular/forms';
 import CustomerDTO from '../../../../../dto/CustomerDTO';
 import {CustomerService} from '../../../../../service/customer.service';
+import UserDTO from "../../../../../dto/UserDTO";
+import {AccessService} from "../../../../../service/access.service";
 
 @Component({
   selector: 'app-view-locomotives',
@@ -19,7 +21,7 @@ export class ViewLocomotivesComponent implements OnInit {
 
 
 
-  constructor(private locomotiveService: LocomotiveService,  private router: Router,  private toastr: ToastrService, private customerService: CustomerService) {
+  constructor(private locomotiveService: LocomotiveService,  private router: Router,  private toastr: ToastrService, private accessService: AccessService) {
     this.loadAll();
   }
   isVisible =  false;
@@ -35,13 +37,13 @@ export class ViewLocomotivesComponent implements OnInit {
   options: string[] = ['M2', 'M4', 'M5', 'M6', 'M7', 'M8', 'M9', 'M10', 'M11', 'M12'];
   loading =  false;
   customerId = '';
-  customerList: CustomerDTO[] = [];
+  userList: UserDTO[] = [];
 
   statuses: string[] = ['In', 'Out'];
   changeLocoCatID = '';
   changeLocoPower = '';
   changeLocoAvailability = '';
-  changeCustomerNic = '';
+  changeuserNic = '';
   changeLocoDate = '';
   changeLocoOil = '';
   changeLocoFuel = '';
@@ -58,8 +60,8 @@ export class ViewLocomotivesComponent implements OnInit {
 
   private loadAllIds() {
     this.loading = true;
-    this.customerService.getAllCustomersSelect().subscribe(result => {
-      this.customerList = result;
+    this.accessService.getAllUsers().subscribe(result => {
+      this.userList = result;
       this.loading = true;
     });
   }
@@ -126,7 +128,7 @@ export class ViewLocomotivesComponent implements OnInit {
     this.changeLocoCatID = tempLoco.locoCatId;
     this.changeLocoPower = tempLoco.locoPower + '';
     this.changeLocoAvailability = tempLoco.locoAvailability;
-    this.changeCustomerNic = tempLoco.customerNic;
+    this.changeuserNic = tempLoco.userNic;
     this.changeLocoDate = tempLoco.locoDate.split(' ').slice(0, 4).join(' ');
     this.changeLocoOil = tempLoco.locoOil + '';
     this.changeLocoFuel = tempLoco.locoFuel + '';
@@ -148,7 +150,7 @@ export class ViewLocomotivesComponent implements OnInit {
         this.changeLocoCatID,
         Number(this.changeLocoPower),
         this.changeLocoAvailability,
-        this.changeCustomerNic,
+        this.changeuserNic,
         this.changeLocoDate,
         Number(this.changeLocoOil),
         Number(this.changeLocoFuel),
