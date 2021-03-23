@@ -20,6 +20,14 @@ export class AccessService {
       password,
     });
  }
+ public sendEmail(email: string, receive: string, subject: string, text: string): Observable<any> {
+    return this.http.post(this.myUrl + 'accessRoute/sendMails', {
+      email,
+      receive,
+      subject,
+      text
+    });
+ }
   public getAllUsers(): Observable<any> {
     return this.http.get( this.myUrl + 'accessRoute/getAllUsers');
   }

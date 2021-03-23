@@ -21,6 +21,7 @@ import {ClerkDashBoardComponent} from "./ClerkDashBoard/clerk-dash-board/clerk-d
 import {ClerkDashContentComponent} from "./ClerkDashBoard/clerk-dash-board/SubComponents/clerk-dash-content/clerk-dash-content.component";
 import {CreateUserComponent} from "./ClerkDashBoard/clerk-dash-board/SubComponents/Users/create-user/create-user.component";
 import {MainLoginPageComponent} from "./Common/main-login-page/main-login-page.component";
+import {UserProfileComponent} from "./UserDashBoard/user-dashboard/SubComponents/UserProfile/user-profile/user-profile.component";
 
 
 
@@ -43,6 +44,7 @@ const routes: Routes = [
       {path: 'createSchedule', component: CreateScheduleComponent},
       {path: 'viewSchedules', component: ViewSchedulesComponent},
       {path: 'userViewLocomotives', component: UserViewLocomotivesComponent },
+      {path: 'userProfile', component: UserProfileComponent}
 
     ]},
   {path: 'clerkDashBoard', component: ClerkDashBoardComponent, children: [

@@ -35,7 +35,7 @@
         <!-- Weight Column -->
         <ng-container matColumnDef="Availability">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Availability </th>
-          <td mat-cell *matCellDef="let tempLoco"> {{tempLoco.locoAvailability}}</td>
+          <td mat-cell *matCellDef="let tempLoco"> <img multiple [src]=" tempLoco.image" style="height: 30px; width: 30px;"></td>
         </ng-container>
 
         <!-- Symbol Column -->
@@ -144,6 +144,9 @@
               <textarea matInput >{{selectedLoco.locoNote}}</textarea>
             </mat-form-field>
             </div>
+          </mat-tab>
+          <mat-tab label="Third">
+            <img [src]="selectedLoco.image" style="width: 50px; height: 50px;">
           </mat-tab>
         </mat-tab-group>
       </div>

@@ -69,4 +69,7 @@ export class ScheduleService {
   public getMySampleData(): Observable<any> {
     return this.http.get(this.myUrl + 'scheduleRoute/getSample');
   }
+  public getSMS(): Observable<any> {
+    return this.http.get(this.myUrl + 'scheduleRoute/sendSMS');
+  }
 }

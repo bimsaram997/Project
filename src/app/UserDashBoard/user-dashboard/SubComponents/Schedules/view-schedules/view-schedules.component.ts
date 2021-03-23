@@ -27,7 +27,7 @@ export class ViewSchedulesComponent implements OnInit {
   isVisible =  false;
   isVisibleSecond = false;
   searchKey: string;
-
+  bgColor = 'grey';
   bodyLoco = new FormControl();
   bodyLocoList: string[] = [ 'Axle', 'Body Plates', 'Wheels', 'Truck Frames'];
   electricControl = new FormControl();
@@ -50,7 +50,7 @@ export class ViewSchedulesComponent implements OnInit {
 
   }
 
-  loadAll(){
+  loadAll() {
     this.schedulesService.getAllSchedules().subscribe(resp => {
       this.scheduleArray = resp;
       this.dataSource = new MatTableDataSource<LocoScheduleDTO>(this.scheduleArray);
@@ -64,9 +64,9 @@ export class ViewSchedulesComponent implements OnInit {
   loadCount(){
     this.schedulesService.getDraftCount().subscribe(resp => {
       if(resp >= 0){
-        console.log(resp)
+        console.log(resp);
       }
-    })
+    });
   }
 
   deleteSchedule(scheduleNo: string) {
@@ -106,6 +106,7 @@ export class ViewSchedulesComponent implements OnInit {
   view(tempSchedule: LocoScheduleDTO) {
     this.selectedSchedule = tempSchedule;
     const btn = document.getElementById('btn-pop-up') as HTMLElement;
+    this.bgColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
     btn.click();
 
 

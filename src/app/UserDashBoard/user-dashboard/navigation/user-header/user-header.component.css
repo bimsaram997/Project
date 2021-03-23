@@ -1,3 +1,8 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Bree+Serif&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,100;1,300&display=swap');
 .right-li{
   float: right;
 }
@@ -26,4 +31,10 @@ a:hover, a:active{
   mat-toolbar{
     border-radius: 0px;
   }
+}
+.example-spacer{
+  font-family: 'Roboto', sans-serif;
+}
+.nav{
+  width: auto;
 }

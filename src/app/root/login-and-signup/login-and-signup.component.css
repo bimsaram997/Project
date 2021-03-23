@@ -20,6 +20,8 @@
   font-size: 30px;
 
 }
+
+
 .label-txt{
   font-family: 'Varela Round', sans-serif;
   font-size: 15px;
@@ -117,6 +119,7 @@ h1:after{
   align-items: center;
 
 }
+
 .row .box{
 
   position: relative;

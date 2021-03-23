@@ -110,7 +110,16 @@
                   </div>
                 </div>
               </mat-form-field>
-
+              <mat-form-field  style="height: 50px;">
+                <mat-label>Special Note</mat-label>
+                <textarea #txt = "ngModel" required matInput [(ngModel)]="locoNote"></textarea>
+                <div  *ngIf="txt.invalid && (txt.dirty || txt.touched)"
+                      class="error">
+                  <div *ngIf="txt.errors.required">
+                    Note is required.
+                  </div>
+                </div>
+              </mat-form-field>
             </div>
           </mat-grid-tile>
           <div class="btn-one">
@@ -211,7 +220,7 @@
       <mat-card class="card-second">
         <mat-grid-list cols="2" rowHeight="300px" [gutterSize]="'-55px'"  style="bottom: 30px;">
           <mat-grid-tile>
-            <div class="controls-container" style="padding-bottom: 10px;">
+            <div class="controls-container" style="padding-bottom: 2px;">
               <h3 class="sub-headers">Breaks</h3>
               <div class="add-bottom-padding">
                 <mat-radio-group aria-label="Vacuum Breaks" [(ngModel)]="locoVBreak">
@@ -225,22 +234,29 @@
                   <mat-radio-button *ngFor="let dBreak of dBreaks" [value] = "dBreak">{{dBreak}} &nbsp; &nbsp;</mat-radio-button>
                 </mat-radio-group>
               </div>
+
+
             </div>
           </mat-grid-tile>
           <mat-grid-tile>
             <div class="controls-container-right-third">
-              <h3 class="sub-headers">Special Notes</h3>
-              <mat-form-field  style="height: 100px;">
-                <mat-label>Special Note</mat-label>
-                <textarea #txt = "ngModel" required matInput [(ngModel)]="locoNote"></textarea>
-                <div  *ngIf="txt.invalid && (txt.dirty || txt.touched)"
-                      class="error">
-                  <div *ngIf="txt.errors.required">
-                   Note is required.
-                  </div>
 
-                </div>
-              </mat-form-field>
+
+             <div class="box-outline">
+
+               <input (change)="changeFiles($event)" multiple style="display: none" type="file" accept="images/" id="selectedFile" >
+               <div class="main-wrap-for-selected-images">
+                 <p *ngIf="isVisble" class="para-note" onclick="document.getElementById('selectedFile').click()" >  Add Images of Locomotives <span onclick="document.getElementById('selectedFile').click()"  class="material-icons">
+library_add</span></p>
+                 <img *ngIf="urls[0]!=null" src="{{urls[0]}}" alt="Image"
+                      class="selected-image img-thumbnail">
+                 <img *ngIf="urls[1]!=null" src="{{urls[1]}}"   alt="Image"
+                      class="selected-image img-thumbnail">
+                 <img *ngIf="urls[2]!=null"  src="{{urls[2]}}" alt="Image"
+                      class="selected-image img-thumbnail">
+               </div>
+             </div>
+
               <br>
               <br>
               <div class="button-row">
@@ -262,6 +278,7 @@
     </mat-tab>
 
   </mat-tab-group>
+
 
 
 

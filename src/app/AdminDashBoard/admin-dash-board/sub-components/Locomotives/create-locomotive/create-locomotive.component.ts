@@ -7,6 +7,7 @@ import LocoDTO from '../../../../../dto/LocoDTO';
 import {ToastrService} from "ngx-toastr";
 import {AccessService} from "../../../../../service/access.service";
 import UserDTO from "../../../../../dto/UserDTO";
+import {ImageService} from "../../../../../service/image.service";
 
 @Component({
   selector: 'app-create-locomotive',
@@ -35,9 +36,11 @@ export class CreateLocomotiveComponent implements OnInit {
   locoDBreak = '';
   locoNote = '';
 
+  filesToUpload: Array<File> = [];
+  urls = new Array<string>();
 
 
-  constructor(private accessService: AccessService, private locomotiveService: LocomotiveService, private toastr: ToastrService) { }
+  constructor(private imageService: ImageService, private accessService: AccessService, private locomotiveService: LocomotiveService, private toastr: ToastrService) { }
 
 
   statuses: string[] = ['In', 'Out'];
@@ -45,6 +48,7 @@ export class CreateLocomotiveComponent implements OnInit {
   mainMotors: string[] = ['Working', 'Not Working'];
   vBreaks: string[] = ['Working', 'Not Working'];
   dBreaks: string[] = ['Working', 'Not Working'];
+  isVisble = true;
   ngOnInit(): void {
     this.loadAllIds();
 
@@ -59,34 +63,45 @@ export class CreateLocomotiveComponent implements OnInit {
   }
 
   saveLocoOnAction() {
-    const dto = new LocoDTO (
-      this.locoNumber.trim(),
-      this.locoCatId.trim(),
-      Number(this.locoPower.trim()),
-      this.locoAvailability.trim(),
-      this.userNic.trim(),
-      this.locoDate.toString().trim(),
-      Number(this.locoOil.trim()),
-      Number(this.locoFuel.trim()),
-      Number(this.locoWater.trim()),
-      this.locoMainGen.trim(),
-      this.locoTracMot.trim(),
-      this.locoVBreak.trim(),
-      this.locoDBreak.trim(),
-      this.locoNote.trim()
-    );
-    console.log(dto)
-    this.locomotiveService.saveLoco(dto).subscribe( resp => {
+    this.imageService.uploadImage(this.filesToUpload).subscribe(resp => {
       console.log(resp);
-      if (resp.isSaved){
-
-        this.onSucess('Saved');
-        this.refresh();
-      } else {
-        this.onWarning('Already Exists');
-        this.refresh();
-      }
+      const dto = new LocoDTO (
+        this.locoNumber.trim(),
+        this.locoCatId.trim(),
+        Number(this.locoPower.trim()),
+        this.locoAvailability.trim(),
+        this.userNic.trim(),
+        this.locoDate.toString().trim(),
+        Number(this.locoOil.trim()),
+        Number(this.locoFuel.trim()),
+        Number(this.locoWater.trim()),
+        this.locoMainGen.trim(),
+        this.locoTracMot.trim(),
+        this.locoVBreak.trim(),
+        this.locoDBreak.trim(),
+        this.locoNote.trim(),
+        resp.locationArray[0]
+      );
+      this.locomotiveService.saveLoco(dto).subscribe( response => {
+        console.log(resp);
+        if (response.isSaved){
+          this.onSucess('Saved');
+          this.refresh();
+        } else {
+          this.onWarning('Already Exists');
+          this.refresh();
+        }
+      });
+    }, error => {
+      console.log(error);
     });
+
+
+
+
+
+
+
   }
 
 
@@ -124,4 +139,36 @@ export class CreateLocomotiveComponent implements OnInit {
   refresh(): void {
     window.location.reload();
   }
+
+  changeFiles(event) {
+    this.isVisble = !this.isVisble;
+    this.filesToUpload = event.target.files as Array<File>;
+    this.urls = [];
+    const files = event.target.files;
+    if (files) {
+      for (const file of files) {
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+          if (file.type === 'image/jpeg' || file.type === 'image/jpg' || file.type === 'image/png') {
+            if (Number(e.total) > 2e+6) {
+              alert('Please make sure that you entered image size is less than 2MB');
+              this.filesToUpload = [];
+              return;
+            } else {
+              this.urls.push(e.target.result);
+            }
+          } else {
+            alert('Supported formats: .JPEG .JPG .PNG');
+            this.filesToUpload = [];
+            return;
+          }
+
+
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+    console.log(this.filesToUpload);
+  }
+
 }

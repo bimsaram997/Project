@@ -26,7 +26,8 @@ export class LocomotiveService {
       locoTracMot: dto.locoTracMot,
       locoVBreak: dto.locoVBreak,
       locoDBreak: dto.locoDBreak,
-      locoNote: dto.locoNote
+      locoNote: dto.locoNote,
+      image: dto.image,
     });
   }
 

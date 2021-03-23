@@ -42,6 +42,7 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import {NgxEventCalendarModule} from "ngx-event-calendar";
 import {FullCalendarModule} from "@fullcalendar/angular";
 import {CommonModule} from "@angular/common";
+import {DragDropModule} from "@angular/cdk/drag-drop";
 
 
 
@@ -66,6 +67,7 @@ const MaterialComponents = [
   MatNativeDateModule,
   MatTableModule,
   HttpClientModule,
+  DragDropModule,
   MatPaginatorModule,
   ToastrModule.forRoot({
     timeOut: 3000,

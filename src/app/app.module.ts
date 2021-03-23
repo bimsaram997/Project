@@ -43,6 +43,7 @@ import { ClerkDashContentComponent } from './ClerkDashBoard/clerk-dash-board/Sub
 import { CreateUserComponent } from './ClerkDashBoard/clerk-dash-board/SubComponents/Users/create-user/create-user.component';
 import { MainLoginPageComponent } from './Common/main-login-page/main-login-page.component';
 import { CommonHeaderComponent } from './Common/common-header/common-header.component';
+import { UserProfileComponent } from './UserDashBoard/user-dashboard/SubComponents/UserProfile/user-profile/user-profile.component';
 
 
 
@@ -86,6 +87,7 @@ import { CommonHeaderComponent } from './Common/common-header/common-header.comp
     CreateUserComponent,
     MainLoginPageComponent,
     CommonHeaderComponent,
+    UserProfileComponent,
 
 
 

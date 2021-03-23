@@ -1,7 +1,10 @@
+<div class="page">
 <div class="container" >
   <div class="box-head">
     <img src="./assets/images/s14.png" alt="" style="height: 70px; width: 70px;">
+    <div>
     <span class="heading-txt">VIEW SCHEDULES</span>
+    </div>
   </div>
   <hr>
   <div class="search-div">
@@ -96,7 +99,7 @@
 
 
 
-  <div class="container-wrp" *ngIf="isVisible">
+  <div class="container-wrp" *ngIf="isVisible" cdkDrag cdkDragBoundary=".app-content">
     <div class="header">
 
       <div class="box-container">
@@ -181,7 +184,8 @@
     </div>
 
   </div>
-  <div class="container-wrp-two" *ngIf="isVisibleSecond">
+
+  <div class="container-wrp-two" *ngIf="isVisibleSecond" cdkDrag cdkDragBoundary=".app-content">
     <div class="header-two">
       <div class="box-container">
         <img src="https://img.icons8.com/bubbles/50/000000/train.png" style="width: 35px; height: 35px;"/> &nbsp;
@@ -260,5 +264,7 @@
   </button>
 
 
+
+</div>
 
 </div>

@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from "@angular/material/paginator";
 import {MatTableDataSource} from "@angular/material/table";
 import LocoScheduleDTO from "../../../../../dto/LocoScheduleDTO";
@@ -12,7 +12,10 @@ import {LocomotiveService} from "../../../../../service/locomotive.service";
 @Component({
   selector: 'app-admin-view-scehdules',
   templateUrl: './admin-view-scehdules.component.html',
-  styleUrls: ['./admin-view-scehdules.component.css']
+  styleUrls: ['./admin-view-scehdules.component.css'],
+  providers: [
+    { provide: Window, useValue: window }
+  ],
 })
 export class AdminViewScehdulesComponent implements OnInit {
 
@@ -107,11 +110,16 @@ export class AdminViewScehdulesComponent implements OnInit {
   changeReamark = '';
 
   view(tempSchedule: LocoScheduleDTO) {
+
     this.selectedSchedule = tempSchedule;
     const btn = document.getElementById('btn-pop-up') as HTMLElement;
     btn.click();
+
+
   }
+
   setStateTwo(){
+
     this.isVisible = false;
     this.isVisibleSecond = !this.isVisibleSecond;
 
@@ -121,6 +129,7 @@ export class AdminViewScehdulesComponent implements OnInit {
 
 
   updateStatus(tempSchedule: LocoScheduleDTO) {
+
     this.selectedSchedule = tempSchedule;
     this.changeUpdate =  tempSchedule.scheduleUpdate;
     this.changeCatId = tempSchedule.locoCatId;
@@ -169,8 +178,17 @@ export class AdminViewScehdulesComponent implements OnInit {
     this.schedulesService.updateSchedule(dto).subscribe(result => {
       if (result.message === 'updated'){
         console.log(this.changeStatus);
-        this.onSucess('Updated');
-        this.loadAll();
+        if(this.changeStatus === 'Accept'){
+          this.onSucess('Updated Accepted');
+          this.loadAll();
+          this.getSMS();
+
+        } else if( this.changeStatus === 'draft'){
+          this.onSucess('Updated Draft');
+          this.loadAll();
+
+        }
+
 
         const btn = document.getElementById('btn-pop-up-two') as HTMLElement;
         btn.click();
@@ -184,5 +202,8 @@ export class AdminViewScehdulesComponent implements OnInit {
       }
     });
 
+  }
+  getSMS(){
+    this.schedulesService.getSMS().subscribe();
   }
 }

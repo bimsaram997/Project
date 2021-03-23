@@ -13,8 +13,8 @@ export default class LocoDTO {
   private _locoVBreak: string;
   private _locoDBreak: string;
   private _locoNote: string;
-
-  constructor(locoNumber?: string, locoCatId?: string, locoPower?: number,  locoAvailability?: string, userNic?: string, locoDate?: string, locoOil?: number, locoFuel?: number, locoWater?: number, locoMainGen?: string, locoTracMot?: string, locoVBreak?: string, locoDBreak?: string, locoNote?: string) {
+  private _image:string;
+  constructor(locoNumber?: string, locoCatId?: string, locoPower?: number,  locoAvailability?: string, userNic?: string, locoDate?: string, locoOil?: number, locoFuel?: number, locoWater?: number, locoMainGen?: string, locoTracMot?: string, locoVBreak?: string, locoDBreak?: string, locoNote?: string, image?: string) {
     this._locoNumber = locoNumber;
     this._locoCatId = locoCatId;
     this._locoPower = locoPower;
@@ -29,6 +29,7 @@ export default class LocoDTO {
     this._locoVBreak = locoVBreak;
     this._locoDBreak = locoDBreak;
     this._locoNote = locoNote;
+    this._image = image;
   }
 
 
@@ -143,5 +144,11 @@ export default class LocoDTO {
   set locoNote(value: string) {
     this._locoNote = value;
   }
+  get image(): string {
+    return this._image;
+  }
 
+  set image(value: string) {
+    this._image = value;
+  }
 }

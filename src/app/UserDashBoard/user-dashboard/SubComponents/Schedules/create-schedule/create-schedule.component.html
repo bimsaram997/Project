@@ -216,7 +216,29 @@
 
       </mat-card>
     </mat-tab>
-
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <img src="https://img.icons8.com/cute-clipart/64/000000/wrench.png" style="width: 40px; height: 40px; color: #1f3a93"/>
+        Third
+      </ng-template>
+      <br>
+      <br>
+      <mat-card class="card" style="height: 420px;">
+        <div class="box-outline">
+          <input (change)="changeFiles($event)" multiple style="display: none" type="file" accept="images/" id="selectedFile" >
+          <div class="main-wrap-for-selected-images">
+            <p *ngIf="isVisble" class="para-note" onclick="document.getElementById('selectedFile').click()" >Add Images of Locomotives <span onclick="document.getElementById('selectedFile').click()"  class="material-icons">
+library_add</span></p>
+            <img *ngIf="urls[0]!=null" [src]="urls[0]" alt="Image"
+                 class="selected-image img-thumbnail">
+            <img *ngIf="urls[1]!=null"  [src]="urls[1]" alt="Image"
+                 class="selected-image img-thumbnail">
+            <img *ngIf="urls[2]!=null"  [src]="urls[2]" alt="Image"
+                 class="selected-image img-thumbnail">
+          </div>
+        </div>
+      </mat-card>
+    </mat-tab>
   </mat-tab-group>
 
 </div>

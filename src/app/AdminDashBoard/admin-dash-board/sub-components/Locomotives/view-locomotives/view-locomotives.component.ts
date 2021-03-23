@@ -9,8 +9,9 @@ import {MatSort} from '@angular/material/sort';
 import {FormControl} from '@angular/forms';
 import CustomerDTO from '../../../../../dto/CustomerDTO';
 import {CustomerService} from '../../../../../service/customer.service';
-import UserDTO from "../../../../../dto/UserDTO";
-import {AccessService} from "../../../../../service/access.service";
+import UserDTO from '../../../../../dto/UserDTO';
+import {AccessService} from '../../../../../service/access.service';
+import {ImageService} from '../../../../../service/image.service';
 
 @Component({
   selector: 'app-view-locomotives',
@@ -21,7 +22,7 @@ export class ViewLocomotivesComponent implements OnInit {
 
 
 
-  constructor(private locomotiveService: LocomotiveService,  private router: Router,  private toastr: ToastrService, private accessService: AccessService) {
+  constructor(private imageService: ImageService, private locomotiveService: LocomotiveService,  private router: Router,  private toastr: ToastrService, private accessService: AccessService) {
     this.loadAll();
   }
   isVisible =  false;
@@ -53,6 +54,9 @@ export class ViewLocomotivesComponent implements OnInit {
   changeLocoVBreak = '';
   changeLocoDBreak = '';
   changeLocoNote = '';
+  changeLocoImage: string[] = [];
+  changeCustomerNic = '';
+
 
   ngOnInit(): void {
     this.loadAllIds();
@@ -138,6 +142,7 @@ export class ViewLocomotivesComponent implements OnInit {
     this.changeLocoVBreak = tempLoco.locoVBreak;
     this.changeLocoDBreak = tempLoco.locoDBreak;
     this.changeLocoNote = tempLoco.locoNote;
+    this.changeLocoImage =  Array(tempLoco.image);
     const btn = document.getElementById('btn-pop-up-two') as HTMLElement;
     btn.click();
 
