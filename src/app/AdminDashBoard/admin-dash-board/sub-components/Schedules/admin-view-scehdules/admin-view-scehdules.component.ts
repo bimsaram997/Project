@@ -29,6 +29,8 @@ export class AdminViewScehdulesComponent implements OnInit {
   new: LocoScheduleDTO = null;
   isVisible =  false;
 
+
+
   searchKey: string;
   isVisibleSecond = false;
   locoList: LocoDTO[] = [];

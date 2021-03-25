@@ -4,8 +4,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
 .container{
   padding-top: 20px;
-  padding-right: 100px;
-  padding-left: 100px;
+  padding-right: 10px;
+  padding-left: 10px;
 
 }
 .box-head{
@@ -21,7 +21,7 @@
 }
 .controls-container{
   width: 90%;
-  padding: 2%;
+  padding: 0%;
   height: 60%;
 
 
@@ -55,7 +55,7 @@ mat-radio-group mat-radio-button{
 }
 .controls-container-right{
   width: 90%;
-  padding: 5%;
+  padding: 0%;
   height: 60%;
   margin-top: 40px;
 
@@ -68,7 +68,7 @@ mat-radio-group mat-radio-button{
 }
 .controls-container-right-second{
   width: 100%;
-  padding: 5%;
+  padding: 0%;
   height: 60%;
   margin-top: 30px;
   padding-left: 20%;
@@ -83,7 +83,7 @@ mat-radio-group mat-radio-button{
 }
 .controls-container-right-third{
   width: 100%;
-  padding: 5%;
+  padding: 0%;
   height: 60%;
   margin-top: 30px;
 
@@ -92,8 +92,8 @@ mat-radio-group mat-radio-button{
   width: 110%;
 }
 .card-second{
-  width: 80%;
-  left: 10%;
+  padding: 40px;
+
   background: #ecf0f1;
 }
 .clear-btn{
@@ -101,18 +101,17 @@ mat-radio-group mat-radio-button{
 }
 .card{
   background: #ecf0f1;
+  width: 100%px;
 }
 .btn-three{
-  padding-top: 28.5%;
-  padding-left: 60%;
+
 }
 .btn-second{
-  padding-top: 27%;
-  padding-left: 60%;
+  bottom: 90%;
+
 }
 .btn-one{
-  padding-top: 23.3%;
-  padding-left: 60%;
+
 }
 .material-icons{
   font-weight: bold;

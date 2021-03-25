@@ -15,15 +15,17 @@
   <span style="padding-left: 80px; color: #013243; font-size: 15px;">Print Details</span>&nbsp; &nbsp;<button mat-raised-button style="top: 0px;" (click)="exporter.exportTable('xlsx',{fileName:'New'})">Excel</button>
   &nbsp;<button mat-raised-button style="top: 0px;" (click)="exporter.exportTable('csv',{fileName:'New'})">CSV</button>
   &nbsp;<button mat-raised-button style="top: 0px;" (click)="exporter.exportTable('txt',{fileName:'New'})">Text</button>
+  <br>
+  <br>
   <div class="table-style">
-    <div class="mat-elevation-z8" style="height: 50px">
+
       <table mat-table  matTableExporter #exporter="matTableExporter" [dataSource]="dataSource" class="mat-elevation-z8" matSort>
 
-        <ng-container matColumnDef="Schedule No" style=" width: 40px;" >
+        <ng-container matColumnDef="Schedule No" >
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Schedule No</th>
           <td mat-cell *matCellDef="let tempSchedule">{{tempSchedule.scheduleNo}} </td>
         </ng-container>
-        <ng-container matColumnDef="Date" style=" width: 40px;">
+        <ng-container matColumnDef="Date" >
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
           <td mat-cell *matCellDef="let tempSchedule"> {{tempSchedule.scheduleUpdate.split(' ').slice(0, 4).join(' ')}}</td>
         </ng-container>
@@ -42,7 +44,7 @@
 
         <!-- Symbol Column -->
         <ng-container matColumnDef="Supervisor NIC">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header---> Supervisor NIC </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Supervisor NIC </th>
           <td mat-cell *matCellDef="let tempSchedule"> {{tempSchedule.userNic}} </td>
         </ng-container>
 
@@ -76,7 +78,7 @@
           <td mat-cell *matCellDef="let tempSchedule"> {{tempSchedule.scheduleEMechanical}}</td>
         </ng-container>
 
-        <ng-container matColumnDef="#" style="width: 41px;">
+        <ng-container matColumnDef="#" >
           <th mat-header-cell *matHeaderCellDef>  </th>
           <td mat-cell *matCellDef="let tempSchedule">
             <button  mat-icon-button  (click)="view(tempSchedule)"><span class="material-icons">visibility</span></button>
@@ -89,7 +91,7 @@
 
       </table>
       <mat-paginator [pageSizeOptions]="[4, 8, 16]" showFirstLastButtons></mat-paginator>
-    </div>
+
   </div>
 
   <div class="container-wrp" *ngIf="isVisible">

@@ -13,15 +13,15 @@
       </button>
     </mat-form-field>
   </div>
-  <div class="table-style">
-    <div class="mat-elevation-z8" style="height: 50px">
+
+<div class="main-table">
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
 
-        <ng-container matColumnDef="Category" style=" width: 40px;">
+        <ng-container matColumnDef="Category" >
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>
           <td mat-cell *matCellDef="let tempLoco">{{tempLoco?.locoCatId}} </td>
         </ng-container>
-        <ng-container matColumnDef="Number" style=" width: 40px;">
+        <ng-container matColumnDef="Number">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Number </th>
           <td mat-cell *matCellDef="let tempLoco"> {{tempLoco?.locoNumber}}</td>
         </ng-container>
@@ -61,9 +61,12 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
 
       </table>
-      <mat-paginator [pageSizeOptions]="[4, 8, 12]" showFirstLastButtons></mat-paginator>
-    </div>
-  </div>
+
+  <mat-paginator [pageSizeOptions]="[4, 8, 12]" showFirstLastButtons></mat-paginator>
+</div>
+</div>
+
+
 
 
   <div class="container-wrp" *ngIf="isVisible">
@@ -239,4 +242,3 @@
   <button style="display: none"  type="button" id="btn-pop-up-two"  mat-stroked-button color="accent" (click)=" setStateTwo()">
   </button>
 
-</div>

@@ -3,9 +3,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Poppins:wght@300&family=Roboto:wght@500&display=swap');
 .container{
   padding-top: 30px;
-  padding-right: 100px;
-  padding-left: 100px;
-  position: relative;
+  padding-right: 10px;
+  padding-left: 10px;
+
 
 }
 .box-head{
@@ -16,20 +16,17 @@
   font-family: 'Bebas Neue', cursive;
   font-size: 40px;
   color: #013243;
-  padding-left: 10px;
+
 
 }
 table {
   width: 100%;
+
 }
-.table-style{
-   padding-right: 70px;
-   padding-left: 70px;
-   padding-top: 10px;
- }
-.mat-cell {
-  padding: 8px 8px 8px 0;
+mat-paginator{
+  width: 100%;
 }
+.main-table{}
 .mat-header-cell{
   font-size: 15px;
   font-weight: bold;

@@ -1,74 +1,140 @@
-<body bgcolor="white" style="height: 100%;" >
-<div class="bd">
+<mat-toolbar style="background-color: #2e3131;">
+  <img src="./assets/images/Logo.gif" alt="" style="width: 90px; height: 110px; padding-top: 20px;">
+  <span class="txt-welcome">SRI LANKA RAILWAY</span>
+  <span class="example-spacer"></span>
 
-  <div class="body-txt">
-    <p><span style="padding-left: 7%; font-size: 70px">Welcome</span> <br> <br>Locomotive Service System <br><br> <span class="login-info">Click here to Sign In  </span> <button mat-raised-button color="primary" routerLink="MainLogin" style="width: 8vw; border-radius: 20px;">Click</button></p>
-  </div>
-  <div class="container-wrp" *ngIf="slider" [@flyInOut]>
+</mat-toolbar>
 
-    <p class="txt-welcome">Sign In</p>
-    <img src="./assets/images/man.png" class="image-form" style="height: 100px; width: 120px;">
-    <div style="padding-left: 20px; padding-right: 20px;">
-      <div class="example-container">
-        <mat-form-field  style="width: 18vw;">
-          <mat-label>Input</mat-label>
-          <input matInput required type="email" [(ngModel)]="loginEmail">
-        </mat-form-field>
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+<main>
+  <section id="home" class="home-bg">
+    <div class="container">
+      <h1>
+      <span class="title-text">WELCOME TO</span>
+      <span class="title-text">LOCOMOTIVE CENTER</span>
+      </h1>
+      <p class="lead">
+       Request your Locomotive services, Real time update the status of the your responsible locomotives faster and easily.
+        <br>
+        <br>
+        <span class="click"> Click here to Sign In</span>
 
         <br>
-        <mat-form-field style="width: 18vw;">
-          <mat-label>Enter your password</mat-label>
-          <input matInput [type]="hide ? 'password' : 'text'" required [(ngModel)]="loginPassword">
-          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          </button>
-        </mat-form-field>
-        <button mat-raised-button color="primary" style="width:5vw" (click)="login()">Login</button>
+        <br>
+        <button mat-raised-button class="btn-log" routerLink="MainLogin" >Click</button>
+      </p>
+
+    </div>
+  </section>
+  <a href="#" class="float">
+    <i class="fa fa-envelope my-float"></i>
+  </a>
+  <div class="label-container">
+    <div class="label-text">Feedback</div>
+    <i class="fa fa-play label-arrow"></i>
+  </div>
+
+  <section id="testimonials" class="section-bg">
+    <div class="container">
+      <h2 class="section-title">SERVICES</h2>
+
+      <div class="flex-testimonials">
+        <div class="flex-box person-box">
+          <img
+            class="service-icon"
+            aria-hidden="true"
+            src="./assets/images/m9.png"
+            alt="rectangle-icon with an arrow"
+          />
+          <h3 class="service-title">Locomotive Status</h3>
+          <p class="service-description">
+            We provide facility update regular updates of Locomotives by providing facilities to update status, Motor details, fluid details and breaks
+          </p>
+
+        </div>
+        <div class="flex-box person-box">
+          <img
+            class="service-icon"
+            aria-hidden="true"
+            src="./assets/images/m11.png"
+            alt="rectangle-icon with an arrow"
+          />
+          <h3 class="service-title">Locomotive Schedules</h3>
+          <p class="service-description">
+            You able to request different schedules that based on requirements of the Locomotive in daily basis or monthly basis.
+
+          </p>
+        </div>
+        <div class="flex-box person-box">
+          <img
+            class="service-icon"
+            aria-hidden="true"
+            src="./assets/images/m104.png"
+            alt="rectangle-icon with an arrow"
+          />
+          <h3 class="service-title">Load Trails</h3>
+          <p class="service-description">
+            This enables supervisors to update Load Trails details after completing locomotives schedules.
+          </p>
+        </div>
+        <div class="flex-box person-box">
+          <img
+            class="service-icon"
+            aria-hidden="true"
+            src="./assets/images/locom6.png"
+            alt="rectangle-icon with an arrow"
+          />
+          <h3 class="service-title">Real-Time Analysis</h3>
+          <p class="service-description">
+            We provide visual representations on schedules, locomotive and load trails details with future predictions.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="company-info">
+    <div>
+      <ul class="footer-list nobullets">
+        <li>&copy; BimsaramM9</li>
+        <li>All Rights Reserved</li>
+        <li>2021</li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="column-title">Our Location</h4>
+      <hr class="divider" />
+      <ul class="footer-list nobullets">
+        <li>Colombo,</li>
+        <li>Sri Lanka</li>
+
+      </ul>
+    </div>
+    <div>
+      <h4 class="column-title">Quick Links</h4>
+      <hr class="divider" />
+      <ul class="footer-list nobullets">
+        <li><a class="link" href="http://www.railway.gov.lk/">Sri Lanka Railway</a></li>
+        <li><a class="link" href="#">Terms & Conditions</a></li>
+        <li><a class="link" href="#">Privacy Policy</a></li>
+      </ul>
+      <div class="link-icons">
+        <a class="link" href="#">
+          <p class="sr-only">link to company's twitter account</p>
+          <i class="fa fa-twitter fa-lg" aria-hidden="true"></i
+          ></a>
+        <a class="link" href="#">
+          <p class="sr-only">link to company's facebook account</p>
+          <i class="fa fa-facebook fa-lg" aria-hidden="true"></i
+          ></a>
+        <a class="link" href="#">
+          <p class="sr-only">link to company's instagram account</p>
+          <i class="fa fa-instagram fa-lg" aria-hidden="true"></i
+          ></a>
       </div>
     </div>
   </div>
 
-
-</div>
-
-<div class="container">
-  <div class="services">
-    <h1>Our Services</h1>
-  </div>
-  <div class="row">
-
-    <div class="box">
-      <div class="icon">
-       <span class="material-icons">train</span>
-      </div>
-      <h3>Locomotive Status</h3>
-      <p class="detail-txt">We provide facility update regular updates of Locomotives by providing facilities to update status, Motor details, fluid details and breaks</p>
-    </div>
-    <div class="box">
-      <div class="icon">
-        <i class="fa fa-address-card" aria-hidden="true"></i>
-      </div>
-      <h3>Locomotive Schedules</h3>
-      <p class="detail-txt">You able to request different schedules that based on requirements of the Locomotives.    </p>
-    </div>
-    <div class="box">
-      <div class="icon">
-        <i class="fa fa-wrench" aria-hidden="true"></i>
-      </div>
-      <h3>Load Trails</h3>
-      <p class="detail-txt">This enables supervisors to update Load Trails details after completing locomotives schedules.</p>
-    </div>
-    <div class="box">
-      <div class="icon">
-        <i class="fa fa-tasks" aria-hidden="true"></i>
-      </div>
-      <h3>Real-Time Analysis</h3>
-      <p class="detail-txt">We provide visual representations on schedules, locomotive and load trails details with future predictions</p>
-    </div>
-
-  </div>
-</div>
-
-
-</body>
+</footer>

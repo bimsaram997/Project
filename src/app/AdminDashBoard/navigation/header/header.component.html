@@ -1,23 +1,9 @@
 <mat-toolbar color="primary">
-  <div fxHide.gt-xs>
-
-  </div>
-  <div>
-    <button mat-icon-button (click)="onToogleSlidenav()">
-      <mat-icon>menu</mat-icon>
-    </button>
-  </div>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="onToogleSlidenav()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>My App</span>
   <span class="example-spacer"></span>
-  <div>
-    <ul class="navigation-items">
-      <li>
-        <a href="">Owner</a>
-      </li>
-      <li>
-        <a href="">Account</a>
-      </li>
-    </ul>
-  </div>
   <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
   <span class="material-icons">
 notification_important
@@ -35,6 +21,8 @@ notification_important
     <button mat-menu-item (click)="logOut()">
       <mat-icon>logout</mat-icon>
       <span>Log Out</span>
+
     </button>
   </mat-menu>
+
 </mat-toolbar>

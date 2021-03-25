@@ -19,7 +19,7 @@
       <br>
       <br>
       <mat-card class="card">
-        <mat-grid-list cols="2" rowHeight="300px" [gutterSize]="'-55px'"  style="bottom: 30px;">
+        <mat-grid-list cols="2" rowHeight="350px" [gutterSize]="'-55px'"  style="bottom: 30px;">
           <mat-grid-tile>
             <div class="controls-container">
               <h3 class="sub-headers">Basic Details</h3>
@@ -120,11 +120,14 @@
                   </div>
                 </div>
               </mat-form-field>
+              <br>
+              <br>
+              <div class="btn-one">
+                <button mat-raised-button class="prev" (click)="nextStep()" style="left: 90%; height: 35px;"><span class="material-icons">keyboard_arrow_right</span></button>
+              </div>
             </div>
           </mat-grid-tile>
-          <div class="btn-one">
-            <button mat-raised-button class="prev" (click)="nextStep()" style="left: 90%; height: 35px;"><span class="material-icons">keyboard_arrow_right</span></button>
-          </div>
+
         </mat-grid-list>
       </mat-card>
 
@@ -138,7 +141,7 @@
       <br>
       <br>
       <mat-card class="card-second">
-        <mat-grid-list cols="2" rowHeight="300px" [gutterSize]="'-55px'"  style="bottom: 20px;">
+        <mat-grid-list cols="2" rowHeight="350px" [gutterSize]="'-55px'"  style="bottom: 20px;">
           <mat-grid-tile style="">
             <div class="controls-container">
               <h3 class="sub-headers">Liquid Levels</h3>
@@ -200,12 +203,17 @@
                   <mat-radio-button *ngFor="let tMotor of tMotors" [value] = "tMotor">{{tMotor}}</mat-radio-button>
                 </mat-radio-group>
               </div>
+              <br>
+              <br>
+
+              <div class="btn-second">
+                <button mat-raised-button  class="prev"  (click)="previousStep()" style="left: 70%; height: 35px;"><span class="material-icons">keyboard_arrow_left</span></button>
+                <button mat-raised-button class="prev" (click)="nextStep()" style="left: 72%; height: 35px;"><span class="material-icons">keyboard_arrow_right</span></button>
+              </div>
             </div>
+
           </mat-grid-tile>
-          <div class="btn-second">
-            <button mat-raised-button  class="prev"  (click)="previousStep()" style="left: 70%; height: 35px;"><span class="material-icons">keyboard_arrow_left</span></button>
-            <button mat-raised-button class="prev" (click)="nextStep()" style="left: 72%; height: 35px;"><span class="material-icons">keyboard_arrow_right</span></button>
-          </div>
+
         </mat-grid-list>
       </mat-card>
     </mat-tab>
@@ -218,7 +226,7 @@
       <br>
       <br>
       <mat-card class="card-second">
-        <mat-grid-list cols="2" rowHeight="300px" [gutterSize]="'-55px'"  style="bottom: 30px;">
+        <mat-grid-list cols="2" rowHeight="350px" [gutterSize]="'-55px'"  style="bottom: 30px;">
           <mat-grid-tile>
             <div class="controls-container" style="padding-bottom: 2px;">
               <h3 class="sub-headers">Breaks</h3>
@@ -264,14 +272,14 @@ library_add</span></p>
                 <button mat-raised-button color="warn"  class="clear-btn" style="width: 150px;"(click)="handleClear()">Clear</button>
               </div>
               <br>
-              <br>
+              <div class="btn-three">
+                <button mat-raised-button  class="prev"  (click)="previousStep()" style="left: 75%; height: 35px;"><span class="material-icons">keyboard_arrow_left</span></button>
+
+              </div>
 
             </div>
           </mat-grid-tile>
-          <div class="btn-three">
-            <button mat-raised-button  class="prev"  (click)="previousStep()" style="left: 87%; height: 35px;"><span class="material-icons">keyboard_arrow_left</span></button>
 
-          </div>
         </mat-grid-list>
 
       </mat-card>
