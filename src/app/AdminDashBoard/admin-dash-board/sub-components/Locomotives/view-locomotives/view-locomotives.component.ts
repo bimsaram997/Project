@@ -12,6 +12,8 @@ import {CustomerService} from '../../../../../service/customer.service';
 import UserDTO from '../../../../../dto/UserDTO';
 import {AccessService} from '../../../../../service/access.service';
 import {ImageService} from '../../../../../service/image.service';
+import {ViewLocoComponent} from "../../../../../UserDashBoard/user-dashboard/SubComponents/Locomotives/user-view-locomotives/view-loco/view-loco.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-view-locomotives',
@@ -22,7 +24,7 @@ export class ViewLocomotivesComponent implements OnInit {
 
 
 
-  constructor(private imageService: ImageService, private locomotiveService: LocomotiveService,  private router: Router,  private toastr: ToastrService, private accessService: AccessService) {
+  constructor(public dialog: MatDialog, private imageService: ImageService, private locomotiveService: LocomotiveService,  private router: Router,  private toastr: ToastrService, private accessService: AccessService) {
     this.loadAll();
   }
   isVisible =  false;
@@ -54,7 +56,7 @@ export class ViewLocomotivesComponent implements OnInit {
   changeLocoVBreak = '';
   changeLocoDBreak = '';
   changeLocoNote = '';
-  changeLocoImage: string[] = [];
+  changeLocoImage =[];
   changeCustomerNic = '';
 
 
@@ -81,10 +83,20 @@ export class ViewLocomotivesComponent implements OnInit {
     });
   }
 
-  setState(){
-    this.isVisible = !this.isVisible;
-    this.isVisibleSecond = false;
+  openDialog(tempLoco: LocoDTO){
+    this.selectedLoco = tempLoco;
+    const dialogRef = this.dialog.open(ViewLocoComponent, {data: {ViewLocoOil: this.selectedLoco.locoOil, ViewLocoFuel: this.selectedLoco.locoFuel, ViewLocoWater: this.selectedLoco.locoWater,
+        ViewLocoVBreak: this.selectedLoco.locoVBreak,
+        ViewLocoDBreak: this.selectedLoco.locoDBreak,
+        ViewLocoMainGen: this.selectedLoco.locoMainGen,
+        ViewLocoTrack: this.selectedLoco.locoTracMot,
+        ViewLocoNote: this.selectedLoco.locoNote}});
+
+    dialogRef.afterClosed().subscribe(result =>{
+      console.log(`Dialog: ${result}`);
+    });
   }
+
   setStateTwo(){
     this.isVisible = false;
     this.isVisibleSecond =  !this.isVisibleSecond;

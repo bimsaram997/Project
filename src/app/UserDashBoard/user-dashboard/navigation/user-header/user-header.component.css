@@ -24,14 +24,6 @@ a:hover, a:active{
   padding: 0;
   margin: 0;
 }
-::ng-deep mat-toolbar{
-  border-radius: 0px;
-}
-@media (max-width: 959px) {
-  mat-toolbar{
-    border-radius: 0px;
-  }
-}
 .example-spacer{
   font-family: 'Roboto', sans-serif;
 }
@@ -39,4 +31,5 @@ a:hover, a:active{
   width: auto;
 }
 mat-toolbar{
+ width: auto;
 }

@@ -1,6 +1,7 @@
 export default class LocoScheduleDTO {
 
-  constructor(scheduleNo?: string, scheduleUpdate?: string, locoCatId?: string, locoNumber?: number, userNic?: string, userName?: string, userEmail?: string, scheduleStatus?: string, scheduleTrackMotors?: string[], scheduleLocoBody?: string[], scheduleElCuUnit?: string[], scheduleEMechanical?: string[], scheduleMach?: string[], scheduleRemark?: string) {
+
+  constructor(scheduleNo?: string, scheduleUpdate?: string, locoCatId?: string, locoNumber?: number, userNic?: string, userName?: string, userEmail?: string, scheduleStatus?: string, scheduleCom?: string, scheduleTrackMotors?: string[], scheduleLocoBody?: string[], scheduleElCuUnit?: string[], scheduleEMechanical?: string[], scheduleMach?: string[], scheduleRemark?: string) {
     this._scheduleNo = scheduleNo;
     this._scheduleUpdate = scheduleUpdate;
     this._locoCatId = locoCatId;
@@ -9,7 +10,7 @@ export default class LocoScheduleDTO {
     this._userName = userName;
     this._userEmail = userEmail;
     this._scheduleStatus = scheduleStatus;
-
+    this._scheduleCom = scheduleCom;
     this._scheduleTrackMotors = scheduleTrackMotors;
     this._scheduleLocoBody = scheduleLocoBody;
     this._scheduleElCuUnit = scheduleElCuUnit;
@@ -80,7 +81,13 @@ export default class LocoScheduleDTO {
   set scheduleStatus(value: string) {
     this._scheduleStatus = value;
   }
+  get scheduleCom() {
+    return this._scheduleCom;
+  }
 
+  set scheduleCom(value: string) {
+    this._scheduleCom = value;
+  }
 
 
   get scheduleTrackMotors(): string[] {
@@ -144,6 +151,7 @@ export default class LocoScheduleDTO {
   private _scheduleEMechanical: string[] = [];
   private _scheduleMach: string[] = [];
   private _scheduleRemark: string;
+  private _scheduleCom: string;
 
 
 

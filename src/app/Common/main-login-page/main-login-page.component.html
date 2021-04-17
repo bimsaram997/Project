@@ -19,11 +19,11 @@
           </div>
 
           <br>
-          <br>
-
             <mat-form-field  style="width: 18vw;" >
               <mat-label>Email</mat-label>
-              <input matInput required type="email" [(ngModel)]="loginEmail">
+              <input matInput required type="email" [(ngModel)]="loginEmail" [email]="true"
+                     placeholder="first.last@example.com"
+                      >
             </mat-form-field>
           <br>
           <br>
@@ -35,12 +35,16 @@
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>
             </mat-form-field>
+          <br>
+          <a href="ForgetPassword" style="">Forget Password?</a>
             <br>
-            <button mat-raised-button color="primary" style="width:5vw" (click)="login()">Login</button>
+          <br>
+            <button class="login-btn" mat-raised-button color="primary"  (click)="login()">Login</button>
 
 
           <!-- Separador entre botón y opciones -->
           <hr class="separator">
+
 
           <!-- Otras opciones de inicio login -->
 
@@ -59,8 +63,7 @@
           </div>
 
           <div class="image-text">
-            <h2>Start your journey now</h2>
-            <p>Start create your amazing website with us! Login into your account now and huwala.</p>
+
           </div>
 
         </div>

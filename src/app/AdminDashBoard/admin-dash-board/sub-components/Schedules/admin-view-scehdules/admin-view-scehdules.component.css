@@ -20,7 +20,7 @@
 }
 table {
   width: 100%;
-  min-width: 50px;
+
   table-layout: fixed;
 
 }
@@ -88,7 +88,7 @@ table {
   width: 460px;
   height: 500px;
   position: absolute;
-  background-color: #f6f6f6;
+
   border-radius: 5px;
   top: 340px;
   right: 0;
@@ -97,9 +97,9 @@ table {
   margin: auto;
   border-width: 10px;
   border-color: #2e3131;
-  -webkit-box-shadow: 5px 2px 3px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.75);
-  box-shadow: 0 2px 12px rgba(0,0,0,.4);
+  -webkit-box-shadow: 0px 8px 14px 0px rgba(0,0,0,0.63);
+  -moz-box-shadow: 0px 8px 14px 0px rgba(0,0,0,0.63);
+  box-shadow: 0px 8px 14px 0px rgba(0,0,0,0.63);
 
 }
 .container-wrp-two{
@@ -115,10 +115,9 @@ table {
   margin: auto;
   border-width: 10px;
   border-color: #2e3131;
-  -webkit-box-shadow: 5px 2px 3px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.75);
-  box-shadow: 0 2px 12px rgba(0,0,0,.4);
-
+  -webkit-box-shadow: 0px 8px 14px 0px rgba(0,0,0,0.63);
+  -moz-box-shadow: 0px 8px 14px 0px rgba(0,0,0,0.63);
+  box-shadow: 0px 8px 14px 0px rgba(0,0,0,0.63);
 }
 .comp-tbl {
   font-family: arial, sans-serif;
@@ -190,6 +189,6 @@ mat-radio-group mat-radio-button{
   background: #22a7f0;
 }
 .modal-body{
-  background: #e4f1fe;
+  background: #f3f1ef;
 }
 .material-icons{}

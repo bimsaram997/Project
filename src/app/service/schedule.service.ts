@@ -11,7 +11,7 @@ export class ScheduleService {
   myUrl = environment.baseUrlTwo;
   constructor(private http: HttpClient) { }
   public saveSchedule(dto: LocoScheduleDTO): Observable<any>{
-    return this.http.post(this.myUrl + 'scheduleRoute/saveSchedule',{
+    return this.http.post(this.myUrl + 'scheduleRoute/saveSchedule', {
       scheduleNo: dto.scheduleNo,
       scheduleUpdate: dto.scheduleUpdate,
       locoCatId: dto.locoCatId,
@@ -20,6 +20,7 @@ export class ScheduleService {
       userName: dto.userName,
       userEmail: dto.userEmail,
       scheduleStatus: dto. scheduleStatus,
+      scheduleCom: dto. scheduleCom,
       scheduleTrackMotors: dto.scheduleTrackMotors,
       scheduleLocoBody: dto.scheduleLocoBody,
       scheduleElCuUnit: dto.scheduleElCuUnit,
@@ -46,6 +47,7 @@ export class ScheduleService {
       userName: dto.userName,
       userEmail: dto.userEmail,
       scheduleStatus: dto. scheduleStatus,
+      scheduleCom: dto.scheduleCom,
       scheduleTrackMotors: dto.scheduleTrackMotors,
       scheduleLocoBody: dto.scheduleLocoBody,
       scheduleElCuUnit: dto.scheduleElCuUnit,

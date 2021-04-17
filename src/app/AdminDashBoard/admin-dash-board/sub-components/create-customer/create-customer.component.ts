@@ -3,13 +3,14 @@ import {CustomerService} from '../../../../service/customer.service';
 import CustomerDTO from '../../../../dto/CustomerDTO';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
-import {ToastrService} from "ngx-toastr";
+
 import {ActivatedRoute, Router} from '@angular/router';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {UpdateCustomerComponent} from '../update-customer/update-customer.component';
 import {ModelComponent} from './model/model.component';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {MyErrorStateMatcher} from "../Users/sign-up-user/sign-up-user.component";
+import {ToastrService} from "ngx-toastr";
+
 
 
 @Component({
@@ -57,7 +58,6 @@ export class CreateCustomerComponent implements OnInit {
     Validators.email,
   ]);
 
-  matcher = new MyErrorStateMatcher();
   constructor(
     private toastr: ToastrService,
     private customerService: CustomerService,

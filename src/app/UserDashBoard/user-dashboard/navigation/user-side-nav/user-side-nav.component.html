@@ -21,7 +21,7 @@
   </mat-list-item>
   <mat-menu #menu = "matMenu" class="r">
     <button mat-menu-item (click)="onSidenavClose()" routerLink="/userDashboard/createSchedule">Add Schedule</button>
-    <button mat-menu-item (click)="onSidenavClose()" routerLink="/userDashboard/viewSchedules">View All Locomotives</button>
+    <button mat-menu-item (click)="onSidenavClose()" routerLink="/userDashboard/viewSchedules">View All Schedules</button>
   </mat-menu>
   <mat-list-item [matMenuTriggerFor] = "menu">
     <mat-icon>unfold_more</mat-icon>

@@ -1,0 +1,20 @@
+table {
+  width: auto;
+
+
+}
+.table-style{
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-top: 10px;
+  display: table;
+}
+.mat-cell {
+  padding: -2px -2px -2px -2px;
+  font-size: small;
+  position: relative;
+}
+.mat-header-cell{
+  font-size: 12px;
+  font-weight: bold;
+}

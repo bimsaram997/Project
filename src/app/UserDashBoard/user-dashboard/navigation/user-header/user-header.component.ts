@@ -33,7 +33,9 @@ export class UserHeaderComponent implements OnInit {
     if (confirm('Do want to log out? ?')){
       this.onSucess('You are log out!');
       this.cookieService.remove('userData');
-      this.router.navigate(['/'])
+      this.router.navigate(['/']);
+      this.refresh();
+
     }
   }
 
@@ -42,7 +44,10 @@ export class UserHeaderComponent implements OnInit {
   }
   public display(){
     this.data =  this.loginEmail + '';
-    console.log(this.data)
+    console.log(this.data);
 }
+  refresh(): void {
+    window.location.reload();
+  }
 
 }

@@ -290,6 +290,7 @@ font-weight: bold;
   width: 15vw;
   background-color:#013243;
   color: white;
+border-radius: 20px;
 }
 .btn-log:hover{
   background-color: #5c97bf;
@@ -308,6 +309,9 @@ font-weight: bold;
 .service-icon {
   margin-top: 0.5rem;
   max-width: 4rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .service-title {

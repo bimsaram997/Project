@@ -12,7 +12,7 @@ import {CreateScheduleComponent} from './UserDashBoard/user-dashboard/SubCompone
 import {ViewSchedulesComponent} from "./UserDashBoard/user-dashboard/SubComponents/Schedules/view-schedules/view-schedules.component";
 import {AdminViewScehdulesComponent} from "./AdminDashBoard/admin-dash-board/sub-components/Schedules/admin-view-scehdules/admin-view-scehdules.component";
 import {UserViewLocomotivesComponent} from "./UserDashBoard/user-dashboard/SubComponents/Locomotives/user-view-locomotives/user-view-locomotives.component";
-import {SignUpUserComponent} from "./AdminDashBoard/admin-dash-board/sub-components/Users/sign-up-user/sign-up-user.component";
+//import {SignUpUserComponent} from "./AdminDashBoard/admin-dash-board/sub-components/Users/sign-up-user/sign-up-user.component";
 import {AuthGuard} from "./auth.guard";
 import {AdminAuthGuardGuard} from "./admin-auth-guard.guard";
 import {UserDashContentComponent} from "./UserDashBoard/user-dashboard/SubComponents/user-dash-content/user-dash-content.component";
@@ -22,6 +22,7 @@ import {ClerkDashContentComponent} from "./ClerkDashBoard/clerk-dash-board/SubCo
 import {CreateUserComponent} from "./ClerkDashBoard/clerk-dash-board/SubComponents/Users/create-user/create-user.component";
 import {MainLoginPageComponent} from "./Common/main-login-page/main-login-page.component";
 import {UserProfileComponent} from "./UserDashBoard/user-dashboard/SubComponents/UserProfile/user-profile/user-profile.component";
+import {ForgotPasswordComponent} from "./Common/forgot-password/forgot-password.component";
 
 
 
@@ -29,18 +30,19 @@ import {UserProfileComponent} from "./UserDashBoard/user-dashboard/SubComponents
 const routes: Routes = [
   {path: '', component: LoginAndSignupComponent},
   {path: 'MainLogin', component: MainLoginPageComponent},
-  {path: 'adminDashboard', component: AdminDashBoardComponent, children: [
-      {path: 'adminDashContent', canActivate: [AdminAuthGuardGuard], component: AdminDashContentComponent},
+  {path: 'ForgetPassword', component: ForgotPasswordComponent},
+  {path: 'adminDashboard',  canActivate: [AdminAuthGuardGuard], component: AdminDashBoardComponent, children: [
+      {path: 'adminDashContent', component: AdminDashContentComponent},
       {path: 'createCustomer', component: CreateCustomerComponent},
       {path: 'createCustomer', component: CreateCustomerComponent},
       {path: 'createLocomotive', component: CreateLocomotiveComponent},
       {path: 'customerDetail/:id/:CustomerNic', component: CustomerDetailComponent},
       {path: 'viewLocomotives', component: ViewLocomotivesComponent},
       {path: 'adminViewSchedules', component: AdminViewScehdulesComponent},
-      {path: 'signUpUser', component:  SignUpUserComponent}
+
     ]},
-  {path: 'userDashboard', component: UserDashboardComponent,  children: [
-      {path: 'userDashContent', canActivate: [AuthGuard], component: UserDashContentComponent},
+  {path: 'userDashboard', canActivate: [AuthGuard], component: UserDashboardComponent,  children: [
+      {path: 'userDashContent',  component: UserDashContentComponent},
       {path: 'createSchedule', component: CreateScheduleComponent},
       {path: 'viewSchedules', component: ViewSchedulesComponent},
       {path: 'userViewLocomotives', component: UserViewLocomotivesComponent },
@@ -49,7 +51,8 @@ const routes: Routes = [
     ]},
   {path: 'clerkDashBoard', component: ClerkDashBoardComponent, children: [
       {path: 'clerkDashContent', component: ClerkDashContentComponent},
-      {path: 'createUser', component: CreateUserComponent}
+      {path: 'createUser', component: CreateUserComponent},
+      {path: 'createCustomer', component: CreateCustomerComponent}
     ]}
 ];
 

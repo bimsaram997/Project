@@ -35,7 +35,7 @@
         <!-- Weight Column -->
         <ng-container matColumnDef="Availability">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Availability </th>
-          <td mat-cell *matCellDef="let tempLoco"> <img multiple [src]=" tempLoco.image" style="height: 30px; width: 30px;"></td>
+          <td mat-cell *matCellDef="let tempLoco"> {{tempLoco.locoAvailability}}</td>
         </ng-container>
 
         <!-- Symbol Column -->
@@ -52,7 +52,7 @@
         <ng-container matColumnDef="#">
           <th mat-header-cell *matHeaderCellDef>  </th>
           <td mat-cell *matCellDef="let tempLoco">
-            <button mat-icon-button  (click)="view(tempLoco)"><span class="material-icons">visibility</span></button>
+            <button mat-icon-button  (click)="openDialog(tempLoco)"> <span class="material-icons">visibility</span></button>
             <button mat-icon-button color="warn" (click)="deleteLoco(tempLoco.locoNumber)"><mat-icon>delete_outline</mat-icon></button>
             <button mat-icon-button (click)="updateLocomotive(tempLoco)"><mat-icon>launch</mat-icon></button>
           </td>
@@ -74,13 +74,13 @@
       <div class="box-head">
         <img src="https://img.icons8.com/bubbles/50/000000/train.png" style="width: 35px; height: 35px;"/> &nbsp;
         <span class="heading-update">VIEW</span>
-        <button style="left: 74%; color: white" mat-icon-button (click)="setState()"><span style="font-weight: bolder;" class="material-icons">clear</span></button>
+        <button style="left: 74%; color: white" mat-icon-button ><span style="font-weight: bolder;" class="material-icons">clear</span></button>
       </div>
 
     </div>
 
       <div class="modal-body">
-        <mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
+        <mat-tab-group mat-stretch-tabs class="example-stretched-tabs" animationDuration="0ms">
           <mat-tab label="First">
             <br>
             <div style="padding-left: 10px; padding-right: 10px;">
@@ -166,7 +166,7 @@
     </div>
 
       <div class="modal-body">
-        <mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
+        <mat-tab-group mat-stretch-tabs class="example-stretched-tabs" animationDuration="0ms">
           <mat-tab label="First">
             <br>
             <mat-grid-list cols="1" rowHeight="300px" [gutterSize]="'-55px'">
@@ -237,7 +237,7 @@
   </div>
 
 
-  <button style="display: none"  type="button" id="btn-pop-up"  mat-stroked-button color="accent" (click)="setState()">
+  <button style="display: none"  type="button" id="btn-pop-up"  mat-stroked-button color="accent">
   </button>
   <button style="display: none"  type="button" id="btn-pop-up-two"  mat-stroked-button color="accent" (click)=" setStateTwo()">
   </button>

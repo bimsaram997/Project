@@ -3,8 +3,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Poppins:wght@300&family=Roboto:wght@500&display=swap');
 .container{
   padding-top: 30px;
-  padding-right: 100px;
-  padding-left: 100px;
+  padding-right: 10px;
+  padding-left: 10px;
 
 }
 .box-head{
@@ -18,20 +18,81 @@
   padding-left: 10px;
 
 }
-table {
-  width: 100%;
-}
-.table-style{
-  padding-right: 70px;
-  padding-left: 70px;
-  padding-top: 10px;
+body {
+  font-family: 'Covered By Your Grace', cursive;
+  line-height: 1.25;
+
 }
 .mat-cell {
-  padding: 8px 8px 8px 0;
+  padding: -2px -2px -2px -2px;
+  font-size: small;
+  position: relative;
 }
 .mat-header-cell{
-  font-size: 15px;
+  font-size: 12px;
   font-weight: bold;
+}
+
+
+@media screen and (max-width: 1280px) {
+  .mat-table {
+    border: 1px;
+    vertical-align: middle
+  }
+
+  .mat-table caption {
+    font-size: 15px;
+  }
+
+
+  .mat-table .mat-header-cell {
+
+    border: 10px solid;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    position: absolute;
+    width: 10px;
+  }
+
+  .mat-table .mat-row {
+    border-bottom: 10px solid #ddd;
+    display: block;
+  }
+  /*
+  .mat-table .mat-row:nth-child(even) {background: #CCC}
+  .mat-table .mat-row:nth-child(odd) {background: #FFF}
+  */
+  .mat-table .mat-cell {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 15px;
+    text-align: end;
+    height:10px;
+    white-space: normal;
+    margin-bottom: 1%;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .mat-table .mat-cell:before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    text-transform: uppercase;
+
+    font-weight: bold;
+    font-size: 15px;
+  }
+  .mat-table .mat-cell:last-child {
+    border-bottom: 0;
+  }
+  .mat-table .mat-cell:first-child {
+    margin-top: 4%;
+  }
 }
 .center, .content{
   position: absolute;
@@ -68,6 +129,8 @@ table {
 }
 
 .container-wrp{
+  overflow:hidden;
+  float:left;
   width: 500px;
   height: 619px;
   position: absolute;
@@ -139,6 +202,7 @@ table {
   width: 32px;
 }
 .container-wrp-two{
+  overflow:hidden;
   width: 500px;
   height: 575px;
   position: absolute;

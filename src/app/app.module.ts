@@ -24,7 +24,7 @@ import { ViewSchedulesComponent } from './UserDashBoard/user-dashboard/SubCompon
 import { AdminViewScehdulesComponent } from './AdminDashBoard/admin-dash-board/sub-components/Schedules/admin-view-scehdules/admin-view-scehdules.component';
 import { UserViewLocomotivesComponent } from './UserDashBoard/user-dashboard/SubComponents/Locomotives/user-view-locomotives/user-view-locomotives.component';
 import {MatTableExporterModule} from "mat-table-exporter";
-import { SignUpUserComponent } from './AdminDashBoard/admin-dash-board/sub-components/Users/sign-up-user/sign-up-user.component';
+
 import { UserDashContentComponent } from './UserDashBoard/user-dashboard/SubComponents/user-dash-content/user-dash-content.component';
 import { AdminDashContentComponent } from './AdminDashBoard/admin-dash-board/sub-components/admin-dash-content/admin-dash-content.component';
 
@@ -44,6 +44,13 @@ import { CreateUserComponent } from './ClerkDashBoard/clerk-dash-board/SubCompon
 import { MainLoginPageComponent } from './Common/main-login-page/main-login-page.component';
 import { CommonHeaderComponent } from './Common/common-header/common-header.component';
 import { UserProfileComponent } from './UserDashBoard/user-dashboard/SubComponents/UserProfile/user-profile/user-profile.component';
+import { ViewLocoComponent } from './UserDashBoard/user-dashboard/SubComponents/Locomotives/user-view-locomotives/view-loco/view-loco.component';
+import { EditLocoComponent } from './UserDashBoard/user-dashboard/SubComponents/Locomotives/user-view-locomotives/edit-loco/edit-loco.component';
+import {EventEmitterService} from "./service/event-emitter.service";
+import { ForgotPasswordComponent } from './Common/forgot-password/forgot-password.component';
+import {ErrorStateMatcher, ShowOnDirtyErrorStateMatcher} from "@angular/material/core";
+import {ReactiveFormsModule} from "@angular/forms";
+
 
 
 
@@ -75,7 +82,6 @@ import { UserProfileComponent } from './UserDashBoard/user-dashboard/SubComponen
     ViewSchedulesComponent,
     AdminViewScehdulesComponent,
     UserViewLocomotivesComponent,
-    SignUpUserComponent,
     UserDashContentComponent,
     AdminDashContentComponent,
     HomeComponent,
@@ -88,6 +94,11 @@ import { UserProfileComponent } from './UserDashBoard/user-dashboard/SubComponen
     MainLoginPageComponent,
     CommonHeaderComponent,
     UserProfileComponent,
+    ViewLocoComponent,
+    EditLocoComponent,
+    ForgotPasswordComponent,
+
+
 
 
 
@@ -107,10 +118,11 @@ import { UserProfileComponent } from './UserDashBoard/user-dashboard/SubComponen
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
-    LayoutModule
+    LayoutModule,
+
   ],
-  providers: [],
+  providers: [EventEmitterService],
   bootstrap: [AppComponent],
-  entryComponents: [ModelComponent]
+  entryComponents: [ModelComponent, ViewLocoComponent, EditLocoComponent]
 })
 export class AppModule { }

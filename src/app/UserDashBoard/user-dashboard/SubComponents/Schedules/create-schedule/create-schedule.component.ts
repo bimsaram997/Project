@@ -46,6 +46,7 @@ export class CreateScheduleComponent implements OnInit {
   userName = '';
   userEmail = '';
   scheduleStatus = '';
+  scheduleCom = 'InCompleted';
   scheduleTrackMotors: string[] = [];
   scheduleLocoBody: string[] = [];
   scheduleElCuUnit: string[] = [];
@@ -110,6 +111,7 @@ export class CreateScheduleComponent implements OnInit {
       this.userName.trim(),
       this.userEmail.trim(),
       this.scheduleStatus.trim(),
+      this.scheduleCom.trim(),
 
       Array(this.scheduleTrackMotors.toString()),
       Array(this.scheduleLocoBody.toString()),

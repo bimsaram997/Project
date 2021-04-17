@@ -118,6 +118,7 @@ export class ViewSchedulesComponent implements OnInit {
   }
   changeUpdate = '';
   changeStatus = '';
+  changeScheduleCom = '';
   changeCatId= '';
   changeLocoNumber = '';
   changeuserNIC = '';
@@ -140,6 +141,7 @@ export class ViewSchedulesComponent implements OnInit {
     this.changeName = tempSchedule.userName;
     this.changeEmail = tempSchedule.userEmail;
     this.changeStatus = tempSchedule.scheduleStatus;
+    this.changeScheduleCom = tempSchedule.scheduleCom;
     this.changeTrack = tempSchedule.scheduleTrackMotors + '';
     this.changeBody = tempSchedule.scheduleLocoBody + '';
     this.changeELCU = tempSchedule.scheduleElCuUnit + '';
@@ -161,6 +163,7 @@ export class ViewSchedulesComponent implements OnInit {
       this.changeName,
       this.changeEmail,
       this.changeStatus,
+      this.changeScheduleCom,
       Array(this.changeTrack),
       Array(this.changeBody),
       Array(this.changeELCU),

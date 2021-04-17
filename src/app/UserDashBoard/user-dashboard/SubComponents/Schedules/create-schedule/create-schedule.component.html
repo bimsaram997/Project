@@ -5,7 +5,7 @@
   </div>
   <hr>
 
-  <mat-tab-group mat-align-tabs="start"  [selectedIndex] ="selectedIndex" >
+  <mat-tab-group mat-align-tabs="start"  [selectedIndex] ="selectedIndex" animationDuration="0ms">
     <mat-tab>
       <ng-template mat-tab-label >
         <img class="material-icons" src="https://img.icons8.com/emoji/48/000000/train-emoji.png" style="width: 40px; height: 40px;"/>
@@ -127,13 +127,14 @@
                 <span class="para-txt">Status</span>
                 <mat-radio-button  [value] = "'draft'">draft</mat-radio-button>
               </mat-radio-group>
+              <div class="btn-two">
+                <button mat-raised-button="Basic" class="nxt" (click)="nextStep()" style="left: 88.5%; width: 5px; height: 35px;"><span class="material-icons">keyboard_arrow_right</span></button>
+              </div>
             </div>
           </div>
-        </mat-grid-tile>
-        <div class="btn-two">
 
-          <button mat-raised-button="Basic" class="nxt" (click)="nextStep()" style="left: 88.5%; width: 5px; height: 35px;"><span class="material-icons">keyboard_arrow_right</span></button>
-        </div>
+        </mat-grid-tile>
+
       </mat-grid-list>
       </mat-card>
     </mat-tab>
@@ -144,7 +145,7 @@
       </ng-template>
       <br>
       <br>
-      <mat-card class="card" style="height: 420px;">
+      <mat-card class="card" style="height: 390px;">
       <mat-grid-list cols="2" rowHeight="400px" [gutterSize]="'-55px'"  style="bottom: 20px;">
         <mat-grid-tile>
           <div class="controls-container">
@@ -200,35 +201,31 @@
                 </div>
               </div>
             </mat-form-field>
+            <div class="btn-three">
+              <button mat-raised-button ="Basic" class="prev"  (click)="previousStep()" style="left: 75%; height: 35px;"><span class="material-icons">keyboard_arrow_left</span></button>
+              <button mat-raised-button class="prev" (click)="nextStep()" style="left: 77%; height: 35px;"><span class="material-icons">keyboard_arrow_right</span></button>
+            </div>
           </div>
         </mat-grid-tile>
-        <div class="btn-three">
-          <button mat-raised-button ="Basic" class="prev"  (click)="previousStep()" style="left: 88%; height: 35px;"><span class="material-icons">keyboard_arrow_left</span></button>
 
-        </div>
       </mat-grid-list>
-      <div class="button-row">
-        <button mat-raised-button color="primary" (click)="saveSchedule(); loadSpinner()" style="width: 150px;">Submit</button>
-        <button mat-raised-button color="warn" class="clear-btn" style="width: 150px;">Clear</button>
 
-     </div>
 
 
       </mat-card>
     </mat-tab>
     <mat-tab>
       <ng-template mat-tab-label>
-        <img src="https://img.icons8.com/cute-clipart/64/000000/wrench.png" style="width: 40px; height: 40px; color: #1f3a93"/>
+        <img src="https://img.icons8.com/color/48/000000/train-station.png" style="width: 40px; height: 40px; color: #1f3a93"/>
         Third
       </ng-template>
       <br>
       <br>
-      <mat-card class="card" style="height: 420px;">
-        <div class="box-outline">
+      <mat-card class="card" style="height: 360px;">
+
           <input (change)="changeFiles($event)" multiple style="display: none" type="file" accept="images/" id="selectedFile" >
           <div class="main-wrap-for-selected-images">
-            <p *ngIf="isVisble" class="para-note" onclick="document.getElementById('selectedFile').click()" >Add Images of Locomotives <span onclick="document.getElementById('selectedFile').click()"  class="material-icons">
-library_add</span></p>
+            <p *ngIf="isVisble" class="para-note" onclick="document.getElementById('selectedFile').click()" >Add Images of Locomotives</p>
             <img *ngIf="urls[0]!=null" [src]="urls[0]" alt="Image"
                  class="selected-image img-thumbnail">
             <img *ngIf="urls[1]!=null"  [src]="urls[1]" alt="Image"
@@ -236,8 +233,14 @@ library_add</span></p>
             <img *ngIf="urls[2]!=null"  [src]="urls[2]" alt="Image"
                  class="selected-image img-thumbnail">
           </div>
+        <br><br><br>
+        <div class="button-row">
+          <button mat-raised-button color="primary" (click)="saveSchedule(); loadSpinner()" style="width: 150px;">Submit</button>
+          <button mat-raised-button color="warn" class="clear-btn" style="width: 150px;">Clear</button>
         </div>
+
       </mat-card>
+
     </mat-tab>
   </mat-tab-group>
 

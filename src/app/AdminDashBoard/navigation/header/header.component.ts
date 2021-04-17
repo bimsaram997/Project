@@ -28,11 +28,16 @@ export class HeaderComponent implements OnInit {
     if (confirm('Do You want to log out? ?')){
       this.onSucess('You are log out!');
       this.cookieService.remove('adminData');
-      this.router.navigate(['/'])
+      this.router.navigate(['/']);
+      this.refresh();
     }
   }
 
+
   onSucess(message: string){
     this.toastr.success(message, 'Success');
+  }
+  refresh(): void {
+    window.location.reload();
   }
 }
