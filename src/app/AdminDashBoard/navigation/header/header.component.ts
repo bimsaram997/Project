@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {AccessService} from "../../../service/access.service";
 import {ToastrService} from "ngx-toastr";
 import {CookieService} from "ngx-cookie";
@@ -12,7 +12,7 @@ import {CookieService} from "ngx-cookie";
 export class HeaderComponent implements OnInit {
 
   @Output() public sidenavToggle = new EventEmitter();
-  constructor(private router: Router,
+  constructor(private router: Router, private route: ActivatedRoute,
               private accessService: AccessService,
               private toastr: ToastrService,
               private cookieService: CookieService) { }
@@ -28,8 +28,7 @@ export class HeaderComponent implements OnInit {
     if (confirm('Do You want to log out? ?')){
       this.onSucess('You are log out!');
       this.cookieService.remove('adminData');
-      this.router.navigate(['/']);
-      this.refresh();
+      this.reloadComponent();
     }
   }
 
@@ -39,5 +38,10 @@ export class HeaderComponent implements OnInit {
   }
   refresh(): void {
     window.location.reload();
+  }
+  async reloadComponent() {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(['/'],{relativeTo:this.route});
   }
 }

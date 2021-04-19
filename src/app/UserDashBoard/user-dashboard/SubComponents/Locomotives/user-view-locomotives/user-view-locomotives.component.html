@@ -32,6 +32,10 @@
           <mat-cell *matCellDef="let tempLoco" data-label="Power"> {{tempLoco.locoPower}} </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="Mileage">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Mileage </mat-header-cell>
+          <mat-cell *matCellDef="let tempLoco" data-label="Mileage"> {{tempLoco.locoMileage}} </mat-cell>
+        </ng-container>
         <!-- Weight Column -->
         <ng-container matColumnDef="Availability">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Availability </mat-header-cell>

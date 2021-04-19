@@ -19,7 +19,7 @@ export class UserViewLocomotivesComponent implements OnInit {
   isVisible =  false;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   dataSource: MatTableDataSource<LocoDTO>;
-  displayedColumns: string[] = ['Category', 'Number', 'Power', 'Availability', 'Responsible', 'Update Date', '#'];
+  displayedColumns: string[] = ['Category', 'Number', 'Power', 'Mileage', 'Availability', 'Responsible', 'Update Date', '#'];
   @ViewChild(MatSort) sort: MatSort;
   locoArray: LocoDTO[] = [];
   selectedLoco: LocoDTO = null;
@@ -34,6 +34,7 @@ export class UserViewLocomotivesComponent implements OnInit {
 
   changeLocoCatID = '';
   changeLocoPower = '';
+  changeLocoMileage = '';
   changeLocoAvailability = '';
   changeuserNic = '';
   changeLocoDate = '';
@@ -85,6 +86,7 @@ export class UserViewLocomotivesComponent implements OnInit {
     this.selectedLoco = tempLoco;
     this.changeLocoCatID = tempLoco.locoCatId;
     this.changeLocoPower = tempLoco.locoPower + '';
+    this.changeLocoMileage = tempLoco.locoMileage + '';
     this.changeLocoAvailability = tempLoco.locoAvailability;
     this.changeuserNic = tempLoco.userNic;
     this.changeLocoDate = tempLoco.locoDate.split(' ').slice(0, 4).join(' ');
@@ -98,6 +100,7 @@ export class UserViewLocomotivesComponent implements OnInit {
     this.changeLocoNote = tempLoco.locoNote;
     const dialogRef = this.dialog.open(EditLocoComponent, {data: {EditCatId: this.changeLocoCatID, EditId: this.selectedLoco,
         EditPower: this.changeLocoPower,
+        EditMileage: this.changeLocoMileage,
         EditAvailability: this.changeLocoAvailability,
         EditNic: this.changeuserNic,
         EditDate: this.changeLocoDate,
@@ -112,6 +115,7 @@ export class UserViewLocomotivesComponent implements OnInit {
      }});
     dialogRef.afterClosed().subscribe(result =>{
       console.log(`Dialog: ${result}`);
+      this.loadAll();
     });
   }
 

@@ -1,0 +1,90 @@
+
+
+<h1 mat-dialog-title  class="heading-txt">EDIT</h1>
+<div mat-dialog-content>
+  <mat-tab-group mat-stretch-tabs class="example-stretched-tabs "animationDuration="0ms">
+    <mat-tab label="First" >
+
+      <br>
+      <div class="controls-container" >
+
+        <div class="add-bottom-padding">
+          <mat-radio-group aria-label="Availability" [(ngModel)]="data.EditAvailability">
+            <span class="para-txt">Availability</span>
+            <mat-radio-button *ngFor="let status of statuses" [value] = "status">{{status}}</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <mat-form-field class="field" >
+          <input aria-label="HireDate" matInput [matDatepicker]="picker" placeholder="Update Date" [(ngModel)] = "data.EditDate">
+          <mat-datepicker-toggle matSuffix [for]="picker" style="width: 20%;"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="field">
+          <mat-label class="label-txt">Mileage(Km)</mat-label>
+          <input matInput placeholder="Mileage" #searchInput [(ngModel)]="data.EditMileage">
+        </mat-form-field>
+        <h3 class="sub-headers">Liquid Levels</h3>
+        <mat-form-field class="field" >
+          <mat-label class="label-txt">Oil Level(L)</mat-label>
+          <input matInput placeholder="Oil Level" #searchInput [(ngModel)]="data.EditOil" >
+        </mat-form-field>
+        <br>
+        <mat-form-field class="field">
+          <mat-label class="label-txt">Fuel Level(L)</mat-label>
+          <input matInput placeholder="Fuel Level" #searchInput [(ngModel)]="data.EditFuel">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="field">
+          <mat-label class="label-txt">Water Level(L)</mat-label>
+          <input matInput placeholder="Water Level" #searchInput [(ngModel)]="data.EditWater">
+        </mat-form-field>
+      </div>
+    </mat-tab>
+    <mat-tab label="Second">
+
+      <br>
+      <h3 class="sub-headers">Breaks</h3>
+      <div class="add-bottom-padding">
+        <mat-radio-group aria-label="Vacuum Breaks" [(ngModel)]="data.EditVBreak">
+          <span class="para-txt">Vacuum Breaks</span>
+          <mat-radio-button class="btn-radio" *ngFor="let vBreak of vBreaks" [value] = "vBreak">{{vBreak}}</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="add-bottom-padding">
+        <mat-radio-group aria-label="Dynamic Breaks" [(ngModel)]="data.EditDBreak">
+          <span class="para-txt"> Dynamic Breaks</span>
+          <mat-radio-button class="btn-radio" *ngFor="let dBreak of dBreaks" [value] = "dBreak">{{dBreak}}</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <h3 class="sub-headers">Motar Parts</h3>
+      <div class="add-bottom-padding">
+        <mat-radio-group aria-label="Gender" [(ngModel)]="data.EditMainGen">
+          <span class="para-txt">Main Generators </span>
+          <mat-radio-button class="btn-radio" *ngFor="let mainMotor of mainMotors" [value] = "mainMotor">{{mainMotor}}</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="add-bottom-padding">
+        <mat-radio-group aria-label="Gender" [(ngModel)]="data.EditTrack">
+          <span class="para-txt"> Traction Motors</span>
+          <mat-radio-button class="btn-radio" *ngFor="let tMotor of tMotors" [value] = "tMotor">&nbsp;&nbsp;{{tMotor}}</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <h3 class="sub-headers">Special Notes</h3>
+      <mat-form-field class="field" >
+        <mat-label>Special Note</mat-label>
+        <textarea matInput [(ngModel)]="data.EditNote"></textarea>
+      </mat-form-field>
+      <br>
+
+
+
+    </mat-tab>
+  </mat-tab-group>
+
+</div>
+<mat-dialog-actions align="end">
+  <button  mat-raised-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="true" (focus)="appviewlocomotives.loadAll()" cdkFocusInitial (click)="updateMyLocomotive()" >Update</button>
+
+</mat-dialog-actions>

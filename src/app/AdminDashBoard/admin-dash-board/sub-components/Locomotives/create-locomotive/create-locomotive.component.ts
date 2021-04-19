@@ -8,7 +8,7 @@ import {ToastrService} from "ngx-toastr";
 import {AccessService} from "../../../../../service/access.service";
 import UserDTO from "../../../../../dto/UserDTO";
 import {ImageService} from "../../../../../service/image.service";
-
+import swal from 'sweetalert';
 @Component({
   selector: 'app-create-locomotive',
   templateUrl: './create-locomotive.component.html',
@@ -24,6 +24,7 @@ export class CreateLocomotiveComponent implements OnInit {
   locoCatId = '';
   locoPower = '';
   locoNumber = '';
+  locoMileage = '';
   locoAvailability = '';
   userNic = '';
   locoDate = '';
@@ -69,6 +70,7 @@ export class CreateLocomotiveComponent implements OnInit {
         this.locoNumber.trim(),
         this.locoCatId.trim(),
         Number(this.locoPower.trim()),
+        Number(this.locoMileage.trim()),
         this.locoAvailability.trim(),
         this.userNic.trim(),
         this.locoDate.toString().trim(),
@@ -85,23 +87,29 @@ export class CreateLocomotiveComponent implements OnInit {
       this.locomotiveService.saveLoco(dto).subscribe( response => {
         console.log(resp);
         if (response.isSaved){
-          this.onSucess('Saved');
-          this.refresh();
+          swal({
+            title: 'Record Saved!',
+            text: 'Please Click OK',
+            icon: 'success',
+          });
+          setTimeout(() => {
+            this.refresh();
+          }, 3000);
+
         } else {
-          this.onWarning('Already Exists');
-          this.refresh();
+          swal({
+            title: 'Record already Exits',
+            text: 'Please Click OK',
+            icon: 'error',
+          });
+          setTimeout(() => {
+            this.refresh();
+          }, 3000);
         }
       });
     }, error => {
       console.log(error);
     });
-
-
-
-
-
-
-
   }
 
 
@@ -116,6 +124,7 @@ export class CreateLocomotiveComponent implements OnInit {
     this.locoCatId = '';
     this.locoPower = '';
     this.locoNumber = '';
+    this.locoMileage = '';
     this.locoAvailability = '';
     this.userNic = '';
     this.locoDate = '';

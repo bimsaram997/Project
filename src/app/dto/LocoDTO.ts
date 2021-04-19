@@ -3,6 +3,7 @@ export default class LocoDTO {
   private _locoCatId: string;
   private _locoPower: number;
   private _locoAvailability: string;
+  private _locoMileage: number;
   private _userNic: string;
   private _locoDate: string;
   private _locoOil: number;
@@ -14,10 +15,11 @@ export default class LocoDTO {
   private _locoDBreak: string;
   private _locoNote: string;
   private _image: string[] = [];
-  constructor(locoNumber?: string, locoCatId?: string, locoPower?: number,  locoAvailability?: string, userNic?: string, locoDate?: string, locoOil?: number, locoFuel?: number, locoWater?: number, locoMainGen?: string, locoTracMot?: string, locoVBreak?: string, locoDBreak?: string, locoNote?: string, image?: string[]) {
+  constructor(locoNumber?: string, locoCatId?: string, locoPower?: number, locoMileage?: number,  locoAvailability?: string, userNic?: string, locoDate?: string, locoOil?: number, locoFuel?: number, locoWater?: number, locoMainGen?: string, locoTracMot?: string, locoVBreak?: string, locoDBreak?: string, locoNote?: string, image?: string[]) {
     this._locoNumber = locoNumber;
     this._locoCatId = locoCatId;
     this._locoPower = locoPower;
+    this._locoMileage =  locoMileage;
     this._locoAvailability = locoAvailability;
     this._userNic = userNic;
     this._locoDate = locoDate;
@@ -47,6 +49,13 @@ export default class LocoDTO {
 
   set locoPower(value: number) {
     this._locoPower = value;
+  }
+
+  get locoMileage(): number{
+    return  this._locoMileage;
+  }
+  set   locoMileage(value: number){
+    this._locoMileage = value;
   }
 
   get locoNumber(): string {

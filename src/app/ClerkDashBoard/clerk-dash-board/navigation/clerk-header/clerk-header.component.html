@@ -1,20 +1,9 @@
 <mat-toolbar color="primary">
-  <div fxHide.gt-xs>
-
-  </div>
-  <div>
-    <button mat-icon-button (click)="onToogleSlidenav()">
-      <mat-icon>menu</mat-icon>
-    </button>
-  </div>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="onToogleSlidenav()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>LOCOMOTIVE SERVICE CENTER</span>
   <span class="example-spacer"></span>
-  <div>
-    <ul class="navigation-items">
-      <li>
-        <a href="">Owner</a>
-      </li>
-    </ul>
-  </div>
   <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
   <span class="material-icons">
 notification_important
@@ -29,10 +18,11 @@ notification_important
       <mat-icon>voicemail</mat-icon>
       <span>Check voice mail</span>
     </button>
-    <button mat-menu-item (click)="logOut()" >
+    <button mat-menu-item (click)="logOut()">
       <mat-icon>logout</mat-icon>
       <span>Log Out</span>
 
     </button>
   </mat-menu>
+
 </mat-toolbar>

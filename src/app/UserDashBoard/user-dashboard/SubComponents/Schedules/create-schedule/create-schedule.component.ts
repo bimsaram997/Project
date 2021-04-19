@@ -13,6 +13,7 @@ import {ToastrService} from "ngx-toastr";
 import {MatTabChangeEvent} from "@angular/material/tabs";
 import {AccessService} from "../../../../../service/access.service";
 import UserDTO from "../../../../../dto/UserDTO";
+import swal from "sweetalert";
 
 @Component({
   selector: 'app-create-schedule',
@@ -123,17 +124,27 @@ export class CreateScheduleComponent implements OnInit {
     );
     this.scheduleService.saveSchedule(dto).subscribe(resp => {
       if (resp.isSaved){
-        this.onSucess('Saved');
-        this.refresh();
+        swal({
+          title: 'Record Saved',
+          text: 'Please Click OK',
+          icon: 'success',
+        });
+        setTimeout(() => {
+          this.refresh();
+        }, 3000);
 
       } else {
-        this.onWarning('Already Exists');
+        swal({
+          title: 'Record already Exits',
+          text: 'Please Click OK',
+          icon: 'error',
+        });
+        setTimeout(() => {
+          this.refresh();
+        }, 3000);
 
       }
     });
-  }
-  onWarning(message: string){
-    this.toastr.warning(message, 'Warning');
   }
   onSucess(message: string){
     this.toastr.success(message, 'Success');

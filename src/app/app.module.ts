@@ -46,10 +46,12 @@ import { CommonHeaderComponent } from './Common/common-header/common-header.comp
 import { UserProfileComponent } from './UserDashBoard/user-dashboard/SubComponents/UserProfile/user-profile/user-profile.component';
 import { ViewLocoComponent } from './UserDashBoard/user-dashboard/SubComponents/Locomotives/user-view-locomotives/view-loco/view-loco.component';
 import { EditLocoComponent } from './UserDashBoard/user-dashboard/SubComponents/Locomotives/user-view-locomotives/edit-loco/edit-loco.component';
-import {EventEmitterService} from "./service/event-emitter.service";
+import {EventEmitterService} from './service/event-emitter.service';
 import { ForgotPasswordComponent } from './Common/forgot-password/forgot-password.component';
 import {ErrorStateMatcher, ShowOnDirtyErrorStateMatcher} from "@angular/material/core";
 import {ReactiveFormsModule} from "@angular/forms";
+import { ResetPasswordComponent } from './ClerkDashBoard/clerk-dash-board/SubComponents/ResetPassword/reset-password/reset-password.component';
+import { AdminEditLocomotiveComponent } from './AdminDashBoard/admin-dash-board/sub-components/Locomotives/view-locomotives/admin-edit-locomotive/admin-edit-locomotive.component';
 
 
 
@@ -97,6 +99,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     ViewLocoComponent,
     EditLocoComponent,
     ForgotPasswordComponent,
+    ResetPasswordComponent,
+    AdminEditLocomotiveComponent,
 
 
 
@@ -123,6 +127,6 @@ import {ReactiveFormsModule} from "@angular/forms";
   ],
   providers: [EventEmitterService],
   bootstrap: [AppComponent],
-  entryComponents: [ModelComponent, ViewLocoComponent, EditLocoComponent]
+  entryComponents: [ModelComponent, ViewLocoComponent, EditLocoComponent, AdminEditLocomotiveComponent]
 })
 export class AppModule { }

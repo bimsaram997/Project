@@ -39,9 +39,18 @@ export class AccessService {
       text
     });
  }
+ public  sendPasEmail(email: string, text: string): Observable<any>{
+    return this.http.post(this.myUrl + 'accessRoute/sendPassEmail', {
+      email,
+      text
+    });
+ }
 
  public requestPassword(body): Observable<any>{
     return this.http.post(this.myUrl + 'accessRoute/requestPassword' , body)
+ }
+ public newPassword(body): Observable<any>{
+   return this.http.post(this.myUrl + 'accessRoute/requestPassword' , body)
  }
 
   // public get currentUsrValue() {

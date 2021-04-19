@@ -14,16 +14,12 @@
     <mat-icon>account_balance</mat-icon><span class="nav-caption">New User</span>
   </a>
   <a mat-list-item routerLink="/clerkDashBoard/createCustomer" (click) = "onSidenavClose()" >
-    <mat-icon>account_balance</mat-icon><span class="nav-caption">New User</span>
+    <mat-icon>account_balance</mat-icon><span class="nav-caption">New Employee</span>
   </a>
-  <mat-list-item [matMenuTriggerFor] = "menu">
-    <mat-icon>unfold_more</mat-icon>
-    <a mat-line>Schedules</a>
-  </mat-list-item>
-  <mat-menu #menu = "matMenu" class="r">
-    <button mat-menu-item (click)="onSidenavClose()" routerLink="/userDashboard/createSchedule">Add Schedule</button>
-    <button mat-menu-item (click)="onSidenavClose()" routerLink="/userDashboard/viewSchedules">View All Locomotives</button>
-  </mat-menu>
+  <a mat-list-item routerLink="/clerkDashBoard/resetPassword" (click) = "onSidenavClose()" >
+    <mat-icon>account_balance</mat-icon><span class="nav-caption">Reset Password</span>
+  </a>
+
   <mat-list-item [matMenuTriggerFor] = "menu">
     <mat-icon>unfold_more</mat-icon>
     <a mat-line>Scehdules</a>

@@ -19,16 +19,7 @@
   padding-left: 10px;
 
 }
-.controls-container{
-  width: 90%;
-  padding: 0%;
-  height: 60%;
 
-
-}
-.controls-container > *{
-  width: 90%;
-}
 .add-bottom-padding{
   padding-top: 1px;
   padding-bottom: 1px;
@@ -36,12 +27,12 @@
 mat-radio-group mat-radio-button{
   margin-top: 5px;
   margin-left: 10px;
-  margin-right: 40px;
+  margin-right: 20px;
 }
-.button-row button{
+.button-row {
   margin: 5px;
-  left: 35%;
-
+  text-align: center;
+  top: 700px;
 }
 .sub-headers{
   font-size: 18px;
@@ -54,51 +45,8 @@ mat-radio-group mat-radio-button{
   font-weight: bold;
   color: #3a539b;
 }
-.controls-container-right{
-  width: 90%;
-  padding: 0%;
-  height: 75%;
-  margin-top: 10px;
-
-}
-.controls-container-right >*{
-  width: 90%;
-}
-.controls-container > *{
-  width: 90%;
-}
-.controls-container-right-second{
-  width: 90%;
-  padding-left: 0%;
-  height: 95%;
-  margin-top: 10px;
-
-}
-.controls-container-right-second >*{
-  width: 90%;
-}
-.add-bottom-padding-second{
-  padding-top: 1px;
-  padding-bottom: 1px;
-  margin-left: 60px;
 
 
-}
-.controls-container-right-third{
-  width: 100%;
-  padding: 0%;
-  height: 60%;
-  margin-top: 30px;
-
-}
-.controls-container-right-third >*{
-  width: 110%;
-}
-.card-second{
-  width: 90%;
-
-  background: #ecf0f1;
-}
 .clear-btn{
   background: #22a7f0;
 }
@@ -146,4 +94,33 @@ mat-radio-group mat-radio-button{
   opacity: 50%;
   font-weight: bolder;
   cursor: pointer;
+}
+mat-grid-tile {
+  background: #e8ecf1;
+}
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  padding: 3%;
+  height: 80%;
+}
+.example-form-right{
+  margin-top: 89px;
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  padding: 3%;
+  height: 80%;
+}
+.example-form-three {
+  min-width: 150px;
+  max-width: 700px;
+  width: 100%;
+  padding: 3%;
+  height: 80%;
+}
+.example-full-width {
+  width: 100%;
+  margin-bottom: 10px;
 }

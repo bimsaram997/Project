@@ -169,6 +169,10 @@
   margin-bottom: 15px;
 }
 .login-btn{
-  width: 120px;
+  width: 150px;
   border-radius: 20px;
+}
+.heading{
+  font-size: 45px;
+
 }

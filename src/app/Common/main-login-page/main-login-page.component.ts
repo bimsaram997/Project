@@ -8,7 +8,7 @@ import {Role} from "../../_models/role";
 import {MatDialog} from "@angular/material/dialog";
 import {ForgotPasswordComponent} from "../forgot-password/forgot-password.component";
 import {FormGroup} from "@angular/forms";
-
+import swal from 'sweetalert';
 @Component({
   selector: 'app-main-login-page',
   templateUrl: './main-login-page.component.html',
@@ -63,8 +63,18 @@ export class MainLoginPageComponent implements OnInit {
           }
 
         }else {
-          this.onError(result.message);
+          swal({
+            title: 'Please check your email or password',
+            text: 'You clicked the button!',
+            icon: 'warning',
+          });
         }
+      });
+    }else{
+      swal({
+        title: 'Fields cannot be empty',
+        text: 'You clicked the button!',
+        icon: 'warning',
       });
     }
   }

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {AccessService} from "../../../../service/access.service";
 import {ToastrService} from "ngx-toastr";
 import {CookieService} from "ngx-cookie";
@@ -20,6 +20,7 @@ export class UserHeaderComponent implements OnInit {
               private accessService: AccessService,
               private toastr: ToastrService,
               private cookieService: CookieService,
+              private route: ActivatedRoute
               ) { }
 
   ngOnInit(): void {
@@ -33,8 +34,7 @@ export class UserHeaderComponent implements OnInit {
     if (confirm('Do want to log out? ?')){
       this.onSucess('You are log out!');
       this.cookieService.remove('userData');
-      this.router.navigate(['/']);
-      this.refresh();
+      this.reloadComponent();
 
     }
   }
@@ -46,8 +46,11 @@ export class UserHeaderComponent implements OnInit {
     this.data =  this.loginEmail + '';
     console.log(this.data);
 }
-  refresh(): void {
-    window.location.reload();
+
+  async reloadComponent() {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(['/'],{relativeTo:this.route});
   }
 
 }
