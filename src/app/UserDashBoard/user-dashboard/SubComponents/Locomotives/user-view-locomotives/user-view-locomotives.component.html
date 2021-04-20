@@ -52,6 +52,10 @@
           <mat-header-cell *matHeaderCellDef mat-sort-header> Update Date </mat-header-cell>
           <mat-cell *matCellDef="let tempLoco" data-label="Responsible" > {{tempLoco.locoDate | date}}</mat-cell>
         </ng-container>
+        <ng-container matColumnDef="Image">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Image </mat-header-cell>
+          <mat-cell *matCellDef="let tempLoco" data-label="Image"><img src="{{tempLoco.image}}"  (click)="openImage(tempLoco)" style="height: 60px; width: 80px; cursor: pointer" alt=""></mat-cell>
+        </ng-container>
 
         <ng-container matColumnDef="#">
           <mat-header-cell *matHeaderCellDef>  </mat-header-cell>
@@ -68,92 +72,6 @@
     </div>
   </div>
 
-
-
-
-</div>
-  <div class="container-wrp-two" *ngIf="isVisibleSecond">
-    <div class="header-two">
-      <div class="box-container">
-        <img src="https://img.icons8.com/bubbles/50/000000/train.png" style="width: 35px; height: 35px;"/> &nbsp;
-        <span class="heading-update">UPDATE</span>
-        <button style="left: 68%; color: white" mat-icon-button (click)="setStateTwo()"><span style="font-weight: bolder;" class="material-icons">clear</span></button>
-      </div>
-    </div>
-    <div class="modal-body">
-      <mat-tab-group mat-stretch-tabs class="example-stretched-tabs ">
-        <mat-tab label="First">
-            <mat-card style="height: 455px;">
-              <br>
-            <div class="controls-container" style="height: 420px; padding-left: 10%;">
-              <mat-form-field>
-                <input aria-label="HireDate" matInput [matDatepicker]="picker" placeholder="Update Date" [(ngModel)] = "changeLocoDate">
-                <mat-datepicker-toggle matSuffix [for]="picker" style="width: 20%;"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-              </mat-form-field><div class="add-bottom-padding">
-              <mat-radio-group aria-label="Availability" [(ngModel)]="changeLocoAvailability">
-                <span class="para-txt">Availability</span>
-                <mat-radio-button *ngFor="let status of statuses" [value] = "status">{{status}}</mat-radio-button>
-              </mat-radio-group>
-            </div>
-              <h3 class="sub-headers">Motar Parts</h3>
-              <div class="add-bottom-padding">
-                <mat-radio-group aria-label="Gender" [(ngModel)]="changeLocoMainGen">
-                  <span><p class="para-txt">Main Generators</p> </span>
-                  <mat-radio-button  *ngFor="let mainMotor of mainMotors" [value] = "mainMotor">{{mainMotor}}</mat-radio-button>
-                </mat-radio-group>
-              </div>
-              <div class="add-bottom-padding">
-                <mat-radio-group aria-label="Gender" [(ngModel)]="changeLocotracMot">
-                  <span> <p class="para-txt">Traction Motors</p></span>
-                  <mat-radio-button *ngFor="let tMotor of tMotors" [value] = "tMotor">{{tMotor}}</mat-radio-button>
-                </mat-radio-group>
-              </div>
-              <h3 class="sub-headers">Special Notes</h3>
-              <mat-form-field>
-                <mat-label>Special Note</mat-label>
-                <textarea matInput [(ngModel)]="changeLocoNote"></textarea>
-              </mat-form-field>
-            </div>
-            </mat-card>
-        </mat-tab>
-        <mat-tab label="Second">
-          <mat-card style="height: 455px;">
-            <div class="controls-container" style="height: 420px; padding-left: 10%;">
-              <h3 class="sub-headers">Liquid Levels</h3>
-              <mat-form-field class="example-full-width">
-                <mat-label class="label-txt">Oil Level(L)</mat-label>
-                <input matInput placeholder="Oil Level" #searchInput [(ngModel)]="changeLocoOil">
-              </mat-form-field>
-              <mat-form-field class="example-full-width">
-                <mat-label class="label-txt">Fuel Level(L)</mat-label>
-                <input matInput placeholder="Fuel Level" #searchInput [(ngModel)]="changeLocoFuel">
-              </mat-form-field>
-              <mat-form-field class="example-full-width">
-                <mat-label class="label-txt">Water Level(L)</mat-label>
-                <input matInput placeholder="Water Level" #searchInput [(ngModel)]="changeLocoWater">
-              </mat-form-field>
-              <h3 class="sub-headers">Breaks</h3>
-              <div class="add-bottom-padding">
-                <mat-radio-group aria-label="Vacuum Breaks" [(ngModel)]="changeLocoVBreak">
-                  <span> <p class="para-txt">Vacuum Breaks</p></span>
-                  <mat-radio-button *ngFor="let vBreak of vBreaks" [value] = "vBreak">{{vBreak}}</mat-radio-button>
-                </mat-radio-group>
-                <mat-radio-group aria-label="Dynamic Breaks" [(ngModel)]="changeLocoDBreak">
-                  <span> <p class="para-txt">Dynamic Breaks</p></span>
-                  <mat-radio-button *ngFor="let dBreak of dBreaks" [value] = "dBreak">{{dBreak}}</mat-radio-button>
-                </mat-radio-group>
-              </div>
-              <div class="btn-row">
-                <button mat-raised-button color="primary" style="width: 100px;" (click)="updateMyLocomotive()">Update</button> &nbsp;
-                <button class="cancel-btn" mat-raised-button color="accent" (click) = "setStateTwo()"  style="width: 100px;">Cancel</button>
-              </div>
-            </div>
-          </mat-card>
-        </mat-tab>
-      </mat-tab-group>
-    </div>
-  </div>
 
 
 

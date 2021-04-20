@@ -1,19 +1,14 @@
 
 <mat-nav-list class="s">
-  <div>
-    <img style="vertical-align:middle; height: 50px; width: 50px; padding-bottom: 10PX" src="./assets/images/man.png">
-    <p class="heading-txt">Admin Panel</p>
-  </div>
+  <img class="image" src="./assets/logo/1618837407350.png">
 
   <hr>
   <a  mat-list-item routerLink="/userDashboard/userProfile"  (click) = "onSidenavClose()" >
-    <mat-icon>Home</mat-icon><span class="nav-caption">Home</span>
+   <span><img src="https://img.icons8.com/material/24/000000/admin-settings-male.png"/></span><span class="nav-caption">&nbsp;&nbsp;Profile</span>
   </a>
-  <a mat-list-item routerLink="" (click) = "onSidenavClose()">
-    <mat-icon class="q">assignment_ind</mat-icon><span class="nav-caption">Users</span>
-  </a>
+
   <a mat-list-item routerLink="/userDashboard/userViewLocomotives" (click) = "onSidenavClose()" >
-    <mat-icon>account_balance</mat-icon><span class="nav-caption">View Locomotives</span>
+   <span><img src="https://img.icons8.com/material/24/000000/subway.png"/></span><span class="nav-caption">&nbsp;&nbsp;View Locomotives</span>
   </a>
   <mat-list-item [matMenuTriggerFor] = "menu">
     <mat-icon>unfold_more</mat-icon>

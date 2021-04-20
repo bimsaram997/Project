@@ -38,6 +38,12 @@ export default class UserDTO {
   set userMobile(value: string) {
     this._userMobile = value;
   }
+  get userRole(): string{
+    return this._userRole;
+  }
+  set userRole(value: string){
+    this._userRole = value;
+  }
 
   get userPassword(): string {
     return this._userPassword;
@@ -46,12 +52,13 @@ export default class UserDTO {
   set userPassword(value: string) {
     this._userPassword = value;
   }
-  constructor(userEmail: string, userName: string, userWorks: string, userNic: string, userMobile: string, userPassword: string) {
+  constructor(userEmail: string, userName: string, userWorks: string, userNic: string, userMobile: string, userRole: string, userPassword: string) {
     this._userEmail = userEmail;
     this._userName = userName;
     this._userWorks = userWorks;
     this._userNic = userNic;
     this._userMobile = userMobile;
+    this._userRole =  userRole;
     this._userPassword = userPassword;
   }
  private _userEmail: string;
@@ -59,5 +66,6 @@ export default class UserDTO {
  private _userWorks: string;
   private _userNic: string;
   private _userMobile: string;
+  private _userRole: string;
   private _userPassword: string;
 }

@@ -1,0 +1,16 @@
+<div class="container" >
+  <div class="box-head">
+    <img src="./assets/images/m9.png" alt="" style="height: 70px; width: 70px;">
+    <span class="heading-txt">VIEW LOCOMOTIVES</span>
+  </div>
+  <hr>
+
+  <div class="search-div">
+    <mat-form-field class="search-form-field">
+      <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
+      <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" (click)="onSearchClear()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+</div>

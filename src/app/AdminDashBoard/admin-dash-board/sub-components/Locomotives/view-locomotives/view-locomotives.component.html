@@ -57,7 +57,7 @@
 
         <ng-container matColumnDef="Image">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Image </mat-header-cell>
-          <mat-cell *matCellDef="let tempLoco" data-label="Image"><img src="{{tempLoco.image}}" style="height: 60px; width: 80px;" alt=""></mat-cell>
+          <mat-cell *matCellDef="let tempLoco" data-label="Image"><img src="{{tempLoco.image}}"  (click)="openImage(tempLoco)" style="height: 60px; width: 80px;" alt=""></mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="#">
@@ -76,8 +76,7 @@
   <mat-paginator [pageSizeOptions]="[4, 8, 12]" showFirstLastButtons></mat-paginator>
   </div>
   </div>
+
 </div>
-
-
 
 

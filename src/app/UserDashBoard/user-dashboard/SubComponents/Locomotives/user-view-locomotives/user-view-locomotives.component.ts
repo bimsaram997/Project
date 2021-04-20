@@ -9,6 +9,7 @@ import {ToastrService} from "ngx-toastr";
 import {ViewLocoComponent} from "./view-loco/view-loco.component";
 import {MatDialog} from "@angular/material/dialog";
 import {EditLocoComponent} from "./edit-loco/edit-loco.component";
+import {ViewImageComponent} from "./view-image/view-image.component";
 
 @Component({
   selector: 'app-user-view-locomotives',
@@ -19,7 +20,7 @@ export class UserViewLocomotivesComponent implements OnInit {
   isVisible =  false;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   dataSource: MatTableDataSource<LocoDTO>;
-  displayedColumns: string[] = ['Category', 'Number', 'Power', 'Mileage', 'Availability', 'Responsible', 'Update Date', '#'];
+  displayedColumns: string[] = ['Category', 'Number', 'Power', 'Mileage', 'Availability', 'Responsible', 'Update Date', 'Image', '#'];
   @ViewChild(MatSort) sort: MatSort;
   locoArray: LocoDTO[] = [];
   selectedLoco: LocoDTO = null;
@@ -75,8 +76,20 @@ export class UserViewLocomotivesComponent implements OnInit {
         ViewLocoDBreak: this.selectedLoco.locoDBreak,
         ViewLocoMainGen: this.selectedLoco.locoMainGen,
         ViewLocoTrack: this.selectedLoco.locoTracMot,
-        ViewLocoNote: this.selectedLoco.locoNote}});
+        ViewLocoNote: this.selectedLoco.locoNote,
+        ViewLocoImage: this.selectedLoco.image }});
 
+
+    dialogRef.afterClosed().subscribe(result =>{
+      console.log(`Dialog: ${result}`);
+    });
+  }
+
+  openImage(tempLoco: LocoDTO) {
+    this.selectedLoco  = tempLoco;
+    const dialogRef = this.dialog.open(ViewImageComponent,{data: {ViewImage: this.selectedLoco.image,
+        ViewID: this.selectedLoco.locoCatId,
+        ViewNum: this.selectedLoco.locoNumber}});
     dialogRef.afterClosed().subscribe(result =>{
       console.log(`Dialog: ${result}`);
     });
@@ -119,18 +132,8 @@ export class UserViewLocomotivesComponent implements OnInit {
     });
   }
 
-  view(tempLoco: LocoDTO) {
-    this.selectedLoco = tempLoco;
 
-    const btn = document.getElementById('btn-pop-up') as HTMLElement;
-    btn.click();
-  }
-  onWarning(message: string){
-    this.toastr.warning(message, 'Warning');
-  }
-  onSucess(message: string){
-    this.toastr.success(message, 'Success');
-  }
+
 
   onSearchClear() {
     this.searchKey = '';

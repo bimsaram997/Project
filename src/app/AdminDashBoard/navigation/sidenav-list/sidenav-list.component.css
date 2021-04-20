@@ -5,6 +5,7 @@
 }
  a:hover, a:active{
   color: black;
+
 }
 .nav-caption{
   display: inline-block;
@@ -15,4 +16,10 @@
   font-size: 20px;
   font-weight: bold;
   padding-left: 10px;
+}
+.image{
+  position: center;
+  height: 100px;
+  width: 165px;
+  padding-left: 35px;
 }

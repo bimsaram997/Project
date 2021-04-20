@@ -43,6 +43,7 @@ import {NgxEventCalendarModule} from "ngx-event-calendar";
 import {FullCalendarModule} from "@fullcalendar/angular";
 import {CommonModule} from "@angular/common";
 import {DragDropModule} from "@angular/cdk/drag-drop";
+import {NgImageFullscreenViewModule} from "ng-image-fullscreen-view";
 
 
 
@@ -96,6 +97,7 @@ const MaterialComponents = [
   FlexLayoutModule,
   NgxEventCalendarModule,
   CommonModule,
+  NgImageFullscreenViewModule,
 
 
 

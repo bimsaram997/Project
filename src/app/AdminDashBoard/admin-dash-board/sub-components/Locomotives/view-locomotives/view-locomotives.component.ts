@@ -16,6 +16,8 @@ import {ViewLocoComponent} from "../../../../../UserDashBoard/user-dashboard/Sub
 import {MatDialog} from "@angular/material/dialog";
 import {AdminEditLocomotiveComponent} from "./admin-edit-locomotive/admin-edit-locomotive.component";
 import swal from 'sweetalert';
+import {log} from "util";
+import {ViewImageComponent} from "../../../../../UserDashBoard/user-dashboard/SubComponents/Locomotives/user-view-locomotives/view-image/view-image.component";
 @Component({
   selector: 'app-view-locomotives',
   templateUrl: './view-locomotives.component.html',
@@ -42,7 +44,6 @@ export class ViewLocomotivesComponent implements OnInit {
   options: string[] = ['M2', 'M4', 'M5', 'M6', 'M7', 'M8', 'M9', 'M10', 'M11', 'M12'];
   loading =  false;
   userList: UserDTO[] = [];
-
   statuses: string[] = ['In', 'Out'];
   changeLocoCatID = '';
   changeLocoPower = '';
@@ -60,6 +61,8 @@ export class ViewLocomotivesComponent implements OnInit {
   changeLocoNote = '';
   changeLocoImage = [];
   changeCustomerNic = '';
+  showFlag: boolean = false;
+  selectedImageIndex: number = -1;
 
 
   ngOnInit(): void {
@@ -85,6 +88,7 @@ export class ViewLocomotivesComponent implements OnInit {
     });
   }
 
+
   openDialog(tempLoco: LocoDTO){
     this.selectedLoco = tempLoco;
     const dialogRef = this.dialog.open(ViewLocoComponent, {data: {ViewLocoOil: this.selectedLoco.locoOil, ViewLocoFuel: this.selectedLoco.locoFuel, ViewLocoWater: this.selectedLoco.locoWater,
@@ -92,7 +96,8 @@ export class ViewLocomotivesComponent implements OnInit {
         ViewLocoDBreak: this.selectedLoco.locoDBreak,
         ViewLocoMainGen: this.selectedLoco.locoMainGen,
         ViewLocoTrack: this.selectedLoco.locoTracMot,
-        ViewLocoNote: this.selectedLoco.locoNote}});
+        ViewLocoNote: this.selectedLoco.locoNote,
+      ViewLocoImage: this.selectedLoco.image}});
 
     dialogRef.afterClosed().subscribe(result =>{
       console.log(`Dialog: ${result}`);
@@ -137,19 +142,6 @@ export class ViewLocomotivesComponent implements OnInit {
     });
   }
 
-  setStateTwo(){
-    this.isVisible = false;
-    this.isVisibleSecond =  !this.isVisibleSecond;
-  }
-
-
-  view(tempLoco: LocoDTO) {
-    this.selectedLoco = tempLoco;
-
-    const btn = document.getElementById('btn-pop-up') as HTMLElement;
-    btn.click();
-  }
-
   deleteLoco(locoNumber: string) {
 
     if (confirm('Are You Sure, whether You want to delete this Locomotive ?')){
@@ -158,6 +150,7 @@ export class ViewLocomotivesComponent implements OnInit {
           swal('Record was deleted', {
             icon: 'success',
           });
+          this.loadAll()
         } else{
           swal('Record was deleted', {
             icon: 'error',
@@ -167,11 +160,14 @@ export class ViewLocomotivesComponent implements OnInit {
     }
   }
 
-  onWarning(message: string){
-    this.toastr.warning(message, 'Warning');
-  }
-  onSucess(message: string){
-    this.toastr.success(message, 'Success');
+  openImage(tempLoco: LocoDTO) {
+    this.selectedLoco  = tempLoco;
+    const dialogRef = this.dialog.open(ViewImageComponent,{data: {ViewImage: this.selectedLoco.image,
+        ViewID: this.selectedLoco.locoCatId,
+        ViewNum: this.selectedLoco.locoNumber}});
+    dialogRef.afterClosed().subscribe(result =>{
+      console.log(`Dialog: ${result}`);
+    });
   }
 
   onSearchClear() {
@@ -186,40 +182,5 @@ export class ViewLocomotivesComponent implements OnInit {
 
 
 
-  updateMyLocomotive() {
-      const dto = new LocoDTO(
-        this.selectedLoco.locoNumber,
-        this.changeLocoCatID,
-        Number(this.changeLocoPower),
-        Number(this.changeLocoMileage),
-        this.changeLocoAvailability,
-        this.changeuserNic,
-        this.changeLocoDate,
-        Number(this.changeLocoOil),
-        Number(this.changeLocoFuel),
-        Number(this.changeLocoWater),
-        this.changeLocoMainGen,
-        this.changeLocotracMot,
-        this.changeLocoVBreak,
-        this.changeLocoDBreak,
-        this.changeLocoNote
 
-      );
-      this.locomotiveService.updateLocomotive(dto).subscribe(result => {
-      if (result.message === 'updated'){
-        this.onSucess('Updated');
-        this.loadAll();
-
-        const btn = document.getElementById('btn-pop-up-two') as HTMLElement;
-        btn.click();
-
-      }else {
-        this.onWarning('Try Again');
-
-        const btn = document.getElementById('btn-pop-up-two') as HTMLElement;
-        btn.click();
-
-      }
-    });
-  }
 }

@@ -52,6 +52,8 @@ import {ErrorStateMatcher, ShowOnDirtyErrorStateMatcher} from "@angular/material
 import {ReactiveFormsModule} from "@angular/forms";
 import { ResetPasswordComponent } from './ClerkDashBoard/clerk-dash-board/SubComponents/ResetPassword/reset-password/reset-password.component';
 import { AdminEditLocomotiveComponent } from './AdminDashBoard/admin-dash-board/sub-components/Locomotives/view-locomotives/admin-edit-locomotive/admin-edit-locomotive.component';
+import { ViewImageComponent } from './UserDashBoard/user-dashboard/SubComponents/Locomotives/user-view-locomotives/view-image/view-image.component';
+import { ViewUsersComponent } from './ClerkDashBoard/clerk-dash-board/SubComponents/Users/view-users/view-users.component';
 
 
 
@@ -101,6 +103,8 @@ import { AdminEditLocomotiveComponent } from './AdminDashBoard/admin-dash-board/
     ForgotPasswordComponent,
     ResetPasswordComponent,
     AdminEditLocomotiveComponent,
+    ViewImageComponent,
+    ViewUsersComponent,
 
 
 
@@ -127,6 +131,6 @@ import { AdminEditLocomotiveComponent } from './AdminDashBoard/admin-dash-board/
   ],
   providers: [EventEmitterService],
   bootstrap: [AppComponent],
-  entryComponents: [ModelComponent, ViewLocoComponent, EditLocoComponent, AdminEditLocomotiveComponent]
+  entryComponents: [ModelComponent, ViewLocoComponent, EditLocoComponent, AdminEditLocomotiveComponent, ViewImageComponent]
 })
 export class AppModule { }

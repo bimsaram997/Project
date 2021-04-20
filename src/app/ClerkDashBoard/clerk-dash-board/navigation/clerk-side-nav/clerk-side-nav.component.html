@@ -1,23 +1,14 @@
 
 <mat-nav-list class="s">
-  <div>
-    <img style="vertical-align:middle; height: 50px; width: 50px; padding-bottom: 10PX" src="./assets/images/man.png">
-    <p class="heading-txt">Admin Panel</p>
-  </div>
-
+  <img class="image" src="./assets/logo/1618837407350.png">
   <hr>
-  <a class="p" mat-list-item  (click) = "onSidenavClose()" >
-    <mat-icon>Home</mat-icon><span class="nav-caption">Home</span>
-  </a>
 
   <a mat-list-item routerLink="/clerkDashBoard/createUser" (click) = "onSidenavClose()" >
-    <mat-icon>account_balance</mat-icon><span class="nav-caption">New User</span>
+   <span><img src="https://img.icons8.com/material/24/000000/add-user-male.png"/></span><span class="nav-caption">&nbsp;&nbsp;New User</span>
   </a>
-  <a mat-list-item routerLink="/clerkDashBoard/createCustomer" (click) = "onSidenavClose()" >
-    <mat-icon>account_balance</mat-icon><span class="nav-caption">New Employee</span>
-  </a>
+
   <a mat-list-item routerLink="/clerkDashBoard/resetPassword" (click) = "onSidenavClose()" >
-    <mat-icon>account_balance</mat-icon><span class="nav-caption">Reset Password</span>
+    <span><img src="https://img.icons8.com/material/24/000000/password1--v1.png"/></span><span class="nav-caption">&nbsp;&nbsp;Reset Password</span>
   </a>
 
   <mat-list-item [matMenuTriggerFor] = "menu">
