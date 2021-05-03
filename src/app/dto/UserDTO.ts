@@ -52,7 +52,7 @@ export default class UserDTO {
   set userPassword(value: string) {
     this._userPassword = value;
   }
-  constructor(userEmail: string, userName: string, userWorks: string, userNic: string, userMobile: string, userRole: string, userPassword: string) {
+  constructor(userEmail?: string, userName?: string, userWorks?: string, userNic?: string, userMobile?: string, userRole?: string, userPassword?: string) {
     this._userEmail = userEmail;
     this._userName = userName;
     this._userWorks = userWorks;

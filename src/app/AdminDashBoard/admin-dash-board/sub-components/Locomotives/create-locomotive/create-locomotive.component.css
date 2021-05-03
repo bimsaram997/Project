@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
 .container{
   padding-top: 20px;
-  padding-right: 40px;
+  padding-right: 55px;
   padding-left: 40px;
 
 }
@@ -20,20 +20,7 @@
 
 }
 
-.add-bottom-padding{
-  padding-top: 1px;
-  padding-bottom: 1px;
-}
-mat-radio-group mat-radio-button{
-  margin-top: 5px;
-  margin-left: 10px;
-  margin-right: 20px;
-}
-.button-row {
-  margin: 5px;
-  text-align: center;
-  top: 700px;
-}
+
 .sub-headers{
   font-size: 18px;
   font-family: 'Roboto', sans-serif;
@@ -42,8 +29,11 @@ mat-radio-group mat-radio-button{
 }
 .para-txt{
   font-family: 'Poppins', sans-serif;
-  font-weight: bold;
+  font-weight: bolder;
+  font-size: 17px;
   color: #3a539b;
+  padding-left: 15px;
+  margin-right: 10px;
 }
 
 
@@ -75,8 +65,7 @@ mat-radio-group mat-radio-button{
   font-family: Roboto;
 }
 .main-wrap-for-selected-images{
-  padding-left: 60px;
-  padding-right: 40px;
+  padding-left: 2px;
   width: 90%;
   height: 60%;
 }
@@ -122,5 +111,33 @@ mat-grid-tile {
 }
 .example-full-width {
   width: 100%;
+  margin-right: 10px;;
+
+}
+
+
+
+.example-container .mat-form-field + .mat-form-field {
+  margin-left: 15px;
+
+
+
+}
+
+.mat-form-field{
+  width: 30%;
+
+
+}
+.example-container form {
   margin-bottom: 10px;
+  padding-left: 55px;
+
+}
+
+.example-container form > * {
+  margin: 5px 0px;
+}
+.input-Type{
+  display: flex;
 }

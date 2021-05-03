@@ -69,14 +69,6 @@ export class AdminEditLocomotiveComponent implements OnInit {
           text: 'Please Click OK',
           icon: 'success',
         });
-        setTimeout(() => {
-        //this.reloadComponent();
-
-
-
-
-
-        }, 300);
 
 
       }else {

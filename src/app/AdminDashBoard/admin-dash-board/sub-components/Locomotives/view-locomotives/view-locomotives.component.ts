@@ -120,7 +120,9 @@ export class ViewLocomotivesComponent implements OnInit {
     this.changeLocoDBreak = tempLoco.locoDBreak;
     this.changeLocoNote = tempLoco.locoNote;
     this.changeLocoImage =  Array(tempLoco.image);
-    const dialogRef = this.dialog.open(AdminEditLocomotiveComponent,{data: {EditCatId: this.changeLocoCatID, EditId: this.selectedLoco,
+    const dialogRef = this.dialog.open(AdminEditLocomotiveComponent,{data: {
+        EditCatId: this.changeLocoCatID,
+        EditId: this.selectedLoco,
         EditPower: this.changeLocoPower,
         EditMileage: this.changeLocoMileage,
         EditAvailability: this.changeLocoAvailability,

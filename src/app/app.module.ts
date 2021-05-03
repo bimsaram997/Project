@@ -54,6 +54,7 @@ import { ResetPasswordComponent } from './ClerkDashBoard/clerk-dash-board/SubCom
 import { AdminEditLocomotiveComponent } from './AdminDashBoard/admin-dash-board/sub-components/Locomotives/view-locomotives/admin-edit-locomotive/admin-edit-locomotive.component';
 import { ViewImageComponent } from './UserDashBoard/user-dashboard/SubComponents/Locomotives/user-view-locomotives/view-image/view-image.component';
 import { ViewUsersComponent } from './ClerkDashBoard/clerk-dash-board/SubComponents/Users/view-users/view-users.component';
+import { EditUserComponent } from './ClerkDashBoard/clerk-dash-board/SubComponents/Users/view-users/edit-user/edit-user.component';
 
 
 
@@ -105,6 +106,7 @@ import { ViewUsersComponent } from './ClerkDashBoard/clerk-dash-board/SubCompone
     AdminEditLocomotiveComponent,
     ViewImageComponent,
     ViewUsersComponent,
+    EditUserComponent,
 
 
 

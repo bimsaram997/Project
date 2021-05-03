@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CustomerService} from '../../../../../service/customer.service';
 import CustomerDTO from '../../../../../dto/CustomerDTO';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {LocomotiveService} from '../../../../../service/locomotive.service';
 import LocoDTO from '../../../../../dto/LocoDTO';
 import {ToastrService} from "ngx-toastr";
@@ -15,13 +15,20 @@ import swal from 'sweetalert';
   styleUrls: ['./create-locomotive.component.css']
 })
 export class CreateLocomotiveComponent implements OnInit {
+  LocoGroup: FormGroup;
   myControl = new FormControl();
   options: string[] = ['M2', 'M4', 'M5', 'M6', 'M7', 'M8', 'M9', 'M10', 'M11', 'M12'];
   loading =  false;
   public selectedIndex: number = 0;
   userList: UserDTO[] = [];
+  formatLabel(value: number) {
+    if (value >= 1000) {
+      return Math.round(value / 1000) + 'k';
+    }
 
-  locoCatId = '';
+    return value;
+  }
+  /*locoCatId = '';
   locoPower = '';
   locoNumber = '';
   locoMileage = '';
@@ -35,13 +42,14 @@ export class CreateLocomotiveComponent implements OnInit {
   locoTracMot = '';
   locoVBreak = '';
   locoDBreak = '';
-  locoNote = '';
+  locoNote = '';*/
+  searchKey: string;
 
   filesToUpload: Array<File> = [];
   urls = new Array<string>();
 
 
-  constructor(private imageService: ImageService, private accessService: AccessService, private locomotiveService: LocomotiveService, private toastr: ToastrService) { }
+  constructor(private formBuilder: FormBuilder, private imageService: ImageService, private accessService: AccessService, private locomotiveService: LocomotiveService, private toastr: ToastrService) { }
 
 
   statuses: string[] = ['In', 'Out'];
@@ -50,9 +58,83 @@ export class CreateLocomotiveComponent implements OnInit {
   vBreaks: string[] = ['Working', 'Not Working'];
   dBreaks: string[] = ['Working', 'Not Working'];
   isVisble = true;
+  val = '';
+
+  val2: string[] = [];
+  private val1: string[] = [];
+
   ngOnInit(): void {
+    this.LocoGroup = this.formBuilder.group({
+      locoCatId: [''],
+      locoPower: [''],
+      locoNumber: [''],
+      locoMileage: [''],
+      locoAvailability: [''],
+      userNic: [''],
+      locoDate: [''],
+      locoMotors: new FormArray ([]),
+      locoBreaks: new FormArray([]),
+      locoFluids: new FormArray([]),
+      locoPressures: new FormArray([]),
+      image: [''],
+      locoNote: [''],
+      mtrType: ['', Validators.required],
+      brkType: ['', Validators.required],
+      fldType: ['', Validators.required]
+
+
+    });
     this.loadAllIds();
 
+  }
+  get getFm(){
+    return this.LocoGroup.controls;
+  }
+  get mtrArray(){
+    return this.getFm.locoMotors as FormArray;
+  }
+  get brkArray(){
+    return this.getFm.locoBreaks as FormArray;
+  }
+  get fluidArray(){
+    return this.getFm.locoFluids as FormArray;
+  }
+  onSubmit() {
+    console.log(this.LocoGroup.value);
+  }
+  onClickMotor() {
+    if (this.getFm.mtrType.value !== ''){
+      this.mtrArray.push(this.formBuilder.group({
+        Name: [this.getFm.mtrType.value],
+        working: [true],
+        notWorking: [false],
+
+      }));
+    }
+
+  }
+
+  onClickBreaks() {
+    if (this.getFm.brkType.value !== ''){
+      this.brkArray.push(this.formBuilder.group({
+        bName: [this.getFm.brkType.value],
+        working: [true],
+        notWorking: [false]
+
+
+      }))
+    }
+    this.val = this.getFm.brkType.value;
+
+  }
+  onClickFluids(){
+    if (this.getFm.fldType.value !== ''){
+      this.fluidArray.push(this.formBuilder.group({
+        fName: [this.getFm.fldType.value],
+        fluids: [''],
+      }))
+    }
+    this.val2 = this.getFm.fldType.value;
   }
 
   private loadAllIds() {
@@ -63,7 +145,7 @@ export class CreateLocomotiveComponent implements OnInit {
     });
   }
 
-  saveLocoOnAction() {
+  /*saveLocoOnAction() {
     this.imageService.uploadImage(this.filesToUpload).subscribe(resp => {
       console.log(resp);
       const dto = new LocoDTO (
@@ -136,7 +218,7 @@ export class CreateLocomotiveComponent implements OnInit {
     this.locoVBreak = '';
     this.locoDBreak = '';
     this.locoNote = '';
-  }
+  }*/
 
   public nextStep() {
     this.selectedIndex += 1;
@@ -179,5 +261,12 @@ export class CreateLocomotiveComponent implements OnInit {
     }
     console.log(this.filesToUpload);
   }
+
+  onSearchClear() {
+    this.searchKey = '';
+
+  }
+
+
 
 }

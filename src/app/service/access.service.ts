@@ -4,6 +4,7 @@ import {BehaviorSubject, Observable} from "rxjs";
 import {environment} from '../../environments/environment';
 import UserDTO from "../dto/UserDTO";
 import {map} from "rxjs/operators";
+import LocoDTO from "../dto/LocoDTO";
 
 @Injectable({
   providedIn: 'root'
@@ -58,6 +59,26 @@ export class AccessService {
   // }
   public getAllUsers(): Observable<any> {
     return this.http.get( this.myUrl + 'accessRoute/getAllUsers');
+  }
+  public getUsers(): Observable<any> {
+    return this.http.get( this.myUrl + 'accessRoute/getUsers');
+  }
+
+  public deleteUser(id: string): Observable<any> {
+    return this.http.delete( this.myUrl + 'accessRoute/deleteUser', {headers: {id}});
+
+  }
+  public updateUser(dto: UserDTO): Observable<any>{
+    return this.http.put(this.myUrl + 'accessRoute/updateUser', {
+      userName: dto.userName,
+      userWorks: dto.userWorks,
+      userMobile: dto.userMobile,
+      userRole: dto.userRole,
+      userNic: dto. userNic,
+
+
+
+    });
   }
   public login(email: string, password: string): Observable<any>{
     return this.http.get<any>(this.myUrl + 'accessRoute/loginUser', {headers: {email, password}}).pipe(

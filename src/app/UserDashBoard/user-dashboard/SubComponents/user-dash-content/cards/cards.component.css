@@ -3,9 +3,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Poppins:wght@300&family=Roboto:wght@500&display=swap');
 .container{
   padding-top: 5px;
-  padding-right: 10px;
-  padding-left: 10px;
-
 
 }
 .box-head{
@@ -22,8 +19,8 @@
 
 .example-card {
   width: 300px;
-  height: 100px;
-  right: -40px;
+  height: 140px;
+
 
 
 }

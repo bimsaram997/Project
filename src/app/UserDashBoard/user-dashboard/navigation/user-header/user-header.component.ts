@@ -34,11 +34,13 @@ export class UserHeaderComponent implements OnInit {
     if (confirm('Do want to log out? ?')){
       this.onSucess('You are log out!');
       this.cookieService.remove('userData');
-      this.reloadComponent();
+      this.refresh()
 
     }
   }
-
+  refresh(): void {
+    window.location.reload();
+  }
   onSucess(message: string){
     this.toastr.success(message, 'Success');
   }

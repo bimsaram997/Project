@@ -24,6 +24,7 @@ import {MainLoginPageComponent} from "./Common/main-login-page/main-login-page.c
 import {UserProfileComponent} from "./UserDashBoard/user-dashboard/SubComponents/UserProfile/user-profile/user-profile.component";
 import {ForgotPasswordComponent} from "./Common/forgot-password/forgot-password.component";
 import {ResetPasswordComponent} from "./ClerkDashBoard/clerk-dash-board/SubComponents/ResetPassword/reset-password/reset-password.component";
+import {ViewUsersComponent} from "./ClerkDashBoard/clerk-dash-board/SubComponents/Users/view-users/view-users.component";
 
 
 
@@ -53,6 +54,7 @@ const routes: Routes = [
   {path: 'clerkDashBoard', component: ClerkDashBoardComponent, children: [
       {path: 'clerkDashContent', component: ClerkDashContentComponent},
       {path: 'createUser', component: CreateUserComponent},
+      {path:  'viewUsers', component:  ViewUsersComponent},
       {path: 'createCustomer', component: CreateCustomerComponent},
       {path: 'response-reset-password/:token', component: ResetPasswordComponent},
 

@@ -200,11 +200,11 @@ header {
 
 /* || home */
 
-.home-bg::before {
+.container-fluid::before {
   content: "";
   position: absolute;
   width: 100%;
-  height: 110%;
+  height: 80%;
   left: 0;
   top: 0;
   background-size: cover;

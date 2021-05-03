@@ -28,7 +28,9 @@ export class HeaderComponent implements OnInit {
     if (confirm('Do You want to log out? ?')){
       this.onSucess('You are log out!');
       this.cookieService.remove('adminData');
-      this.reloadComponent();
+      this.refresh();
+
+
     }
   }
 
@@ -39,7 +41,7 @@ export class HeaderComponent implements OnInit {
   refresh(): void {
     window.location.reload();
   }
-  async reloadComponent() {
+reloadComponent() {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.onSameUrlNavigation = 'reload';
     this.router.navigate(['/'],{relativeTo:this.route});
