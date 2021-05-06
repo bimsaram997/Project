@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Poppins:wght@300&family=Roboto:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+.container{
+  padding-top: 20px;
+  padding-right: 55px;
+  padding-left: 40px;
+
+}
+.box-head{
+  display: flex;
+  align-items:center;
+}
+.heading-txt{
+  font-family: 'Bebas Neue', cursive;
+  font-size: 40px;
+  color: #013243;
+  padding-left: 10px;
+
+}
+
+
+.sub-headers{
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif;
+  color: #34495e;
+  font-weight: bold;
+}
+.example-container .mat-form-field + .mat-form-field {
+  margin-left: 15px;
+
+
+
+}
+.example-container. table + table{
+  margin-left: 15px;
+}
+.mat-form-field{
+  width: 30%;
+
+
+}
+.example-container form {
+  margin-bottom: 10px;
+  padding-left: 55px;
+
+}
+
+.example-container form > * {
+  margin: 5px 0px;
+}
+.input-Type{
+  display: flex;
+}
+
+.comp-tbl {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+
+
+}
+.comp-td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  height: 20px;
+}
+
+.comp-tr:nth-child(even) {
+  background-color: #dddddd;
+}
+.caption-txt{
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif;
+  color: #34495e;
+  font-weight: bold;
+}

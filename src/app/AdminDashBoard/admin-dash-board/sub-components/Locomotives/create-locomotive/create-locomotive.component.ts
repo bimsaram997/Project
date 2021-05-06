@@ -9,6 +9,7 @@ import {AccessService} from "../../../../../service/access.service";
 import UserDTO from "../../../../../dto/UserDTO";
 import {ImageService} from "../../../../../service/image.service";
 import swal from 'sweetalert';
+import {first} from "rxjs/operators";
 @Component({
   selector: 'app-create-locomotive',
   templateUrl: './create-locomotive.component.html',
@@ -65,24 +66,21 @@ export class CreateLocomotiveComponent implements OnInit {
 
   ngOnInit(): void {
     this.LocoGroup = this.formBuilder.group({
-      locoCatId: [''],
-      locoPower: [''],
-      locoNumber: [''],
-      locoMileage: [''],
-      locoAvailability: [''],
-      userNic: [''],
-      locoDate: [''],
+      locoCatId: ['', [Validators.required]],
+      locoNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      locoPower: ['', [Validators.required, Validators.minLength(5),  Validators.pattern('^[0-9]*$')]],
+      locoMileage: ['', [Validators.required, Validators.minLength(10),  Validators.pattern('^[0-9]*$')]],
+      locoDate: ['', [Validators.required]],
+      userNic: ['', [Validators.required]],
+      locoAvailability: ['', [Validators.required]],
       locoMotors: new FormArray ([]),
       locoBreaks: new FormArray([]),
       locoFluids: new FormArray([]),
-      locoPressures: new FormArray([]),
+      locoNote: ['', [Validators.required, Validators.maxLength(1000),  Validators.pattern('^[0-9]*$')]],
       image: [''],
-      locoNote: [''],
       mtrType: ['', Validators.required],
       brkType: ['', Validators.required],
       fldType: ['', Validators.required]
-
-
     });
     this.loadAllIds();
 
@@ -101,6 +99,49 @@ export class CreateLocomotiveComponent implements OnInit {
   }
   onSubmit() {
     console.log(this.LocoGroup.value);
+
+    // if(this.filesToUpload.)
+
+
+
+
+      this.locomotiveService.saveLocomotive(this.LocoGroup.value)
+        .pipe(first()).subscribe(
+        res => {
+          console.log(res)
+          if (res.isSaved) {
+            swal({
+              title: 'Record Saved!',
+              text: 'Please Click OK',
+              icon: 'success',
+            });
+            setTimeout(() => {
+              this.refresh();
+            }, 3000);
+
+          } else {
+            swal({
+              title: 'Record already Exits',
+              text: 'Please Click OK',
+              icon: 'error',
+            });
+            setTimeout(() => {
+              this.refresh();
+            }, 3000);
+          }
+        },
+
+        error => {
+          console.log(error)
+        },
+        () => {
+          console.log('dss')
+        }
+      )
+
+
+
+
   }
   onClickMotor() {
     if (this.getFm.mtrType.value !== ''){
@@ -112,6 +153,45 @@ export class CreateLocomotiveComponent implements OnInit {
       }));
     }
 
+  }
+  onClickremoveField(index = null, value) {
+
+    switch(value) {
+      case 'main':
+        while (this.mtrArray.length !== 0) {
+          this.mtrArray.removeAt(0);
+        }
+        break;
+      case 'sub':
+        this.mtrArray.removeAt(index);
+        break;
+    }
+  }
+  onClickremoveBreakField(index = null, value) {
+
+    switch (value) {
+      case 'main':
+        while (this.brkArray.length !== 0) {
+          this.brkArray.removeAt(0);
+        }
+        break;
+      case 'sub':
+        this.brkArray.removeAt(index);
+        break;
+    }
+  }
+  onClickremoveFluidField(index = null, value) {
+
+    switch (value) {
+      case 'main':
+        while (this.fluidArray.length !== 0) {
+          this.fluidArray.removeAt(0);
+        }
+        break;
+      case 'sub':
+        this.fluidArray.removeAt(index);
+        break;
+    }
   }
 
   onClickBreaks() {
@@ -144,8 +224,8 @@ export class CreateLocomotiveComponent implements OnInit {
       this.loading = true;
     });
   }
-
-  /*saveLocoOnAction() {
+/*
+  saveLocoOnAction() {
     this.imageService.uploadImage(this.filesToUpload).subscribe(resp => {
       console.log(resp);
       const dto = new LocoDTO (

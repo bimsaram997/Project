@@ -28,46 +28,86 @@
                  [formControl]="myControl"
                  formControlName="locoCatId"
                  [matAutocomplete]="auto">
+
           <mat-autocomplete #auto="matAutocomplete">
             <mat-option *ngFor="let option of options " [value]="option">
               {{option}}
             </mat-option>
           </mat-autocomplete>
+          <div *ngIf="LocoGroup.controls['locoCatId'].invalid && (LocoGroup.controls['locoCatId'].dirty || LocoGroup.controls['locoCatId'].touched)"   class="error">
+            <div *ngIf="LocoGroup.controls['LocoCatId'].errors.required">
+              Category is Required.
+            </div>
+          </div>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label class="Locomotive Number">Locomotive Number</mat-label>
           <input required  maxlength="3" minlength="1" matInput placeholder="Locomotive Number" #searchInput formControlName="locoNumber" >
+          <div *ngIf="LocoGroup.controls['locoNumber'].invalid && (LocoGroup.controls['locoNumber'].dirty || LocoGroup.controls['locoNumber'].touched)"   class="error">
+            <div *ngIf="LocoGroup.controls['locoNumber'].errors.required">
+              Number is Required.
+            </div>
+            <div *ngIf="LocoGroup.controls['locoNumber'].errors.pattern">
+             Enter only numbers
+            </div>
+          </div>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label class="label-txt">Locomotive Power</mat-label>
           <input  minlength="4" maxlength="5" required  matInput placeholder="Locomotive Power" #searchInput formControlName="locoPower">
-
+          <div *ngIf="LocoGroup.controls['locoPower'].invalid && (LocoGroup.controls['locoPower'].dirty || LocoGroup.controls['locoPower'].touched)"   class="error">
+            <div *ngIf="LocoGroup.controls['locoPower'].errors.required">
+             power is Required.
+            </div>
+            <div *ngIf="LocoGroup.controls['locoPower'].errors.pattern">
+              Enter only numbers
+            </div>
+          </div>
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill" >
           <mat-label class="label-txt">Locomotive Mileage</mat-label>
           <input    minlength="4"  required  matInput placeholder="Locomotive Mileage" #searchInput formControlName="locoMileage">
-
+          <div *ngIf="LocoGroup.controls['locoMileage'].invalid && (LocoGroup.controls['locoMileage'].dirty || LocoGroup.controls['locoMileage'].touched)"   class="error">
+            <div *ngIf="LocoGroup.controls['locoMileage'].errors.required">
+              Mileage is Required.
+            </div>
+            <div *ngIf="LocoGroup.controls['locoMileage'].errors.pattern">
+              Enter only numbers
+            </div>
+          </div>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Choose a date</mat-label>
           <input matInput [matDatepicker]="picker" formControlName="locoDate">
+
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
+          <div *ngIf="LocoGroup.controls['locoDate'].invalid && (LocoGroup.controls['locoDate'].dirty || LocoGroup.controls['locoDate'].touched)"   class="error">
+            <div *ngIf="LocoGroup.controls['locoDate'].errors.required">
+              Date is Required.
+            </div>
+          </div>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Supervisor NIC</mat-label>
-          <mat-select formControlName="userNic">
+          <mat-select formControlName="userNic" required>
             <mat-option *ngFor="let temIds of userList"   value="{{temIds.userNic}}">
               {{temIds.userNic}}
             </mat-option>
           </mat-select>
+          <div *ngIf="LocoGroup.controls['userNic'].invalid && (LocoGroup.controls['userNic'].dirty || LocoGroup.controls['userNic'].touched)"   class="error">
+            <div *ngIf="LocoGroup.controls['userNic'].errors.required">
+              Supervisor Nic is Required.
+            </div>
+          </div>
         </mat-form-field>
         <br>
         <mat-radio-group aria-label="Select an option" formControlName="locoAvailability">
           <span class="para-txt">Availability</span>
           <mat-radio-button  *ngFor="let status of statuses" [value] = "status">{{status}} &nbsp;</mat-radio-button>
+
         </mat-radio-group>
         <mat-divider></mat-divider>
         <br>
@@ -79,7 +119,8 @@
             <input required  maxlength="20" minlength="1" matInput placeholder="Motor Item" #searchInput formControlName="mtrType" >
           </mat-form-field> &nbsp;&nbsp;
           <div class="btn">
-            <button style="background-color: #59abe3" mat-raised-button color="primary" (click)="onClickMotor()">Add Item</button>
+            <button style="background-color: #59abe3" mat-raised-button color="primary" (click)="onClickMotor()">Add Item</button>&nbsp;
+            <button style="background-color: #59abe3" mat-raised-button color="accent" (click)="onClickremoveField('','main')">Remove All</button>
           </div>
         </div>
         <div class="row" >
@@ -93,7 +134,10 @@
               <br>
               <mat-checkbox class="example-margin" formControlName="working">Working</mat-checkbox>&nbsp;
               <mat-checkbox class="example-margin" formControlName="notWorking">Not Working</mat-checkbox>
-
+              <br>
+              <button style="color: red" mat-button  (click)="onClickremoveField(i, 'sub')"><span class="material-icons">
+delete
+</span></button>
             </p>
           </div>
           </div>
@@ -120,7 +164,8 @@
                   <input required  maxlength="3" minlength="1" matInput placeholder="Break Item" #searchInput formControlName="brkType" >
                 </mat-form-field> &nbsp;&nbsp;
                 <div class="btn">
-                  <button style="background-color: #59abe3;" mat-raised-button color="primary" (click)="onClickBreaks()">Add Item</button>
+                  <button style="background-color: #59abe3;" mat-raised-button color="primary" (click)="onClickBreaks()">Add Item</button> &nbsp;
+                  <button style="background-color: #59abe3" mat-raised-button color="accent" (click)="onClickremoveBreakField('','main')">Remove All</button>
                 </div>
               </div>
               <div class="row" >
@@ -134,6 +179,8 @@
                       <br>
                       <mat-checkbox class="example-margin" formControlName="working">Working</mat-checkbox>&nbsp;
                       <mat-checkbox class="example-margin" formControlName="notWorking">Not Working</mat-checkbox>
+                      <br>
+                      <button style="background-color: #59abe3" mat-raised-button color="accent" (click)="onClickremoveBreakField(i, 'sub')">Remove</button>
                     </p>
                   </div>
                 </div>
@@ -150,7 +197,8 @@
 
                 </mat-form-field> &nbsp;&nbsp;
                 <div class="btn">
-                  <button style="background-color: #59abe3;" mat-raised-button color="primary" (click)="onClickFluids()">Add Item</button>
+                  <button style="background-color: #59abe3;" mat-raised-button color="primary" (click)="onClickFluids()">Add Item</button>&nbsp;
+                  <button style="background-color: #59abe3" mat-raised-button color="accent" (click)="onClickremoveFluidField('','main')">Remove All</button>
                 </div>
               </div>
               <div class="row" >
@@ -169,6 +217,8 @@
                                    step="1000"
                                    min="0"
                                    max="100000" aria-label="unit(s)" formControlName="fluids"></mat-slider>
+                      <br>
+                      <button style="background-color: #59abe3" mat-raised-button color="accent" (click)="onClickremoveFluidField(i, 'sub')">Remove</button>
                     </p>
                   </div>
                 </div>
@@ -180,17 +230,18 @@
               <input (change)="changeFiles($event)" multiple style="display: none" type="file" accept="images/" id="selectedFile" >
               <div class="main-wrap-for-selected-images">
                 <button style="background-color: #59abe3" mat-raised-button color="primary" *ngIf="isVisble"  onclick="document.getElementById('selectedFile').click()" >  Add Images  </button>
-                <img *ngIf="urls[0]!=null" src="{{urls[0]}}" alt="Image"
-                     class="selected-image img-thumbnail">
-                <img *ngIf="urls[1]!=null" src="{{urls[1]}}"   alt="Image"
-                     class="selected-image img-thumbnail">
-                <img *ngIf="urls[2]!=null"  src="{{urls[2]}}" alt="Image"
+                <img *ngIf="urls[0]!=null" src="{{urls[0]}}" alt="Image" formControlName="image"
                      class="selected-image img-thumbnail">
               </div>
               <br>
               <mat-form-field appearance="fill">
                 <mat-label>Textarea</mat-label>
                 <textarea matInput formControlName="locoNote"></textarea>
+                <div *ngIf="LocoGroup.controls['locoNote'].invalid && (LocoGroup.controls['locoNote'].dirty || LocoGroup.controls['locoNote'].touched)"   class="error">
+                  <div *ngIf="LocoGroup.controls['locoNote'].errors.required">
+                    Supervisor Nic is Required.
+                  </div>
+                </div>
               </mat-form-field>
               <br>
 

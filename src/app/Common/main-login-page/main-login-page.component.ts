@@ -51,7 +51,7 @@ export class MainLoginPageComponent implements OnInit {
       this.accessService.login(this.loginEmail.toString(), this.loginPassword.toString()).pipe(first()).
       subscribe(result => {
         if (result.message === 'Success!'){
-          if (result.userRole === Role.ChiefEngineer){
+          if (result.userRole === Role.ChiefEngineer || result.userRole === Role.ServiceManger) {
             this.router.navigate(['adminDashboard/adminDashContent']);
             this.cookieService.putObject('adminData', this.loginEmail);
           }else if (result.userRole === Role.Supervisor){

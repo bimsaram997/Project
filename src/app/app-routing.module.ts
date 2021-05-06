@@ -25,6 +25,9 @@ import {UserProfileComponent} from "./UserDashBoard/user-dashboard/SubComponents
 import {ForgotPasswordComponent} from "./Common/forgot-password/forgot-password.component";
 import {ResetPasswordComponent} from "./ClerkDashBoard/clerk-dash-board/SubComponents/ResetPassword/reset-password/reset-password.component";
 import {ViewUsersComponent} from "./ClerkDashBoard/clerk-dash-board/SubComponents/Users/view-users/view-users.component";
+import {ViewLocoProfileComponent} from "./AdminDashBoard/admin-dash-board/sub-components/Locomotives/view-locomotives/view-loco-profile/view-loco-profile.component";
+import {MileageReportComponent} from "./ClerkDashBoard/clerk-dash-board/SubComponents/mileage-report/mileage-report.component";
+import {ViewMileageComponent} from "./AdminDashBoard/admin-dash-board/sub-components/view-mileage/view-mileage.component";
 
 
 
@@ -41,6 +44,8 @@ const routes: Routes = [
       {path: 'customerDetail/:id/:CustomerNic', component: CustomerDetailComponent},
       {path: 'viewLocomotives', component: ViewLocomotivesComponent},
       {path: 'adminViewSchedules', component: AdminViewScehdulesComponent},
+      {path: 'viewLocoProfile', component: ViewLocoProfileComponent},
+      {path: 'viewMileage', component: ViewMileageComponent}
 
     ]},
   {path: 'userDashboard', canActivate: [AuthGuard], component: UserDashboardComponent,  children: [
@@ -57,6 +62,7 @@ const routes: Routes = [
       {path:  'viewUsers', component:  ViewUsersComponent},
       {path: 'createCustomer', component: CreateCustomerComponent},
       {path: 'response-reset-password/:token', component: ResetPasswordComponent},
+      {path: 'createMileage', component: MileageReportComponent},
 
     ]}
 ];

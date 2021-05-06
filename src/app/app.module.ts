@@ -55,6 +55,12 @@ import { AdminEditLocomotiveComponent } from './AdminDashBoard/admin-dash-board/
 import { ViewImageComponent } from './UserDashBoard/user-dashboard/SubComponents/Locomotives/user-view-locomotives/view-image/view-image.component';
 import { ViewUsersComponent } from './ClerkDashBoard/clerk-dash-board/SubComponents/Users/view-users/view-users.component';
 import { EditUserComponent } from './ClerkDashBoard/clerk-dash-board/SubComponents/Users/view-users/edit-user/edit-user.component';
+import { ViewLocoProfileComponent } from './AdminDashBoard/admin-dash-board/sub-components/Locomotives/view-locomotives/view-loco-profile/view-loco-profile.component';
+import { MileageReportComponent } from './ClerkDashBoard/clerk-dash-board/SubComponents/mileage-report/mileage-report.component';
+import { ViewMileageComponent } from './AdminDashBoard/admin-dash-board/sub-components/view-mileage/view-mileage.component';
+import { ConfirmDialogComponent } from './AdminDashBoard/admin-dash-board/sub-components/view-mileage/confirm-dialog/confirm-dialog.component';
+import { RejectDialogComponent } from './AdminDashBoard/admin-dash-board/sub-components/view-mileage/reject-dialog/reject-dialog.component';
+
 
 
 
@@ -107,6 +113,12 @@ import { EditUserComponent } from './ClerkDashBoard/clerk-dash-board/SubComponen
     ViewImageComponent,
     ViewUsersComponent,
     EditUserComponent,
+    ViewLocoProfileComponent,
+    MileageReportComponent,
+    ViewMileageComponent,
+    ConfirmDialogComponent,
+    RejectDialogComponent,
+
 
 
 
@@ -133,6 +145,6 @@ import { EditUserComponent } from './ClerkDashBoard/clerk-dash-board/SubComponen
   ],
   providers: [EventEmitterService],
   bootstrap: [AppComponent],
-  entryComponents: [ModelComponent, ViewLocoComponent, EditLocoComponent, AdminEditLocomotiveComponent, ViewImageComponent]
+  entryComponents: [ModelComponent, ViewLocoComponent, EditLocoComponent, AdminEditLocomotiveComponent, ViewImageComponent, ConfirmDialogComponent, RejectDialogComponent]
 })
 export class AppModule { }

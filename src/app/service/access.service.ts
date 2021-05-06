@@ -60,6 +60,10 @@ export class AccessService {
   public getAllUsers(): Observable<any> {
     return this.http.get( this.myUrl + 'accessRoute/getAllUsers');
   }
+  public getMangers(): Observable<any> {
+    return this.http.get( this.myUrl + 'accessRoute/getMangers');
+  }
+
   public getUsers(): Observable<any> {
     return this.http.get( this.myUrl + 'accessRoute/getUsers');
   }

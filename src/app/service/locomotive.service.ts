@@ -67,4 +67,20 @@ export class LocomotiveService {
   public getOutCount(): Observable<any>{
     return this.http.get(this.myUrl + 'locoRoute/getOutCount');
   }
+  public saveLocomotive(obj): Observable<any>{
+    return this.http.post(this.myUrl + 'locoRoute/save-locomotive' , obj);
+  }
+  public saveMileage(obj): Observable<any>{
+    return this.http.post(this.myUrl + 'locoRoute/saveMileage' , obj);
+  }
+  public getAllMileage(): Observable<any> {
+    return this.http.get( this.myUrl + 'locoRoute/getAllMileage');
+  }
+
+  public updateMileStatus(id):Observable<any> {
+    return this.http.patch( this.myUrl + `locoRoute/patch-mile/${id}` , id);
+  }
+  public updateRejectStatus(id, reason):Observable<any> {
+    return this.http.patch( this.myUrl + `locoRoute/reject-mile/${id}/${reason}` , id, reason);
+  }
 }
