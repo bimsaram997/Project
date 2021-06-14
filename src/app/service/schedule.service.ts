@@ -29,12 +29,18 @@ export class ScheduleService {
       scheduleRemark: dto.scheduleRemark
     });
   }
-
+  public saveOfSchedule(obj): Observable<any>{
+    return this.http.post(this.myUrl + 'scheduleRoute/save-Schedule' , obj);
+  }
   public getAllSchedules(): Observable<any> {
     return this.http.get(this.myUrl + 'scheduleRoute/getAllSchedules');
   }
   public deleteSchedule(id: string): Observable<any> {
     return this.http.delete( this.myUrl + 'scheduleRoute/deleteSchedule', {headers: {id}});
+
+  }
+  public getOneSchedule(id: string): Observable<any>{
+    return this.http.get(this.myUrl + 'scheduleRoute/sendOneSchedule', {headers: {id}});
 
   }
   public updateSchedule(dto: LocoScheduleDTO): Observable<any> {

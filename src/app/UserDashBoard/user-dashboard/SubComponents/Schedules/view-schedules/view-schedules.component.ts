@@ -9,6 +9,8 @@ import {ScheduleService} from "../../../../../service/schedule.service";
 import LocoScheduleDTO from "../../../../../dto/LocoScheduleDTO";
 import {FormControl} from "@angular/forms";
 import {MatTableExporterModule} from "mat-table-exporter";
+import {MatDialog} from "@angular/material/dialog";
+import {SendProgressComponent} from "./send-progress/send-progress.component";
 
 
 @Component({
@@ -17,50 +19,45 @@ import {MatTableExporterModule} from "mat-table-exporter";
   styleUrls: ['./view-schedules.component.css']
 })
 export class ViewSchedulesComponent implements OnInit {
-
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  dataSource: MatTableDataSource<LocoScheduleDTO>;
-  displayedColumns: string[] = ['Schedule No', 'Date', 'Loco Category', 'Loco Number', 'Supervisor NIC', 'Supervisor Email', 'Schedule Status', 'Body loco', 'Motors', 'ELUCU', 'Traction', 'Mechanical', '#'];
-  @ViewChild(MatSort) sort: MatSort;
-  scheduleArray: LocoScheduleDTO[] = [];
-  selectedSchedule: LocoScheduleDTO = null;
-  isVisible =  false;
-  isVisibleSecond = false;
   searchKey: string;
-  bgColor = 'grey';
-  bodyLoco = new FormControl();
-  bodyLocoList: string[] = [ 'Axle', 'Body Plates', 'Wheels', 'Truck Frames'];
-  electricControl = new FormControl();
-  electricControlList: string[] = ['Control Desk', 'Main Generators', 'Lights', 'Electric Controls', 'Battery'];
-  mainMotor = new FormControl();
-  mainMotorList: string[] = ['Main Generator', 'Main Alternator', 'Auxiliary Alternator', 'Fuel Blower Motor', 'Air baths'];
-  tMotors = new FormControl();
-  tMotorsList: string[] = [ 'Traction Motors', 'Axle Generators', 'Pinion & Gear'];
-  eMechanical = new FormControl();
-  eMechanicalMaList: string[] = [ 'Turbo Charger', 'Gear Box', 'Radiator', 'Drive Shaft'];
-  top = new FormControl();
-  topList: string[] = ['sdsd', 'asas'];
-  count: number;
-  constructor(private schedulesService: ScheduleService ,private router: Router,  private toastr: ToastrService) {
-    this.loadAll();
-    this.loadCount();
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+  dataSource: MatTableDataSource<any>;
+  displayedColumns: string[] = ['Schedule No', 'Report No', 'Loco Category', 'Loco Number', 'Manager inCharge', 'Request Date', 'To be Complete', 'Progress', 'status', '#'];
+  scheduleList: any[] = [];
+  scheduleStatus: any;
+
+  constructor(private scheduleService: ScheduleService ,private router: Router,  private toastr: ToastrService,public dialog: MatDialog) {
+
+    //this.loadCount();
+    this.loadAllSchedule();
   }
 
   ngOnInit(): void {
 
   }
-
-  loadAll() {
-    this.schedulesService.getAllSchedules().subscribe(resp => {
-      this.scheduleArray = resp;
-      this.dataSource = new MatTableDataSource<LocoScheduleDTO>(this.scheduleArray);
-
+  private loadAllSchedule(){
+    this.scheduleService.getAllSchedules().subscribe(resp =>{
+      this.scheduleList = resp;
+      this.dataSource =  new MatTableDataSource<any>(this.scheduleList);
       setTimeout(() => {
-        this.dataSource.paginator = this.paginator;
+        this.dataSource.paginator =  this.paginator;
         this.dataSource.sort = this.sort;
-      });
-    });
+      })
+    })
   }
+  statusBinder(scheduleStatus){
+    if (scheduleStatus === 1){
+      return 'pending_actions'
+        ;
+    }else if (scheduleStatus === 2){
+      return 'flag';
+    }else if (scheduleStatus === 4){
+      return 'dangerous'
+    }
+  }
+
+/*
   loadCount(){
     this.schedulesService.getDraftCount().subscribe(resp => {
       if(resp >= 0){
@@ -69,19 +66,15 @@ export class ViewSchedulesComponent implements OnInit {
     });
   }
 
-  deleteSchedule(scheduleNo: string) {
-    if (confirm('Are You Sure, whether You want to delete this Customer ?')){
-      this.schedulesService.deleteSchedule(scheduleNo).subscribe(result => {
-        if (result.message === 'deleted'){
-          this.onSucess('Deleted!');
-          this.loadAll();
-        } else{
-          this.onWarning('Try Again');
-        }
-      });
-    }
-  }
+ */
 
+
+
+  openProgress(scheduleNo: string) {
+    this.dialog.open(SendProgressComponent, {
+      data: {id: scheduleNo}
+    });
+  }
 
   onSearchClear() {
     this.searchKey = '';
@@ -97,12 +90,8 @@ export class ViewSchedulesComponent implements OnInit {
   applyFilter() {
     this.dataSource.filter = this.searchKey.trim().toLowerCase();
   }
-  setState(){
-    this.isVisibleSecond = false;
-    this.isVisible = !this.isVisible;
 
-  }
-
+/*
   view(tempSchedule: LocoScheduleDTO) {
     this.selectedSchedule = tempSchedule;
     const btn = document.getElementById('btn-pop-up') as HTMLElement;
@@ -191,4 +180,6 @@ export class ViewSchedulesComponent implements OnInit {
     });
 
   }
+
+ */
 }
