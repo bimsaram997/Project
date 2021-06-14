@@ -10,19 +10,17 @@
   <a mat-list-item routerLink="/clerkDashBoard/viewUsers" (click) = "onSidenavClose()" >
     <span><img src="https://img.icons8.com/material/24/000000/add-user-male.png"/></span><span class="nav-caption">&nbsp;&nbsp;View Users</span>
   </a>
-  <a mat-list-item routerLink="/clerkDashBoard/createMileage" (click) = "onSidenavClose()" >
-    <span><img src="https://img.icons8.com/material/24/000000/add-user-male.png"/></span><span class="nav-caption">&nbsp;&nbsp;Create Mileage Report</span>
-  </a>
   <a mat-list-item routerLink="/clerkDashBoard/resetPassword" (click) = "onSidenavClose()" >
     <span><img src="https://img.icons8.com/material/24/000000/password1--v1.png"/></span><span class="nav-caption">&nbsp;&nbsp;Reset Password</span>
   </a>
 
+
   <mat-list-item [matMenuTriggerFor] = "menu">
     <mat-icon>unfold_more</mat-icon>
-    <a mat-line>Scehdules</a>
+    <a mat-line>Mileage Details</a>
   </mat-list-item>
   <mat-menu #menu = "matMenu">
-    <button mat-menu-item (click)="onSidenavClose()">View All Schedules</button>
-    <button mat-menu-item (click)="onSidenavClose()">Add Schedules</button>
+    <button mat-menu-item routerLink="/clerkDashBoard/createMileage" (click)="onSidenavClose()">Add Mileage Report</button>
+    <button mat-menu-item routerLink="/clerkDashBoard/viewMileages" (click)="onSidenavClose()">View Mileage Reports</button>
   </mat-menu>
 </mat-nav-list>

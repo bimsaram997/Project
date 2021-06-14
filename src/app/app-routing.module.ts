@@ -28,6 +28,14 @@ import {ViewUsersComponent} from "./ClerkDashBoard/clerk-dash-board/SubComponent
 import {ViewLocoProfileComponent} from "./AdminDashBoard/admin-dash-board/sub-components/Locomotives/view-locomotives/view-loco-profile/view-loco-profile.component";
 import {MileageReportComponent} from "./ClerkDashBoard/clerk-dash-board/SubComponents/mileage-report/mileage-report.component";
 import {ViewMileageComponent} from "./AdminDashBoard/admin-dash-board/sub-components/view-mileage/view-mileage.component";
+import {ManagerDashboardComponent} from "./ServiceManagerDashBoard/manager-dashboard/manager-dashboard.component";
+import {ManagerDashContentComponent} from "./ServiceManagerDashBoard/manager-dashboard/Subcomps/manager-dash-content/manager-dash-content.component";
+import {ViewMileagesComponent} from "./ClerkDashBoard/clerk-dash-board/SubComponents/ViewMileage/view-mileages/view-mileages.component";
+import {ClerkAuthoGuardGuard} from "./clerk-autho-guard.guard";
+import {RequestScheduleComponent} from "./ServiceManagerDashBoard/manager-dashboard/Subcomps/request-schedule/request-schedule.component";
+import {ViewManagerSchedulesComponent} from "./ServiceManagerDashBoard/manager-dashboard/Subcomps/view-manager-schedules/view-manager-schedules.component";
+
+
 
 
 
@@ -56,13 +64,23 @@ const routes: Routes = [
       {path: 'userProfile', component: UserProfileComponent}
 
     ]},
-  {path: 'clerkDashBoard', component: ClerkDashBoardComponent, children: [
+  {path: 'clerkDashBoard', canActivate: [ClerkAuthoGuardGuard], component: ClerkDashBoardComponent, children: [
       {path: 'clerkDashContent', component: ClerkDashContentComponent},
       {path: 'createUser', component: CreateUserComponent},
       {path:  'viewUsers', component:  ViewUsersComponent},
       {path: 'createCustomer', component: CreateCustomerComponent},
       {path: 'response-reset-password/:token', component: ResetPasswordComponent},
       {path: 'createMileage', component: MileageReportComponent},
+      {path: 'viewMileages', component: ViewMileagesComponent}
+
+    ]},
+  {path: 'managerDashBoard', component: ManagerDashboardComponent, children: [
+      {path: 'mDashContent', component: ManagerDashContentComponent},
+      {path: 'viewMileage', component: ViewMileageComponent},
+      {path: 'requestSchedule', component: RequestScheduleComponent},
+      {path: 'createSchedule', component: CreateScheduleComponent},
+      {path: 'viewManagerSchedules', component:  ViewManagerSchedulesComponent}
+
 
     ]}
 ];

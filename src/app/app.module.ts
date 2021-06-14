@@ -60,9 +60,14 @@ import { MileageReportComponent } from './ClerkDashBoard/clerk-dash-board/SubCom
 import { ViewMileageComponent } from './AdminDashBoard/admin-dash-board/sub-components/view-mileage/view-mileage.component';
 import { ConfirmDialogComponent } from './AdminDashBoard/admin-dash-board/sub-components/view-mileage/confirm-dialog/confirm-dialog.component';
 import { RejectDialogComponent } from './AdminDashBoard/admin-dash-board/sub-components/view-mileage/reject-dialog/reject-dialog.component';
-
-
-
+import { ManagerDashboardComponent } from './ServiceManagerDashBoard/manager-dashboard/manager-dashboard.component';
+import { ManagerDashContentComponent } from './ServiceManagerDashBoard/manager-dashboard/Subcomps/manager-dash-content/manager-dash-content.component';
+import { ManagerSideNavComponent } from './ServiceManagerDashBoard/manager-dashboard/navigation/manager-side-nav/manager-side-nav.component';
+import { ManagerHeaderComponent } from './ServiceManagerDashBoard/manager-dashboard/navigation/manager-header/manager-header.component';
+import { ViewMileagesComponent } from './ClerkDashBoard/clerk-dash-board/SubComponents/ViewMileage/view-mileages/view-mileages.component';
+import { RequestScheduleComponent } from './ServiceManagerDashBoard/manager-dashboard/Subcomps/request-schedule/request-schedule.component';
+import { ViewManagerSchedulesComponent } from './ServiceManagerDashBoard/manager-dashboard/Subcomps/view-manager-schedules/view-manager-schedules.component';
+import { SendProgressComponent } from './UserDashBoard/user-dashboard/SubComponents/Schedules/view-schedules/send-progress/send-progress.component';
 
 
 
@@ -118,6 +123,18 @@ import { RejectDialogComponent } from './AdminDashBoard/admin-dash-board/sub-com
     ViewMileageComponent,
     ConfirmDialogComponent,
     RejectDialogComponent,
+    ManagerDashboardComponent,
+    ManagerDashContentComponent,
+    ManagerSideNavComponent,
+    ManagerHeaderComponent,
+    ViewMileagesComponent,
+    RequestScheduleComponent,
+    ViewManagerSchedulesComponent,
+    SendProgressComponent,
+
+
+
+
 
 
 
@@ -145,6 +162,7 @@ import { RejectDialogComponent } from './AdminDashBoard/admin-dash-board/sub-com
   ],
   providers: [EventEmitterService],
   bootstrap: [AppComponent],
-  entryComponents: [ModelComponent, ViewLocoComponent, EditLocoComponent, AdminEditLocomotiveComponent, ViewImageComponent, ConfirmDialogComponent, RejectDialogComponent]
+  entryComponents: [ModelComponent, ViewLocoComponent, EditLocoComponent, AdminEditLocomotiveComponent, ViewImageComponent, ConfirmDialogComponent, RejectDialogComponent,
+  SendProgressComponent]
 })
 export class AppModule { }

@@ -19,83 +19,55 @@ import {LocomotiveService} from "../../../../../service/locomotive.service";
 })
 export class AdminViewScehdulesComponent implements OnInit {
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  dataSource: MatTableDataSource<LocoScheduleDTO>;
-  displayedColumns: string[] = ['Schedule No', 'Date', 'Loco Category', 'Loco Number', 'Supervisor NIC', 'Supervisor Email', 'Schedule Status', 'Body loco', 'Motors', 'ELUCU', 'Traction', 'Mechanical', '#'];
-  statuses: string[] = ['Accepted', 'Reject'];
-  @ViewChild(MatSort) sort: MatSort;
-  scheduleArray: LocoScheduleDTO[] = [];
-  selectedSchedule: LocoScheduleDTO = null;
-  new: LocoScheduleDTO = null;
-  isVisible =  false;
-
-
-
   searchKey: string;
-  isVisibleSecond = false;
-  locoList: LocoDTO[] = [];
-  loading =  false;
-  ScheduleStatus: string[] = [ 'Draft', 'Accept'];
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+  dataSource: MatTableDataSource<any>;
+  displayedColumns: string[] = ['Schedule No', 'Report No', 'Loco Category', 'Loco Number', 'Supervisor inCharge', 'Request Date', 'To be Complete', 'Progress', 'status', '#'];
+  scheduleList: any[] = [];
+  scheduleStatus: any;
 
-
-  constructor(private schedulesService: ScheduleService ,private router: Router,  private toastr: ToastrService, private locomotiveService: LocomotiveService) {
-    this.loadAll();
+  constructor(private scheduleService: ScheduleService) {
+    this.loadAllSchedule();
   }
 
   ngOnInit(): void {
-    this.loadAllLoconumbers();
+
   }
-  private loadAllLoconumbers(){
-    this.loading = true;
-    this.locomotiveService.getAllLocosSelect().subscribe( result => {
-      this.locoList = result;
-      this.loading = true;
+  private loadAllSchedule(){
+    this.scheduleService.getAllSchedules().subscribe(resp =>{
+      this.scheduleList = resp;
+      this.dataSource =  new MatTableDataSource<any>(this.scheduleList);
+      setTimeout(() => {
+        this.dataSource.paginator =  this.paginator;
+        this.dataSource.sort = this.sort;
+      })
     })
   }
-  loadAll(){
-    this.schedulesService.getAllSchedules().subscribe(resp => {
-      this.scheduleArray = resp;
-      this.dataSource = new MatTableDataSource<LocoScheduleDTO>(this.scheduleArray);
 
-      setTimeout(() => {
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-      });
-    });
-  }
 
-  deleteSchedule(scheduleNo: string) {
-    if (confirm('Are You Sure, whether You want to delete this Customer ?')){
-      this.schedulesService.deleteSchedule(scheduleNo).subscribe(result => {
-        if (result.message === 'deleted'){
-          this.onSucess('Deleted!');
-          this.loadAll();
-        } else{
-          this.onWarning('Try Again');
-        }
-      });
-    }
-  }
   onSearchClear() {
     this.searchKey = '';
     this.applyFilter();
   }
-  onWarning(message: string){
-    this.toastr.warning(message, 'Warning');
-  }
-  onSucess(message: string){
-    this.toastr.success(message, 'Success');
-  }
+
 
   applyFilter() {
     this.dataSource.filter = this.searchKey.trim().toLowerCase();
   }
-  setState(){
 
-    this.isVisible = !this.isVisible;
-   this.isVisibleSecond = false;
-
+  statusBinder(scheduleStatus){
+    if (scheduleStatus === 1){
+      return 'pending_actions'
+        ;
+    }else if (scheduleStatus === 2){
+      return 'flag';
+    }else if (scheduleStatus === 4){
+      return 'dangerous';
+    }
   }
+
+ /*
 
   changeUpdate = '';
   changeStatus = '';
@@ -112,21 +84,6 @@ export class AdminViewScehdulesComponent implements OnInit {
   changeMach = '';
   changeReamark = '';
 
-  view(tempSchedule: LocoScheduleDTO) {
-
-    this.selectedSchedule = tempSchedule;
-    const btn = document.getElementById('btn-pop-up') as HTMLElement;
-    btn.click();
-
-
-  }
-
-  setStateTwo(){
-
-    this.isVisible = false;
-    this.isVisibleSecond = !this.isVisibleSecond;
-
-  }
 
 
 
@@ -211,4 +168,6 @@ export class AdminViewScehdulesComponent implements OnInit {
   getSMS(){
     this.schedulesService.getSMS().subscribe();
   }
+
+  */
 }

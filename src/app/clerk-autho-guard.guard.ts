@@ -10,12 +10,13 @@ export class ClerkAuthoGuardGuard implements CanActivate {
   constructor(private manageAccountService: ManageAccountService, private router: Router) {
   }
   canActivate(): boolean {
-    if(this.manageAccountService.canActive()){
+    if(this.manageAccountService.canActiveClerk()){
       return true;
     }else{
       this.router.navigate(['/']).then();
       return false;
     }
   }
+
 
 }

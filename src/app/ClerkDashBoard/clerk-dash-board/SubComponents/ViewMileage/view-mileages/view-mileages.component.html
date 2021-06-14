@@ -53,25 +53,19 @@
         <ng-container matColumnDef="status">
           <mat-header-cell *matHeaderCellDef mat-sort-header> status </mat-header-cell>
           <mat-cell *matCellDef="let tempLoco" data-label="status"
-  [ngStyle]="{'color': (tempLoco.status ==1)?'yellow':(tempLoco.status == 2)?'blue':(tempLoco.status==3)?'green':'red'}"
+                    [ngStyle]="{'color': (tempLoco.status ==1)?'yellow':(tempLoco.status == 2)?'blue':(tempLoco.status==3)?'green':'red'}"
           >
 
 <span class="material-icons"  matTooltip="{{tempLoco.reason}}">
 {{statusBinder(tempLoco.status)}}
 </span>
-<!--            {{tempLoco.status || '-'}}-->
-        </mat-cell>
-<!--          pending - yellow , Approval  -blue, created-Green , rejectd - red-->
-
-
-        </ng-container>
-        <ng-container matColumnDef="#">
-          <mat-header-cell *matHeaderCellDef>  </mat-header-cell>
-          <mat-cell *matCellDef="let tempLoco" data-label="#">
-            <button mat-icon-button [disabled]="(tempLoco.status != 2)?false:true"  (click)="openAcceptDialog(tempLoco)"><mat-icon aria-hidden="false" aria-label="Example home icon">thumb_up</mat-icon></button>
-            <button mat-icon-button [disabled]="(tempLoco.status != 4)?false:true"   (click)="openRejectDialog(tempLoco)"><mat-icon aria-hidden="false" aria-label="Example home icon">thumb_down</mat-icon></button>
+            <!--            {{tempLoco.status || '-'}}-->
           </mat-cell>
+          <!--          pending - yellow , Approval  -blue, created-Green , rejectd - red-->
+
+
         </ng-container>
+
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;" ></mat-row>
@@ -83,3 +77,4 @@
   </div>
 
 </div>
+

@@ -34,7 +34,7 @@ export class ViewMileageComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   dataSource: MatTableDataSource<any>;
-  displayedColumns: string[] = ['Report Number', 'Loco Category', 'Loco Number', 'Mileage', 'Date', 'UserNIC', 'User Email', 'mileageNote', 'status', '#'];
+  displayedColumns: string[] = ['Report Number', 'Loco Category', 'Loco Number', 'Mileage', 'Date', 'mileageNote', 'status', '#'];
   constructor(private locomotiveService: LocomotiveService, public dialog: MatDialog) {
 
   }

@@ -34,6 +34,7 @@ export class MainLoginPageComponent implements OnInit {
     this.isLoggedUser();
     this.isLoggedAdmin();
     this.isLoggedClerk();
+    //this.isLoggedManager();
   }
 
 
@@ -51,7 +52,7 @@ export class MainLoginPageComponent implements OnInit {
       this.accessService.login(this.loginEmail.toString(), this.loginPassword.toString()).pipe(first()).
       subscribe(result => {
         if (result.message === 'Success!'){
-          if (result.userRole === Role.ChiefEngineer || result.userRole === Role.ServiceManger) {
+          if (result.userRole === Role.ChiefEngineer) {
             this.router.navigate(['adminDashboard/adminDashContent']);
             this.cookieService.putObject('adminData', this.loginEmail);
           }else if (result.userRole === Role.Supervisor){
@@ -59,7 +60,9 @@ export class MainLoginPageComponent implements OnInit {
             this.router.navigate(['userDashboard/userDashContent']).then();
           } else if (result.userRole === Role.Clerk){
             this.cookieService.putObject('clerkData', this.loginEmail);
-            this.router.navigate(['clerkDashBoard/clerkDashContent']);
+            this.router.navigate(['clerkDashBoard/clerkDashContent']).then();
+          } else if (result.userRole === Role.ServiceManger){
+            this.router.navigate(['managerDashBoard/mDashContent']).then();
           }
 
         }else {
@@ -98,6 +101,7 @@ export class MainLoginPageComponent implements OnInit {
 
     }
   }
+
   private isLoggedClerk() {
     const temp = this.cookieService.get('clerkData');
     if (temp !== undefined){

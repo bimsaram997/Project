@@ -64,7 +64,7 @@ export class MileageReportComponent implements OnInit {
             icon: 'error',
           });
           setTimeout(() => {
-            this.refresh();
+           // this.refresh();
           }, 3000);
         }
       },
