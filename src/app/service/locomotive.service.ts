@@ -42,24 +42,8 @@ export class LocomotiveService {
   public  getAllLocosSelect(): Observable<any> {
     return this.http.get(this.myUrl + 'locoRoute/getAllLocosSelect');
   }
-  public updateLocomotive(dto: LocoDTO): Observable<any>{
-    return this.http.put(this.myUrl + 'locoRoute/updateLocomotive', {
-      locoCatId: dto.locoCatId,
-      locoPower: dto.locoPower,
-      locoNumber: dto.locoNumber,
-      locoMileage: dto.locoMileage,
-      locoAvailability: dto.locoAvailability,
-      userNic: dto.userNic,
-      locoDate: dto.locoDate,
-      locoOil: dto.locoOil,
-      locoFuel: dto.locoFuel,
-      locoWater: dto.locoWater,
-      locoMainGen: dto.locoMainGen,
-      locoTracMot: dto.locoTracMot,
-      locoVBreak: dto.locoVBreak,
-      locoDBreak: dto.locoDBreak,
-      locoNote: dto.locoNote
-    })
+  public updateLoco(id, data): Observable<any>{
+    return this.http.put(this.myUrl + `locoRoute/updateLocomotive`, {id, data});
   }
   public getInCount(): Observable<any>{
     return this.http.get(this.myUrl + 'locoRoute/getInCount');
@@ -76,11 +60,33 @@ export class LocomotiveService {
   public getAllMileage(): Observable<any> {
     return this.http.get( this.myUrl + 'locoRoute/getAllMileage');
   }
+  public getAcceptedMileage(): Observable<any> {
+    return this.http.get( this.myUrl + 'locoRoute/getAcceptedMileage');
+  }
 
   public updateMileStatus(id):Observable<any> {
     return this.http.patch( this.myUrl + `locoRoute/patch-mile/${id}` , id);
   }
   public updateRejectStatus(id, reason):Observable<any> {
     return this.http.patch( this.myUrl + `locoRoute/reject-mile/${id}/${reason}` , id, reason);
+  }
+  getOneLoco(id): Observable<any>{
+    return this.http.get<any>(this.myUrl + `locoRoute/getOneLoco/${id}`);
+  }
+  getOneLocoNew(mLocoNumber): Observable<any>{
+    return this.http.get<any>(this.myUrl + `locoRoute/getOneLocoNew/${mLocoNumber}`);
+  }
+  getOneMileage(mReportNumber): Observable<any>{
+    return this.http.get<any>(this.myUrl + `locoRoute/getOneMileage/${mReportNumber}`);
+  }
+
+  public sendLocoStatus(body): Observable<any>{
+    return this.http.post(this.myUrl + 'locoRoute/sendLocoStatus', body);
+  }
+  public sendStatusEmail(locoNumber: number, supervisorEmail: string): Observable<any>{
+    return this.http.post(this.myUrl + 'locoRoute/sendStatusEmail', {
+      locoNumber,
+      supervisorEmail
+    });
   }
 }

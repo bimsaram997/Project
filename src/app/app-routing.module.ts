@@ -34,6 +34,12 @@ import {ViewMileagesComponent} from "./ClerkDashBoard/clerk-dash-board/SubCompon
 import {ClerkAuthoGuardGuard} from "./clerk-autho-guard.guard";
 import {RequestScheduleComponent} from "./ServiceManagerDashBoard/manager-dashboard/Subcomps/request-schedule/request-schedule.component";
 import {ViewManagerSchedulesComponent} from "./ServiceManagerDashBoard/manager-dashboard/Subcomps/view-manager-schedules/view-manager-schedules.component";
+import {EditReqScheduleComponent} from "./ServiceManagerDashBoard/manager-dashboard/Subcomps/request-schedule/edit-req-schedule/edit-req-schedule.component";
+import {ViewMoreSchedulesComponent} from "./ServiceManagerDashBoard/manager-dashboard/Subcomps/view-manager-schedules/view-more-schedules/view-more-schedules.component";
+import {AdminEditLocomotiveComponent} from "./AdminDashBoard/admin-dash-board/sub-components/Locomotives/view-locomotives/admin-edit-locomotive/admin-edit-locomotive.component";
+import {EditLocomotiveComponent} from "./AdminDashBoard/admin-dash-board/sub-components/Locomotives/view-locomotives/edit-locomotive/edit-locomotive.component";
+import {ViewLocoComponent} from "./UserDashBoard/user-dashboard/SubComponents/Locomotives/user-view-locomotives/view-loco/view-loco.component";
+import { LoadTrailComponent } from './UserDashBoard/user-dashboard/SubComponents/load-trail/load-trail.component';
 
 
 
@@ -53,7 +59,9 @@ const routes: Routes = [
       {path: 'viewLocomotives', component: ViewLocomotivesComponent},
       {path: 'adminViewSchedules', component: AdminViewScehdulesComponent},
       {path: 'viewLocoProfile', component: ViewLocoProfileComponent},
-      {path: 'viewMileage', component: ViewMileageComponent}
+      {path: 'viewMileage', component: ViewMileageComponent},
+      {path: 'EditLocomotive/:id', component: EditLocomotiveComponent},
+      {path: 'viewLoco/:id', component: ViewLocoProfileComponent}
 
     ]},
   {path: 'userDashboard', canActivate: [AuthGuard], component: UserDashboardComponent,  children: [
@@ -61,7 +69,10 @@ const routes: Routes = [
       {path: 'createSchedule', component: CreateScheduleComponent},
       {path: 'viewSchedules', component: ViewSchedulesComponent},
       {path: 'userViewLocomotives', component: UserViewLocomotivesComponent },
-      {path: 'userProfile', component: UserProfileComponent}
+      {path: 'userProfile', component: UserProfileComponent},
+      {path: 'viewLoco/:id', component: ViewLocoComponent},
+      {path: 'loadTrial', component:LoadTrailComponent}
+
 
     ]},
   {path: 'clerkDashBoard', canActivate: [ClerkAuthoGuardGuard], component: ClerkDashBoardComponent, children: [
@@ -79,7 +90,9 @@ const routes: Routes = [
       {path: 'viewMileage', component: ViewMileageComponent},
       {path: 'requestSchedule', component: RequestScheduleComponent},
       {path: 'createSchedule', component: CreateScheduleComponent},
-      {path: 'viewManagerSchedules', component:  ViewManagerSchedulesComponent}
+      {path: 'viewManagerSchedules', component:  ViewManagerSchedulesComponent},
+      {path: 'editSchedule', component: EditReqScheduleComponent},
+      {path:  'viewMoreSchedule', component: ViewMoreSchedulesComponent}
 
 
     ]}

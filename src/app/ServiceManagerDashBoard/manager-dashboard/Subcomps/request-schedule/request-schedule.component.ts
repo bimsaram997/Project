@@ -5,6 +5,7 @@ import {AccessService} from "../../../../service/access.service";
 import {ScheduleService} from "../../../../service/schedule.service";
 import {first} from "rxjs/operators";
 import swal from "sweetalert";
+import {LocomotiveService} from "../../../../service/locomotive.service";
 
 @Component({
   selector: 'app-request-schedule',
@@ -24,13 +25,15 @@ export class RequestScheduleComponent implements OnInit {
   options: string[] = ['M2', 'M4', 'M5', 'M6', 'M7', 'M8', 'M9', 'M10', 'M11', 'M12'];
   top = new FormControl();
 
-  constructor(private formBuilder: FormBuilder, private accessService: AccessService, private scheduleService: ScheduleService) { }
+  constructor(private formBuilder: FormBuilder, private accessService: AccessService, private scheduleService: ScheduleService,
+              private locomotiveService: LocomotiveService) { }
   locoStatus: string[] = [
     'In', 'Out'
   ];
   managerList: UserDTO[] = [];
   supervisorList: UserDTO[] = [];
   loading =  false;
+  mileageReport: any[] = [];
 
   ngOnInit(): void {
     this.ScheduleGroup = this.formBuilder.group({
@@ -42,9 +45,11 @@ export class RequestScheduleComponent implements OnInit {
       locoNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       locoMileage: ['', [Validators.required, Validators.minLength(5)]],
       locoStatus: ['', [Validators.required]],
+      managerNic: ['', [Validators.required]],
       managerEmail: ['', [Validators.required]],
       managerName: ['', [Validators.required]],
       supervisorNic: ['', [Validators.required]],
+      supervisorEmail: ['', [Validators.required]],
       supervisorName: ['', [Validators.required]],
       mechanical: [''],
       electrical: [''],
@@ -70,6 +75,7 @@ export class RequestScheduleComponent implements OnInit {
     });
     this.loadMangers();
     this.loadSupervisor();
+    this.loadMileageRep();
   }
   get getFm(){
     return this.ScheduleGroup.controls;
@@ -201,8 +207,55 @@ export class RequestScheduleComponent implements OnInit {
       this.loading = true;
     });
   }
+  private loadMileageRep(){
+    this.loading = true;
+    this.locomotiveService.getAcceptedMileage().subscribe(result => {
+      this.mileageReport =  result;
+      console.log(this.mileageReport)
+      this.loading =  true;
+    })
+  }
   refresh(): void {
     window.location.reload();
   }
+  onChangeSelect(value: string){
+    const userNic = value ;
+    console.log(this.getFm.supervisorNic.value);
+    this.accessService.getOneSup(this.getFm.supervisorNic.value).pipe(first())
+      .subscribe(
+        res=>{
+          this.ScheduleGroup.controls['supervisorEmail'].setValue(res[0].userEmail);
+          this.ScheduleGroup.controls['supervisorName'].setValue(res[0].userName);
 
+          console.log(res);
+        }
+      )
+  }
+  onChangeSelectMan(value: string){
+    const userNic = value ;
+    console.log(this.getFm.managerNic.value);
+    this.accessService.getOneMan(this.getFm.managerNic.value).pipe(first())
+      .subscribe(
+        res=>{
+          this.ScheduleGroup.controls['managerEmail'].setValue(res[0].userEmail);
+          this.ScheduleGroup.controls['managerName'].setValue(res[0].userName);
+
+          console.log(res);
+        }
+      )
+  }
+  onChangeSelectMil(value: string){
+    const userNic = value ;
+    console.log(this.getFm.mReportNumber.value);
+    this.locomotiveService.getOneMileage(this.getFm.mReportNumber.value).pipe(first())
+      .subscribe(
+        res=>{
+          this.ScheduleGroup.controls['locoCatId'].setValue(res[0].mLocoCatId);
+          this.ScheduleGroup.controls['locoNumber'].setValue(res[0].mLocoNumber);
+          this.ScheduleGroup.controls['locoMileage'].setValue(res[0].mLocoMileage);
+          this.ScheduleGroup.controls['locoStatus'].setValue(res[0].userEmail);
+          //console.log(res);
+        }
+      )
+  }
 }

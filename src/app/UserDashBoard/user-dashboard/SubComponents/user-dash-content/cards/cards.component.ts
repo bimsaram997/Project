@@ -15,28 +15,15 @@ export class CardsComponent implements OnInit {
   inLocoCount: number;
   outLocoCount: number;
   constructor(private schedulesService: ScheduleService , private router: Router, private locomotiveService: LocomotiveService) {
-    this.DraftScheduleCount();
-    this.AcceptScheduleCount();
+
     this.InLocoCount();
     this.OutLocoCount();
   }
 
   ngOnInit(): void {
   }
-  DraftScheduleCount(){
-    this.schedulesService.getDraftCount().subscribe(resp => {
-      if(resp >= 0){
-        this.draftScheduleCount = resp;
-      }
-    });
-  }
-  AcceptScheduleCount(){
-    this.schedulesService.getAcceptCount().subscribe(resp => {
-      if(resp >= 0){
-        this.acceptScheduleCount = resp;
-      }
-    });
-  }
+
+
 
   InLocoCount(){
     this.locomotiveService.getInCount().subscribe(resp => {

@@ -67,13 +67,7 @@ export class ScheduleService {
   {
     return this.http.get<LocoScheduleDTO>(this.myUrl + 'scheduleRoute/getSchedule/: id',{headers: {customerNic}})
   }
-  public getDraftCount(): Observable<any>{
-    return this.http.get(this.myUrl + 'scheduleRoute/getDraftCount')
-  }
 
-  public getAcceptCount(): Observable<any>{
-    return this.http.get(this.myUrl + 'scheduleRoute/getAcceptCount')
-  }
   public getMySampleData(): Observable<any> {
     return this.http.get(this.myUrl + 'scheduleRoute/getSample');
   }

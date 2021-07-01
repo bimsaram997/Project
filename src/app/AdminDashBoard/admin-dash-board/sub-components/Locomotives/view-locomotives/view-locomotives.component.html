@@ -64,9 +64,9 @@
         <ng-container matColumnDef="#">
           <mat-header-cell *matHeaderCellDef>  </mat-header-cell>
           <mat-cell *matCellDef="let tempLoco" data-label="#">
-            <button mat-icon-button  (click)="openDialog(tempLoco)"> <span class="material-icons">visibility</span></button>
-            <button mat-icon-button color="warn" (click)="deleteLoco(tempLoco.locoNumber)"><mat-icon>delete_outline</mat-icon></button>
-            <button mat-icon-button (click)="OpenEdit(tempLoco)"><mat-icon>launch</mat-icon></button>
+
+            <button mat-icon-button (click)="viewLoco(tempLoco._id)"><mat-icon>visibility</mat-icon></button>
+            <button mat-icon-button (click)="editLoco(tempLoco._id)" routerLink="/adminDashboard/EditLocomotive"><mat-icon>launch</mat-icon></button>
           </mat-cell>
         </ng-container>
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

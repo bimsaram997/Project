@@ -69,22 +69,13 @@ export class UserViewLocomotivesComponent implements OnInit {
   }
 
 
-  openDialog(tempLoco: LocoDTO){
-    this.selectedLoco = tempLoco;
-    const dialogRef = this.dialog.open(ViewLocoComponent, {data: {ViewLocoOil: this.selectedLoco.locoOil, ViewLocoFuel: this.selectedLoco.locoFuel, ViewLocoWater: this.selectedLoco.locoWater,
-        ViewLocoVBreak: this.selectedLoco.locoVBreak,
-        ViewLocoDBreak: this.selectedLoco.locoDBreak,
-        ViewLocoMainGen: this.selectedLoco.locoMainGen,
-        ViewLocoTrack: this.selectedLoco.locoTracMot,
-        ViewLocoNote: this.selectedLoco.locoNote,
-        ViewLocoImage: this.selectedLoco.image }});
-
-
-    dialogRef.afterClosed().subscribe(result =>{
-      console.log(`Dialog: ${result}`);
-    });
+  openDialog(){
+    this.router.navigate(['./adminDashboard/viewLoco']);
   }
+  viewLoco(locoNumber: string) {
+    this.router.navigate(['/userDashboard/viewLoco', locoNumber]);
 
+  }
   openImage(tempLoco: LocoDTO) {
     this.selectedLoco  = tempLoco;
     const dialogRef = this.dialog.open(ViewImageComponent,{data: {ViewImage: this.selectedLoco.image,
@@ -95,41 +86,13 @@ export class UserViewLocomotivesComponent implements OnInit {
     });
   }
 
-  OpenEditDialog(tempLoco: LocoDTO){
-    this.selectedLoco = tempLoco;
-    this.changeLocoCatID = tempLoco.locoCatId;
-    this.changeLocoPower = tempLoco.locoPower + '';
-    this.changeLocoMileage = tempLoco.locoMileage + '';
-    this.changeLocoAvailability = tempLoco.locoAvailability;
-    this.changeuserNic = tempLoco.userNic;
-    this.changeLocoDate = tempLoco.locoDate.split(' ').slice(0, 4).join(' ');
-    this.changeLocoOil = tempLoco.locoOil + '';
-    this.changeLocoFuel = tempLoco.locoFuel + '';
-    this.changeLocoWater = tempLoco.locoWater + '';
-    this.changeLocoMainGen = tempLoco.locoMainGen;
-    this.changeLocotracMot = tempLoco.locoTracMot;
-    this.changeLocoVBreak = tempLoco.locoVBreak;
-    this.changeLocoDBreak = tempLoco.locoDBreak;
-    this.changeLocoNote = tempLoco.locoNote;
-    const dialogRef = this.dialog.open(EditLocoComponent, {data: {EditCatId: this.changeLocoCatID, EditId: this.selectedLoco,
-        EditPower: this.changeLocoPower,
-        EditMileage: this.changeLocoMileage,
-        EditAvailability: this.changeLocoAvailability,
-        EditNic: this.changeuserNic,
-        EditDate: this.changeLocoDate,
-        EditOil: this.changeLocoOil,
-        EditFuel: this.changeLocoFuel,
-        EditWater: this.changeLocoWater,
-        EditMainGen: this.changeLocoMainGen,
-        EditTrack: this.changeLocotracMot,
-        EditVBreak: this.changeLocoVBreak,
-        EditDBreak: this.changeLocoDBreak,
-        EditNote: this.changeLocoNote,
-     }});
-    dialogRef.afterClosed().subscribe(result =>{
-      console.log(`Dialog: ${result}`);
-      this.loadAll();
-    });
+  OpenEditDialog(_id: string){
+    console.log(_id)
+    this.dialog.open(EditLocoComponent, {
+      data: {id: _id},
+      height: '650px',
+      width: '840px',
+    })
   }
 
 

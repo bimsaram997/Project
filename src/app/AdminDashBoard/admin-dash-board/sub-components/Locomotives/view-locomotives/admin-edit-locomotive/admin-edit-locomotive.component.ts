@@ -39,53 +39,7 @@ export class AdminEditLocomotiveComponent implements OnInit {
   this.loadAll();
   }
 
-  updateMyLocomotive() {
 
-    console.log(this.selectedLoco);
-    this.selectedLoco = this.data.EditId;
-
-    const dto = new LocoDTO(
-      this.selectedLoco.locoNumber,
-      this.data.EditCatId,
-      Number(this.data.EditPower),
-      Number(this.data.EditMileage),
-      this.data.EditAvailability,
-      this.data.EditNic,
-      this.data.EditDate,
-      Number(this.data.EditOil),
-      Number(this.data.EditFuel),
-      Number(this.data.EditWater),
-      this.data.EditMainGen,
-      this.data.EditTrack,
-      this.data.EditVBreak,
-      this.data.EditDBreak,
-      this.data.EditNote,
-      this.data.EditImage
-    );
-    this.locomotiveService.updateLocomotive(dto).subscribe(result => {
-      if (result.message === 'updated'){
-        swal({
-          title: 'Record is Updated!',
-          text: 'Please Click OK',
-          icon: 'success',
-        });
-
-
-      }else {
-
-        swal({
-          title: 'Update Failed!',
-          text: 'Please Click OK',
-          icon: 'error',
-        });
-        setTimeout(() => {
-        }, 3000);
-
-
-
-      }
-    });
-  }
 
 
   loadAll(){

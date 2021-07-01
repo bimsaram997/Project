@@ -68,6 +68,10 @@ import { ViewMileagesComponent } from './ClerkDashBoard/clerk-dash-board/SubComp
 import { RequestScheduleComponent } from './ServiceManagerDashBoard/manager-dashboard/Subcomps/request-schedule/request-schedule.component';
 import { ViewManagerSchedulesComponent } from './ServiceManagerDashBoard/manager-dashboard/Subcomps/view-manager-schedules/view-manager-schedules.component';
 import { SendProgressComponent } from './UserDashBoard/user-dashboard/SubComponents/Schedules/view-schedules/send-progress/send-progress.component';
+import { EditReqScheduleComponent } from './ServiceManagerDashBoard/manager-dashboard/Subcomps/request-schedule/edit-req-schedule/edit-req-schedule.component';
+import { ViewMoreSchedulesComponent } from './ServiceManagerDashBoard/manager-dashboard/Subcomps/view-manager-schedules/view-more-schedules/view-more-schedules.component';
+import { EditLocomotiveComponent } from './AdminDashBoard/admin-dash-board/sub-components/Locomotives/view-locomotives/edit-locomotive/edit-locomotive.component';
+import { LoadTrailComponent } from './UserDashBoard/user-dashboard/SubComponents/load-trail/load-trail.component';
 
 
 
@@ -131,6 +135,10 @@ import { SendProgressComponent } from './UserDashBoard/user-dashboard/SubCompone
     RequestScheduleComponent,
     ViewManagerSchedulesComponent,
     SendProgressComponent,
+    EditReqScheduleComponent,
+    ViewMoreSchedulesComponent,
+    EditLocomotiveComponent,
+    LoadTrailComponent,
 
 
 
@@ -162,7 +170,7 @@ import { SendProgressComponent } from './UserDashBoard/user-dashboard/SubCompone
   ],
   providers: [EventEmitterService],
   bootstrap: [AppComponent],
-  entryComponents: [ModelComponent, ViewLocoComponent, EditLocoComponent, AdminEditLocomotiveComponent, ViewImageComponent, ConfirmDialogComponent, RejectDialogComponent,
+  entryComponents: [ModelComponent,  EditLocoComponent, ViewImageComponent, ConfirmDialogComponent, RejectDialogComponent,
   SendProgressComponent]
 })
 export class AppModule { }

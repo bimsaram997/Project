@@ -27,7 +27,7 @@ export class ViewLocomotivesComponent implements OnInit {
 
 
 
-  constructor(public dialog: MatDialog, private imageService: ImageService, private locomotiveService: LocomotiveService,  private router: Router,  private toastr: ToastrService, private accessService: AccessService) {
+  constructor(private dialog: MatDialog, private imageService: ImageService, private locomotiveService: LocomotiveService,  private router: Router,  private toastr: ToastrService, private accessService: AccessService) {
     this.loadAll();
   }
 
@@ -45,24 +45,7 @@ export class ViewLocomotivesComponent implements OnInit {
   loading =  false;
   userList: UserDTO[] = [];
   statuses: string[] = ['In', 'Out'];
-  changeLocoCatID = '';
-  changeLocoPower = '';
-  changeLocoMileage = '';
-  changeLocoAvailability = '';
-  changeuserNic = '';
-  changeLocoDate = '';
-  changeLocoOil = '';
-  changeLocoFuel = '';
-  changeLocoWater = '';
-  changeLocoMainGen = '';
-  changeLocotracMot = '';
-  changeLocoVBreak = '';
-  changeLocoDBreak = '';
-  changeLocoNote = '';
-  changeLocoImage = [];
-  changeCustomerNic = '';
-  showFlag: boolean = false;
-  selectedImageIndex: number = -1;
+
 
 
   ngOnInit(): void {
@@ -87,79 +70,15 @@ export class ViewLocomotivesComponent implements OnInit {
       });
     });
   }
-
-
-  openDialog(tempLoco: LocoDTO){
-    this.selectedLoco = tempLoco;
-    const dialogRef = this.dialog.open(ViewLocoComponent, {data: {ViewLocoOil: this.selectedLoco.locoOil, ViewLocoFuel: this.selectedLoco.locoFuel, ViewLocoWater: this.selectedLoco.locoWater,
-        ViewLocoVBreak: this.selectedLoco.locoVBreak,
-        ViewLocoDBreak: this.selectedLoco.locoDBreak,
-        ViewLocoMainGen: this.selectedLoco.locoMainGen,
-        ViewLocoTrack: this.selectedLoco.locoTracMot,
-        ViewLocoNote: this.selectedLoco.locoNote,
-      ViewLocoImage: this.selectedLoco.image}});
-
-    dialogRef.afterClosed().subscribe(result =>{
-      console.log(`Dialog: ${result}`);
-    });
-  }
-  OpenEdit(tempLoco: LocoDTO){
-    this.selectedLoco = tempLoco;
-    this.changeLocoCatID = tempLoco.locoCatId;
-    this.changeLocoPower = tempLoco.locoPower + '';
-    this.changeLocoMileage = tempLoco.locoMileage + '';
-    this.changeLocoAvailability = tempLoco.locoAvailability;
-    this.changeuserNic = tempLoco.userNic;
-    this.changeLocoDate = tempLoco.locoDate.split(' ').slice(0, 4).join(' ');
-    this.changeLocoOil = tempLoco.locoOil + '';
-    this.changeLocoFuel = tempLoco.locoFuel + '';
-    this.changeLocoWater = tempLoco.locoWater + '';
-    this.changeLocoMainGen = tempLoco.locoMainGen;
-    this.changeLocotracMot = tempLoco.locoTracMot;
-    this.changeLocoVBreak = tempLoco.locoVBreak;
-    this.changeLocoDBreak = tempLoco.locoDBreak;
-    this.changeLocoNote = tempLoco.locoNote;
-    this.changeLocoImage =  Array(tempLoco.image);
-    const dialogRef = this.dialog.open(AdminEditLocomotiveComponent,{data: {
-        EditCatId: this.changeLocoCatID,
-        EditId: this.selectedLoco,
-        EditPower: this.changeLocoPower,
-        EditMileage: this.changeLocoMileage,
-        EditAvailability: this.changeLocoAvailability,
-        EditNic: this.changeuserNic,
-        EditDate: this.changeLocoDate,
-        EditOil: this.changeLocoOil,
-        EditFuel: this.changeLocoFuel,
-        EditWater: this.changeLocoWater,
-        EditMainGen: this.changeLocoMainGen,
-        EditTrack: this.changeLocotracMot,
-        EditVBreak: this.changeLocoVBreak,
-        EditDBreak: this.changeLocoDBreak,
-        EditNote: this.changeLocoNote,
-        EditImage: this.changeLocoImage
-      }});
-    dialogRef.afterClosed().subscribe(result =>{
-      console.log(`Dialog: ${result}`);
-      this.loadAll();
-    });
+  editLoco(locoNumber: string){
+    this.router.navigate(['/adminDashboard/EditLocomotive', locoNumber]);
   }
 
-  deleteLoco(locoNumber: string) {
 
-    if (confirm('Are You Sure, whether You want to delete this Locomotive ?')){
-      this.locomotiveService.deleteLoco(locoNumber).subscribe(result => {
-        if (result.message === 'deleted'){
-          swal('Record was deleted', {
-            icon: 'success',
-          });
-          this.loadAll()
-        } else{
-          swal('Record was deleted', {
-            icon: 'error',
-          });
-        }
-      });
-    }
+
+  viewLoco(locoNumber: string) {
+    this.router.navigate(['/adminDashboard/viewLoco', locoNumber]);
+
   }
 
   openImage(tempLoco: LocoDTO) {
